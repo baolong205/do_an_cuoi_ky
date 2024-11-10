@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import './components.css'; // Import CSS mới
 
 const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams(); // Lấy id từ URL
