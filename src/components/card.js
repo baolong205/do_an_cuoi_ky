@@ -1,7 +1,19 @@
+// src/components/Cart.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = ({ cartItems, removeFromCart }) => {
-  const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  // Tính tổng tiền và đảm bảo price và quantity là số hợp lệ
+  const totalAmount = cartItems.reduce((total, item) => {
+    const price = parseFloat(item.price) || 0; // Đảm bảo giá trị price là số hợp lệ
+    const quantity = parseInt(item.quantity, 10) || 1; // Đảm bảo quantity là số nguyên hợp lệ, mặc định là 1
+    return total + (price * quantity);
+  }, 0);
+
+  // Hàm định dạng tiền (với dấu chấm ngăn cách)
+  const formatCurrency = (amount) => {
+    return amount.toLocaleString('vi-VN') + ' VND'; // Định dạng với dấu chấm ngăn cách hàng nghìn
+  };
 
   return (
     <div className="cart">
@@ -11,12 +23,17 @@ const Cart = ({ cartItems, removeFromCart }) => {
       ) : (
         cartItems.map(item => (
           <div key={item.id}>
-            <p>{item.name} - {item.quantity} x {item.price} VND</p>
+            <p>{item.name} : {item.quantity} x {formatCurrency(item.price)}</p>
             <button onClick={() => removeFromCart(item.id)}>Remove</button>
           </div>
         ))
       )}
-      <h3>Total: {totalAmount} VND</h3>
+      {/* Hiển thị tổng tiền */}
+      <h3>Total: {formatCurrency(totalAmount)}</h3>
+
+      <Link to="/checkout">
+        <button className="checkout-btn">Proceed to Checkout</button>
+      </Link>
     </div>
   );
 };

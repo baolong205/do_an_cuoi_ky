@@ -43,10 +43,9 @@ const Navbar = ({ onSearch }) => {
 
       <div className="navbar-links">
         <Link to="/account" className="navbar-link">Account</Link>
-        {/* Thay Orders bằng About */}
         <Link to="/about" className="navbar-link">About</Link>
         <Link to="/cart" className="navbar-link">
-          <i className="fas fa-shopping-cart"></i> Cart
+          <i className="fas fa-shopping-cart"></i>
         </Link>
       </div>
     </nav>

@@ -1,0 +1,141 @@
+/* src/components/components.css */
+
+/* Định dạng chung cho các phần tử trong ứng dụng */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  /* Định dạng cho tất cả các container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2, h3 {
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 8px 0;
+  }
+  
+  /* Cải thiện tính linh hoạt của các phần tử */
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+    background-color: #ddd;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  /* Định dạng cho các thẻ sản phẩm */
+  .product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    width: 200px;
+    background-color: #fff;
+    margin: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .product-card h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .product-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  .view-product-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .view-product-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Định dạng chung cho các nút */
+  .add-to-cart-btn, .checkout-btn, .proceed-payment-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-to-cart-btn:hover, .checkout-btn:hover, .proceed-payment-btn:hover {
+    background-color: #218838;
+  }
+  
+  .checkout-btn {
+    background-color: #007bff;
+  }
+  
+  .checkout-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Định dạng các thẻ giỏ hàng */
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .cart-item button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .cart-item button:hover {
+    background-color: #c82333;
+  }

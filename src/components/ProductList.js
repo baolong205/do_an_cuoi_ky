@@ -1,6 +1,6 @@
 // src/components/ProductList.js
 import React from 'react';
-import ProductCard from './ProductCard'; // Giả sử bạn có component ProductCard để hiển thị mỗi sản phẩm
+import ProductCard from './ProductCard';
 
 const ProductList = ({ products, addToCart }) => {
   return (
