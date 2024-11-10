@@ -8,6 +8,7 @@ import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
 import ProductDetail from './components/ProductDetail';
+import Footer from './Nav/Footer';
 import productImage1 from './assets/images/image1.jpg';
 import productImage2 from './assets/images/image2.jpg';
 import productImage3 from './assets/images/image3.jpg';
@@ -22,7 +23,9 @@ import productImage11 from './assets/images/image11.jpg';
 import productImage12 from './assets/images/image12.jpg';
 import productImage13 from './assets/images/image13.jpg';
 import productImage14 from './assets/images/image14.jpg';
-import './components/components.css'
+import productImage15 from './assets/images/image15.jpg';
+import './components/components.css';
+
 const Home = () => {
     const [products] = useState([
         { id: 1, name: 'iPhone 16 Pro Max 256GB', price: 34590000, category: 'Electronics', image: productImage1, description: 'Premium smartphone with A16 Bionic chipset.' },
@@ -39,70 +42,72 @@ const Home = () => {
         { id: 12, name: 'Áo khoác nữ mùa đông', price: 550000, category: 'Clothing', image: productImage12, description: 'Warm and stylish winter jacket for women.' },
         { id: 13, name: 'Tủ lạnh Panasonic 250L', price: 8000000, category: 'Furniture', image: productImage13, description: 'Energy-efficient refrigerator with modern design.' },
         { id: 14, name: 'Sách Python cho người mới bắt đầu', price: 350000, category: 'Books', image: productImage14, description: 'Beginner-friendly book on Python programming.' },
+        { id: 15, name: 'Laptop Asus Gaming G731-VEV089T', price: 39990000, category: 'Electronics', image: productImage15, description: 'High-performance gaming laptop with 16GB RAM, 1TB SSD, and NVIDIA GeForce RTX 3060.' },
       ]);
 
-  const [filteredProducts, setFilteredProducts] = useState(products); 
-  const [category, setCategory] = useState('All'); // State cho category
-  const [searchTerm, setSearchTerm] = useState(''); // State cho searchTerm
-  const [cart, setCart] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState(products); 
+    const [category, setCategory] = useState('All'); // State cho category
+    const [searchTerm, setSearchTerm] = useState(''); // State cho searchTerm
+    const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
-    const existingProduct = cart.find(item => item.id === product.id);
-    
-    if (existingProduct) {
-      setCart(cart.map(item => 
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 } 
-          : item
-      ));
-    } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
-  };
+    const addToCart = (product) => {
+        const existingProduct = cart.find(item => item.id === product.id);
+        
+        if (existingProduct) {
+            setCart(cart.map(item => 
+                item.id === product.id
+                    ? { ...item, quantity: item.quantity + 1 } 
+                    : item
+            ));
+        } else {
+            setCart([...cart, { ...product, quantity: 1 }]);
+        }
+    };
 
-  const removeFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
-  };
+    const removeFromCart = (productId) => {
+        setCart(cart.filter(item => item.id !== productId));
+    };
 
-  const handleSearch = () => {
-    let filtered = [...products];
+    const handleSearch = () => {
+        let filtered = [...products];
 
-    // Lọc theo danh mục
-    if (category !== 'All') {
-      filtered = filtered.filter(product => product.category === category);
-    }
+        // Lọc theo danh mục
+        if (category !== 'All') {
+            filtered = filtered.filter(product => product.category === category);
+        }
 
-    // Lọc theo từ khóa tìm kiếm
-    if (searchTerm) {
-      filtered = filtered.filter(product =>
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
+        // Lọc theo từ khóa tìm kiếm
+        if (searchTerm) {
+            filtered = filtered.filter(product =>
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+        }
 
-    setFilteredProducts(filtered);
-  };
+        setFilteredProducts(filtered);
+    };
 
-  return (
-    <>
-      <Navbar 
-        onSearch={handleSearch} 
-        category={category} 
-        setCategory={setCategory}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<ProductList products={filteredProducts} addToCart={addToCart} />} />
-          <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
-          <Route path="/checkout" element={<Checkout cartItems={cart} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
-        </Routes>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <Navbar 
+                onSearch={handleSearch} 
+                category={category} 
+                setCategory={setCategory}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+            />
+            <div className="app">
+                <Routes>
+                    <Route path="/" element={<ProductList products={filteredProducts} addToCart={addToCart} />} />
+                    <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
+                    <Route path="/checkout" element={<Checkout cartItems={cart} />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
+                </Routes>
+            </div>
+            <Footer />
+        </>
+    );
 };
 
 export default Home;
