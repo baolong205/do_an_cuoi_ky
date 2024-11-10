@@ -1,119 +1,65 @@
-/* Container của form đăng nhập, căn giữa và tạo kiểu cho form */
-.login {
-  max-width: 350px;
-  margin: auto;
-  padding: 30px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  text-align: center;
-  background-color: #fff;
-}
-
-/* Cấu trúc form theo chiều dọc */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Label cho các trường nhập liệu */
-form label {
-  margin-top: 15px;
-  text-align: left;
-  font-weight: bold;
-  color: #555;
-}
-
-/* Input cho các trường nhập liệu */
-form input {
-  margin-top: 8px;
-  padding: 10px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
-  width: 100%;
-}
-
-/* Hiệu ứng khi input được chọn */
-form input:focus {
-  border-color: #1953c8;
-  outline: none;
-}
-
-/* Nút đăng nhập và đăng ký */
-form button,
-.submit-button {
-  margin-top: 20px;
-  padding: 12px;
-  font-size: 1.1em;
-  cursor: pointer;
-  background-color: #1953c8;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  width: 100%;
-  transition: background-color 0.3s ease;
-}
-
-/* Hiệu ứng hover cho nút */
-form button:hover,
-.submit-button:hover {
-  background-color: #003ea3;
-}
-
-/* Thông báo lỗi cho các trường không hợp lệ */
-.error-message {
-  color: red;
-  font-size: 0.875em;
-  margin-top: 5px;
-  text-align: left;
-}
-
-.switch-form {
-  margin-top: 10px;
-  background-color: #28a745;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  text-decoration: none; /* Xóa gạch chân */
-  display: inline-block; /* Đảm bảo thẻ <a> có thể xử lý padding như button */
-}
-
-.switch-form:hover {
-  background-color: #218838;
-}
-
-
-/* Các lớp chung cho form tài khoản */
-.account-container {
+/* Auth.css */
+.auth-container {
   width: 300px;
   margin: 0 auto;
   padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.account-form {
+.auth-container h2 {
+  margin-bottom: 20px;
+}
+
+.auth-container form {
   display: flex;
   flex-direction: column;
 }
 
-.account-form input {
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.auth-container label {
+  margin-bottom: 5px;
+  text-align: left;
 }
 
-.account-form button {
+.auth-container input {
+  margin-bottom: 15px;
   padding: 10px;
-  background-color: #007bff;
-  color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.auth-container .error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.auth-container .submit-button {
+  padding: 10px 15px;
   border: none;
+  background-color: #4CAF50;
+  color: rgb(177, 53, 53);
   border-radius: 4px;
   cursor: pointer;
 }
 
-.account-form button:hover {
-  background-color: #0056b3;
+.auth-container .submit-button:hover {
+  background-color: #45a049;
+}
+
+.auth-container .toggle-button {
+  background: none;
+  border: none;
+  color: #0066cc;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.auth-container .toggle-button:hover {
+  text-decoration: underline;
+}
+button {
+  background-color: #13c0de;
 }
