@@ -23,6 +23,7 @@ import productImage11 from './assets/images/image11.jpg';
 import productImage12 from './assets/images/image12.jpg';
 import productImage13 from './assets/images/image13.jpg';
 import productImage14 from './assets/images/image14.jpg';
+import productImage15 from './assets/images/image15.jpg';
 import './components/components.css';
 
 const Home = () => {
@@ -41,6 +42,7 @@ const Home = () => {
         { id: 12, name: 'Áo khoác nữ mùa đông', price: 550000, category: 'Clothing', image: productImage12, description: 'Warm and stylish winter jacket for women.' },
         { id: 13, name: 'Tủ lạnh Panasonic 250L', price: 8000000, category: 'Furniture', image: productImage13, description: 'Energy-efficient refrigerator with modern design.' },
         { id: 14, name: 'Sách Python cho người mới bắt đầu', price: 350000, category: 'Books', image: productImage14, description: 'Beginner-friendly book on Python programming.' },
+        { id: 15, name: 'Laptop Asus Gaming G731-VEV089T', price: 39990000, category: 'Electronics', image: productImage15, description: 'High-performance gaming laptop with 16GB RAM, 1TB SSD, and NVIDIA GeForce RTX 3060.' },
       ]);
 
     const [filteredProducts, setFilteredProducts] = useState(products); 

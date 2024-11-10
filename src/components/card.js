@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './card.css'
+import './card.css';
+
 const Cart = ({ cartItems, removeFromCart }) => {
   // Tính tổng tiền và đảm bảo price và quantity là số hợp lệ
   const totalAmount = cartItems.reduce((total, item) => {
