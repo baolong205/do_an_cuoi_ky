@@ -1,14 +1,10 @@
-// src/Nav/Navbar.js
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [category, setCategory] = useState('All');
-
+const Navbar = ({ onSearch, category, setCategory, searchTerm, setSearchTerm }) => {
   const handleSearch = () => {
-    onSearch(searchTerm, category); // Gửi từ khóa và danh mục đến App.js
+    onSearch(); // Gửi từ khóa và danh mục đến App.js
   };
 
   return (
@@ -21,7 +17,7 @@ const Navbar = ({ onSearch }) => {
         <select 
           className="navbar-search-category" 
           value={category} 
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value)} // Cập nhật category
         >
           <option>All</option>
           <option>Electronics</option>
@@ -34,7 +30,7 @@ const Navbar = ({ onSearch }) => {
           placeholder="Search products..." 
           className="navbar-search-input" 
           value={searchTerm} 
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => setSearchTerm(e.target.value)} 
         />
         <button className="navbar-search-button" onClick={handleSearch}>
           Search

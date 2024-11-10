@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './Account.css'; // Import CSS cũ
+import './Account.css';
 
-const Account = () => {
-  const [isLogin, setIsLogin] = useState(true); // Kiểm tra form đăng nhập hay đăng ký
+function AuthForm() {
+  const [isLogin, setIsLogin] = useState(true);
 
-  const handleToggleForm = () => {
-    setIsLogin(!isLogin); // Chuyển đổi giữa form đăng nhập và đăng ký
+  const toggleForm = () => {
+    setIsLogin(!isLogin);
   };
 
   const loginFormik = useFormik({
@@ -18,52 +18,48 @@ const Account = () => {
     validationSchema: Yup.object({
       username: Yup.string()
         .required('Tên đăng nhập là bắt buộc')
-        .min(5, 'Tên đăng nhập ít nhất 5 ký tự')
-        .max(20, 'Tên đăng nhập không quá dài'),
+        .min(5, 'Tên đăng nhập ít nhất 5 ký tự'),
       password: Yup.string()
         .required('Vui lòng nhập mật khẩu')
         .min(6, 'Mật khẩu phải có ít nhất 6 ký tự')
-        .max(20, 'Mật khẩu không quá dài')
     }),
-    onSubmit: (values) => {
+    onSubmit: values => {
+      // Gọi API đăng nhập
       alert('Đăng nhập thành công');
-      console.log(values);
+      console.log('Thông tin đăng nhập:', values);
     }
   });
 
   const registerFormik = useFormik({
     initialValues: {
       username: '',
-      email: '',
       password: '',
-      confirmPassword: ''
+      email: ''
     },
     validationSchema: Yup.object({
       username: Yup.string()
         .required('Tên đăng nhập là bắt buộc')
-        .min(5, 'Tên đăng nhập ít nhất 5 ký tự')
-        .max(20, 'Tên đăng nhập không quá dài'),
-      email: Yup.string().email('Địa chỉ email không hợp lệ').required('Email là bắt buộc'),
+        .min(5, 'Tên đăng nhập ít nhất 5 ký tự'),
       password: Yup.string()
         .required('Vui lòng nhập mật khẩu')
-        .min(6, 'Mật khẩu phải có ít nhất 6 ký tự')
-        .max(20, 'Mật khẩu không quá dài'),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Mật khẩu xác nhận không khớp')
-        .required('Vui lòng xác nhận mật khẩu')
+        .min(6, 'Mật khẩu phải có ít nhất 6 ký tự'),
+      email: Yup.string()
+        .required('Vui lòng nhập email')
+        .email('Email không hợp lệ')
     }),
-    onSubmit: (values) => {
+    onSubmit: values => {
+      // Gọi API đăng ký
       alert('Đăng ký thành công');
-      console.log(values);
+      console.log('Thông tin đăng ký:', values);
     }
   });
 
   return (
-    <div className="login"> {/* Sử dụng class login cho container */}
+    <div className="auth-container">
       <h2>{isLogin ? 'Đăng Nhập' : 'Đăng Ký'}</h2>
 
       {isLogin ? (
-        <form onSubmit={loginFormik.handleSubmit} className="account-form">
+        <form onSubmit={loginFormik.handleSubmit}>
           <label htmlFor="username">Tên đăng nhập</label>
           <input
             type="text"
@@ -73,9 +69,9 @@ const Account = () => {
             onBlur={loginFormik.handleBlur}
             value={loginFormik.values.username}
           />
-          {loginFormik.touched.username && loginFormik.errors.username && (
+          {loginFormik.touched.username && loginFormik.errors.username ? (
             <div className="error-message">{loginFormik.errors.username}</div>
-          )}
+          ) : null}
 
           <label htmlFor="password">Mật khẩu</label>
           <input
@@ -86,14 +82,14 @@ const Account = () => {
             onBlur={loginFormik.handleBlur}
             value={loginFormik.values.password}
           />
-          {loginFormik.touched.password && loginFormik.errors.password && (
+          {loginFormik.touched.password && loginFormik.errors.password ? (
             <div className="error-message">{loginFormik.errors.password}</div>
-          )}
+          ) : null}
 
-          <button type="submit" className="submit-button">Đăng Nhập</button>
+          <button type="submit">Đăng Nhập</button>
         </form>
       ) : (
-        <form onSubmit={registerFormik.handleSubmit} className="account-form">
+        <form onSubmit={registerFormik.handleSubmit}>
           <label htmlFor="username">Tên đăng nhập</label>
           <input
             type="text"
@@ -103,22 +99,9 @@ const Account = () => {
             onBlur={registerFormik.handleBlur}
             value={registerFormik.values.username}
           />
-          {registerFormik.touched.username && registerFormik.errors.username && (
+          {registerFormik.touched.username && registerFormik.errors.username ? (
             <div className="error-message">{registerFormik.errors.username}</div>
-          )}
-
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={registerFormik.handleChange}
-            onBlur={registerFormik.handleBlur}
-            value={registerFormik.values.email}
-          />
-          {registerFormik.touched.email && registerFormik.errors.email && (
-            <div className="error-message">{registerFormik.errors.email}</div>
-          )}
+          ) : null}
 
           <label htmlFor="password">Mật khẩu</label>
           <input
@@ -129,32 +112,32 @@ const Account = () => {
             onBlur={registerFormik.handleBlur}
             value={registerFormik.values.password}
           />
-          {registerFormik.touched.password && registerFormik.errors.password && (
+          {registerFormik.touched.password && registerFormik.errors.password ? (
             <div className="error-message">{registerFormik.errors.password}</div>
-          )}
+          ) : null}
 
-          <label htmlFor="confirmPassword">Xác nhận mật khẩu</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
+            type="email"
+            id="email"
+            name="email"
             onChange={registerFormik.handleChange}
             onBlur={registerFormik.handleBlur}
-            value={registerFormik.values.confirmPassword}
+            value={registerFormik.values.email}
           />
-          {registerFormik.touched.confirmPassword && registerFormik.errors.confirmPassword && (
-            <div className="error-message">{registerFormik.errors.confirmPassword}</div>
-          )}
+          {registerFormik.touched.email && registerFormik.errors.email ? (
+            <div className="error-message">{registerFormik.errors.email}</div>
+          ) : null}
 
-          <button type="submit" className="submit-button">Đăng Ký</button>
+          <button type="submit">Đăng Ký</button>
         </form>
       )}
 
-      <button onClick={handleToggleForm} className="switch-form">
+      <button onClick={toggleForm} className="toggle-button">
         {isLogin ? 'Chưa có tài khoản? Đăng ký' : 'Đã có tài khoản? Đăng nhập'}
       </button>
     </div>
   );
-};
+}
 
-export default Account;
+export default AuthForm;
