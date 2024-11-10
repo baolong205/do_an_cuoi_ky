@@ -1,143 +1,196 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './Account.css';
+import { useUserContext } from '../UserContext';
+import { toast } from 'react-toastify';
+import '../Auth/Account.css'
 
-function AuthForm() {
-  const [isLogin, setIsLogin] = useState(true);
+const Account = () => {
+    const [isLogin, setIsLogin] = useState(true);
+    const { login, register, users } = useUserContext();
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-  };
+    const loginFormik = useFormik({
+        initialValues: {
+            username: '',
+            password: ''
+        },
+        validationSchema: Yup.object({
+            username: Yup.string()
+                .required('Username is required')
+                .min(5, 'Username must be at least 5 characters long')
+                .max(20, 'Username must not exceed 20 characters'),
+            password: Yup.string()
+                .required('Please enter a password')
+                .min(6, 'Password must be at least 6 characters')
+                .max(20, 'Password must not exceed 20 characters')
+        }),
+        onSubmit: (values) => {
+            login(values.username, values.password);
+            console.log(values);
+        }
+    });
 
-  const loginFormik = useFormik({
-    initialValues: {
-      username: '',
-      password: ''
-    },
-    validationSchema: Yup.object({
-      username: Yup.string()
-        .required('Tên đăng nhập là bắt buộc')
-        .min(5, 'Tên đăng nhập ít nhất 5 ký tự'),
-      password: Yup.string()
-        .required('Vui lòng nhập mật khẩu')
-        .min(6, 'Mật khẩu phải có ít nhất 6 ký tự')
-    }),
-    onSubmit: values => {
-      // Gọi API đăng nhập
-      alert('Đăng nhập thành công');
-      console.log('Thông tin đăng nhập:', values);
-    }
-  });
+    const registerFormik = useFormik({
+        initialValues: {
+            username: '',
+            password: '',
+            email: ''
+        },
+        validationSchema: Yup.object({
+            username: Yup.string()
+                .required('Username is required')
+                .min(5, 'Username must be at least 5 characters long')
+                .max(20, 'Username must not exceed 20 characters'),
+            email: Yup.string().email('Invalid email address').required('Email is required'),
+            password: Yup.string()
+                .required('Please enter a password')
+                .min(6, 'Password must be at least 6 characters')
+                .max(20, 'Password must not exceed 20 characters'),
+            confirmPassword: Yup.string()
+                .oneOf([Yup.ref('password'), null], 'Password confirmation does not match')
+                .required('Please confirm your password')
+        }),
+        onSubmit: (values) => {
+            const existingUser = users.find((user) => user.username === values.username);
+            if (existingUser) {
+                toast.dismiss();
+                toast.error('Username already exists!');
+                return;
+            }
 
-  const registerFormik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-      email: ''
-    },
-    validationSchema: Yup.object({
-      username: Yup.string()
-        .required('Tên đăng nhập là bắt buộc')
-        .min(5, 'Tên đăng nhập ít nhất 5 ký tự'),
-      password: Yup.string()
-        .required('Vui lòng nhập mật khẩu')
-        .min(6, 'Mật khẩu phải có ít nhất 6 ký tự'),
-      email: Yup.string()
-        .required('Vui lòng nhập email')
-        .email('Email không hợp lệ')
-    }),
-    onSubmit: values => {
-      // Gọi API đăng ký
-      alert('Đăng ký thành công');
-      console.log('Thông tin đăng ký:', values);
-    }
-  });
+            if (values.password !== values.confirmPassword) {
+                toast.dismiss();
+                toast.error('Password confirmation does not match!');
+                return;
+            }
 
-  return (
-    <div className="auth-container">
-      <h2>{isLogin ? 'Đăng Nhập' : 'Đăng Ký'}</h2>
+            register(values);
+            console.log(values);
+        }
+    });
 
-      {isLogin ? (
-        <form onSubmit={loginFormik.handleSubmit}>
-          <label htmlFor="username">Tên đăng nhập</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={loginFormik.handleChange}
-            onBlur={loginFormik.handleBlur}
-            value={loginFormik.values.username}
-          />
-          {loginFormik.touched.username && loginFormik.errors.username ? (
-            <div className="error-message">{loginFormik.errors.username}</div>
-          ) : null}
+    return (
+        <div className="container">
+            <h2 className="heading">{isLogin ? 'Login' : 'Register'}</h2>
 
-          <label htmlFor="password">Mật khẩu</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={loginFormik.handleChange}
-            onBlur={loginFormik.handleBlur}
-            value={loginFormik.values.password}
-          />
-          {loginFormik.touched.password && loginFormik.errors.password ? (
-            <div className="error-message">{loginFormik.errors.password}</div>
-          ) : null}
+            {isLogin ? (
+                <form onSubmit={loginFormik.handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username" className="label">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={loginFormik.handleChange}
+                            onBlur={loginFormik.handleBlur}
+                            value={loginFormik.values.username}
+                            className="input-field"
+                        />
+                        {loginFormik.touched.username && loginFormik.errors.username && (
+                            <div className="error-message">{loginFormik.errors.username}</div>
+                        )}
+                    </div>
 
-          <button type="submit">Đăng Nhập</button>
-        </form>
-      ) : (
-        <form onSubmit={registerFormik.handleSubmit}>
-          <label htmlFor="username">Tên đăng nhập</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={registerFormik.handleChange}
-            onBlur={registerFormik.handleBlur}
-            value={registerFormik.values.username}
-          />
-          {registerFormik.touched.username && registerFormik.errors.username ? (
-            <div className="error-message">{registerFormik.errors.username}</div>
-          ) : null}
+                    <div className="form-group">
+                        <label htmlFor="password" className="label">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={loginFormik.handleChange}
+                            onBlur={loginFormik.handleBlur}
+                            value={loginFormik.values.password}
+                            className="input-field"
+                        />
+                        {loginFormik.touched.password && loginFormik.errors.password && (
+                            <div className="error-message">{loginFormik.errors.password}</div>
+                        )}
+                    </div>
 
-          <label htmlFor="password">Mật khẩu</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={registerFormik.handleChange}
-            onBlur={registerFormik.handleBlur}
-            value={registerFormik.values.password}
-          />
-          {registerFormik.touched.password && registerFormik.errors.password ? (
-            <div className="error-message">{registerFormik.errors.password}</div>
-          ) : null}
+                    <button type="submit" className="button">Login</button>
+                </form>
+            ) : (
+                <form onSubmit={registerFormik.handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username" className="label">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={registerFormik.handleChange}
+                            onBlur={registerFormik.handleBlur}
+                            value={registerFormik.values.username}
+                            className="input-field"
+                        />
+                        {registerFormik.touched.username && registerFormik.errors.username && (
+                            <div className="error-message">{registerFormik.errors.username}</div>
+                        )}
+                    </div>
 
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={registerFormik.handleChange}
-            onBlur={registerFormik.handleBlur}
-            value={registerFormik.values.email}
-          />
-          {registerFormik.touched.email && registerFormik.errors.email ? (
-            <div className="error-message">{registerFormik.errors.email}</div>
-          ) : null}
+                    <div className="form-group">
+                        <label htmlFor="email" className="label">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            onChange={registerFormik.handleChange}
+                            onBlur={registerFormik.handleBlur}
+                            value={registerFormik.values.email}
+                            className="input-field"
+                        />
+                        {registerFormik.touched.email && registerFormik.errors.email && (
+                            <div className="error-message">{registerFormik.errors.email}</div>
+                        )}
+                    </div>
 
-          <button type="submit">Đăng Ký</button>
-        </form>
-      )}
+                    <div className="form-group">
+                        <label htmlFor="password" className="label">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            onChange={registerFormik.handleChange}
+                            onBlur={registerFormik.handleBlur}
+                            value={registerFormik.values.password}
+                            className="input-field"
+                        />
+                        {registerFormik.touched.password && registerFormik.errors.password && (
+                            <div className="error-message">{registerFormik.errors.password}</div>
+                        )}
+                    </div>
 
-      <button onClick={toggleForm} className="toggle-button">
-        {isLogin ? 'Chưa có tài khoản? Đăng ký' : 'Đã có tài khoản? Đăng nhập'}
-      </button>
-    </div>
-  );
-}
+                    <div className="form-group">
+                        <label htmlFor="confirmPassword" className="label">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            onChange={registerFormik.handleChange}
+                            onBlur={registerFormik.handleBlur}
+                            value={registerFormik.values.confirmPassword}
+                            className="input-field"
+                        />
+                        {registerFormik.touched.confirmPassword && registerFormik.errors.confirmPassword && (
+                            <div className="error-message">{registerFormik.errors.confirmPassword}</div>
+                        )}
+                    </div>
 
-export default AuthForm;
+                    <button type="submit" className="button">Register</button>
+                </form>
+            )}
+
+            <a
+                href="#"
+                onClick={(e) => {
+                    e.preventDefault();
+                    setIsLogin(!isLogin);
+                }}
+                className="switch-link"
+            >
+                {isLogin ? "Don’t have an account? Register" : "Already have an account? Login"}
+            </a>
+        </div>
+    );
+};
+
+export default Account;

@@ -1,17 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { UserProvider } from './UserContext'// Import UserProvider từ UserContext
+import { ToastContainer } from 'react-toastify';  // Import ToastContainer
+import 'react-toastify/dist/ReactToastify.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
+
+ReactDOM.render(
+  <UserProvider>
+    <ToastContainer
+      autoClose={3000}  // Đặt thời gian tự động đóng toast là 3 giây
+      newestOnTop={true}  // Đảm bảo toast mới sẽ luôn hiển thị trên cùng
+    />
     <App />
-  </React.StrictMode>
+  </UserProvider>,
+  document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
