@@ -47,3 +47,15 @@
 .checkout {
   margin-top: 20px;
 }
+/* Đảm bảo rằng toàn bộ trang sử dụng Flexbox */
+.app {
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex-grow: 1; 
+}
+
+

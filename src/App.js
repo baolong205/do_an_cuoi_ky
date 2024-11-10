@@ -12,6 +12,7 @@ import './Nav/Navbar.css';
 import './components/components.css';
 import productImage1 from './assets/images/image1.jpg'; 
 import productImage2 from './assets/images/image2.jpg';
+import Footer from './Nav/Footer';
 
 const App = () => {
   const [products] = useState([
@@ -78,6 +79,7 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };
