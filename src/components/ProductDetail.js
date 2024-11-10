@@ -24,12 +24,6 @@ const ProductDetail = ({ products, addToCart }) => {
 
       {/* Thông tin chi tiết sản phẩm */}
       <div className="product-info">
-        <ul>
-          <li><strong>Display:</strong> {product.display}</li>
-          <li><strong>Chipset:</strong> {product.chipset}</li>
-          <li><strong>Camera:</strong> {product.camera}</li>
-          <li><strong>Storage:</strong> {product.storage}</li>
-        </ul>
       </div>
       <p><strong>Description:</strong> {product.description}</p>
 
