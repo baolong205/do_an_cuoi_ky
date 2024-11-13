@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './Nav/Navbar';
 import Banner from './components/banner';
 import ProductList from './components/ProductList';
@@ -12,6 +12,7 @@ import Footer from './Nav/Footer';
 import products, { filterProducts, addToCart, removeFromCart } from './Data/ProductData';
 
 const Home = () => {
+    const location = useLocation(); 
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [category, setCategory] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
