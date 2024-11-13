@@ -1,0 +1,42 @@
+.banner-slider {
+    width: 1380px;
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.banner-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.slick-prev, .slick-next {
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền bán trong suốt */
+  padding: 10px 15px; /* Khoảng cách bên trong */
+  font-size: 18px; /* Kích thước chữ */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px; 
+}
+
+.slick-prev:hover, .slick-next:hover {
+  background-color: rgba(0, 0, 0, 0.7); /* Màu nền khi hover */
+}
+
+.slick-prev:focus, .slick-next:focus {
+  outline: none; /* Xóa viền focus */
+}
+
+
+/* Slick Carousel CSS */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";

@@ -211,3 +211,62 @@
   .product-detail .back-to-home-btn:hover{
     background-color: #dc3545;
   }
+  .promo-banner {
+    background: linear-gradient(135deg, #ff5a7e, #ff99a5);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+  }
+  
+  .promo-info {
+    font-size: 14px;
+  }
+  
+  .promo-dates, .promo-shipping {
+    margin-bottom: 5px;
+  }
+  
+  .promo-details {
+    text-align: center;
+  }
+  
+  .promo-details h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .promo-details p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  .promo-details span {
+    font-size: 24px;
+    color: yellow;
+  }
+  
+  .promo-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  .promo-images {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .promo-images img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  

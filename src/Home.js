@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
+import './Style/banner.css'
 import Navbar from './Nav/Navbar';
 import ProductList from './components/ProductList';
 import Cart from './components/card';
@@ -8,6 +9,7 @@ import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
 import ProductDetail from './components/ProductDetail';
+import Slider from 'react-slick'
 import Footer from './Nav/Footer';
 import productImage1 from './assets/images/image1.jpg';
 import productImage2 from './assets/images/image2.jpg';
@@ -24,6 +26,9 @@ import productImage12 from './assets/images/image12.jpg';
 import productImage13 from './assets/images/image13.jpg';
 import productImage14 from './assets/images/image14.jpg';
 import productImage15 from './assets/images/image15.jpg';
+import bannerImage1 from './assets/images/banner1.jpg';
+import bannerImage2 from './assets/images/banner2.jpg';
+import bannerImage3 from './assets/images/banner3.jpg';
 import './components/components.css';
 
 const Home = () => {
@@ -45,69 +50,85 @@ const Home = () => {
         { id: 15, name: 'Laptop Asus Gaming G731-VEV089T', price: 39990000, category: 'Electronics', image: productImage15, description: 'High-performance gaming laptop with 16GB RAM, 1TB SSD, and NVIDIA GeForce RTX 3060.' },
       ]);
 
-    const [filteredProducts, setFilteredProducts] = useState(products); 
-    const [category, setCategory] = useState('All'); // State cho category
-    const [searchTerm, setSearchTerm] = useState(''); // State cho searchTerm
-    const [cart, setCart] = useState([]);
-
-    const addToCart = (product) => {
-        const existingProduct = cart.find(item => item.id === product.id);
-        
-        if (existingProduct) {
-            setCart(cart.map(item => 
-                item.id === product.id
-                    ? { ...item, quantity: item.quantity + 1 } 
-                    : item
-            ));
-        } else {
-            setCart([...cart, { ...product, quantity: 1 }]);
-        }
-    };
-
-    const removeFromCart = (productId) => {
-        setCart(cart.filter(item => item.id !== productId));
-    };
-
-    const handleSearch = () => {
-        let filtered = [...products];
-
-        // Lọc theo danh mục
-        if (category !== 'All') {
-            filtered = filtered.filter(product => product.category === category);
-        }
-
-        // Lọc theo từ khóa tìm kiếm
-        if (searchTerm) {
-            filtered = filtered.filter(product =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        }
-
-        setFilteredProducts(filtered);
-    };
-
-    return (
-        <>
-            <Navbar 
-                onSearch={handleSearch} 
-                category={category} 
-                setCategory={setCategory}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-            />
-            <div className="app">
-                <Routes>
-                    <Route path="/" element={<ProductList products={filteredProducts} addToCart={addToCart} />} />
-                    <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
-                    <Route path="/checkout" element={<Checkout cartItems={cart} />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/account" element={<Account />} />
-                    <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
-                </Routes>
+      const bannerImages = [bannerImage1, bannerImage2, bannerImage3];
+      const settings = {
+          dots: true,
+          infinite: true,
+          speed: 500,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 3000,
+      };
+      const [filteredProducts, setFilteredProducts] = useState(products);
+      const [category, setCategory] = useState('All');
+      const [searchTerm, setSearchTerm] = useState('');
+      const [cart, setCart] = useState([]);
+  
+      const addToCart = (product) => {
+          const existingProduct = cart.find(item => item.id === product.id);
+          if (existingProduct) {
+              setCart(cart.map(item => 
+                  item.id === product.id
+                      ? { ...item, quantity: item.quantity + 1 } 
+                      : item
+              ));
+          } else {
+              setCart([...cart, { ...product, quantity: 1 }]);
+          }
+      };
+  
+      const removeFromCart = (productId) => {
+          setCart(cart.filter(item => item.id !== productId));
+      };
+  
+      const handleSearch = () => {
+          let filtered = [...products];
+          if (category !== 'All') {
+              filtered = filtered.filter(product => product.category === category);
+          }
+          if (searchTerm) {
+              filtered = filtered.filter(product =>
+                  product.name.toLowerCase().includes(searchTerm.toLowerCase())
+              );
+          }
+          setFilteredProducts(filtered);
+      };
+  
+      return (
+          <>
+              <Navbar 
+                  onSearch={handleSearch} 
+                  category={category} 
+                  setCategory={setCategory}
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+              />
+              
+              <div className="banner-slider">
+                <Slider {...settings}>
+                    {bannerImages.map((image, index) => (
+                        <div key={index}>
+                            <img src={image} alt={`Banner ${index + 1}`} className="banner-image" />
+                        </div>
+                    ))}
+                </Slider>
             </div>
-            <Footer />
-        </>
-    );
-};
 
-export default Home;
+  
+              <div className="app">
+                  <Routes>
+                      <Route path="/" element={<ProductList products={filteredProducts} addToCart={addToCart} />} />
+                      <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
+                      <Route path="/checkout" element={<Checkout cartItems={cart} />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/account" element={<Account />} />
+                      <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
+                  </Routes>
+              </div>
+              <Footer />
+          </>
+      );
+  };
+  
+  export default Home;
