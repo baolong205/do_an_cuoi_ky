@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import productImage from '../assets/images/image1.jpg';
-
+import './components.css'
 // Hàm định dạng giá tiền
 const formatPrice = (price) => {
   return new Intl.NumberFormat('vi-VN').format(price) + ' VND'; // Thêm "VND" vào sau giá
