@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './Nav/Navbar';
+import Banner from './components/banner';
 import ProductList from './components/ProductList';
 import Cart from './components/card';
 import Checkout from './components/Checkout';
@@ -27,6 +28,7 @@ import productImage15 from './assets/images/image15.jpg';
 import './components/components.css';
 
 const Home = () => {
+    const location = useLocation();
     const [products] = useState([
         { id: 1, name: 'iPhone 16 Pro Max 256GB', price: 34590000, category: 'Electronics', image: productImage1, description: 'Premium smartphone with A16 Bionic chipset.' },
         { id: 2, name: 'Lập trình và cuộc sống', price: 200000, category: 'Books', image: productImage2, description: 'Book on programming and life.' },
@@ -90,6 +92,7 @@ const Home = () => {
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
             />
+            {location.pathname === "/" && <Banner />}
             <div className="app">
                 <Routes>
                     <Route path="/" element={<ProductList products={filteredProducts} addToCart={addToCart} />} />
