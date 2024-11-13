@@ -1,39 +1,84 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './components.css'; // Import CSS mới
+import styles from './ProductDetail.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
 
 const ProductDetail = ({ products, addToCart }) => {
-  const { id } = useParams(); // Lấy id từ URL
-  const navigate = useNavigate(); // Khởi tạo navigate
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const product = products.find(p => p.id === parseInt(id));
+  const product = products.find((p) => p.id === parseInt(id));
 
   if (!product) {
     return <p>Product not found!</p>;
   }
 
+  const discountedPrice = product.discount
+    ? product.price - product.price * product.discount
+    : product.price;
+
+  // Hàm tạo sao với màu sắc và xử lý sao nửa
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating); // Số sao đầy đủ
+    const halfStar = rating % 1 !== 0; // Kiểm tra có sao nửa không
+    const emptyStars = 5 - Math.ceil(rating); // Số sao rỗng
+
+    let stars = [];
+
+    // Thêm sao đầy
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<FontAwesomeIcon key={`full-${i}`} icon={faStar} style={{ color: 'gold' }} />);
+    }
+
+    // Thêm sao nửa nếu có
+    if (halfStar) {
+      stars.push(<FontAwesomeIcon key="half" icon={faStarHalfAlt} style={{ color: 'gold' }} />);
+    }
+
+    // Thêm sao rỗng
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<FontAwesomeIcon key={`empty-${i}`} icon={faStarEmpty} style={{ color: '#d3d3d3' }} />);
+    }
+
+    return stars;
+  };
+
   return (
-    <div className="product-detail">
-      <img 
-        src={product.image} 
-        alt={product.name} 
-        loading="lazy"
-      />
-      <h2>{product.name}</h2>
-      <p>{product.category}</p>
-      <p>{product.price.toLocaleString('vi-VN')} VND</p>
-      
-      <div className="product-info">
-        <p><strong>Description:</strong> {product.description}</p>
+    <div className={styles.productDetail}>
+      <div className={styles.productImage}>
+        <img src={product.image} alt={product.name} loading="lazy" />
       </div>
-
-      <button onClick={() => addToCart(product)} className="add-to-cart-btn">
-        Add to Cart
-      </button>
-
-      <button onClick={() => navigate('/')} className="back-to-home-btn">
-        Back
-      </button>
+      <div className={styles.productInfo}>
+        <h2>{product.name}</h2>
+        <p>{product.category}</p>
+        <p>
+          {product.discount > 0 && (
+            <span style={{ textDecoration: 'line-through', color: '#888' }}>
+              {new Intl.NumberFormat('vi-VN').format(product.price)} VND
+            </span>
+          )}
+          {' '}
+          {new Intl.NumberFormat('vi-VN').format(discountedPrice)} VND
+        </p>
+        <p>
+          <strong>Rating: </strong>
+          <span className={styles.starRating}>
+            {renderStars(product.rating)}
+          </span>
+          ({product.rating} out of 5)
+        </p>
+        <p>{product.stock} in stock</p>
+        <div className="product-description">
+          <p><strong>Description:</strong> {product.description}</p>
+        </div>
+        <button onClick={() => addToCart(product)} className={styles.addToCartBtn}>
+          Add to Cart
+        </button>
+        <button onClick={() => navigate('/')} className={styles.backToHomeBtn}>
+          Back
+        </button>
+      </div>
     </div>
   );
 };
