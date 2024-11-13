@@ -6,6 +6,13 @@
   background-color: #131921;
   padding: 10px 20px;
 }
+.navbarz {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #05d74f;
+  padding: 5px 15px;
+}
 
 /* Logo styling */
 .navbar-logo a {
@@ -41,14 +48,14 @@
 }
 
 .navbar-search-button {
-  padding: 8px;
+  padding: 8.6px;
   border: none;
   background-color: #ff9900;
   color: white;
   font-size: 16px;
-  border-radius: 4px;
   cursor: pointer;
 }
+
 
 .navbar-search-button:hover {
   background-color: #ff7f00;
@@ -74,3 +81,22 @@
 .navbar-link i {
   margin-right: 8px;
 }
+
+.navbar-button {  
+  background-color: transparent;  
+  color: white;  
+  border: none;  
+  margin: 0 10px;  
+  padding: 7px 10px;  
+  border-radius: 5px;  
+  cursor: pointer;  
+  font-size: 16px;  
+  transition: background-color 0.5s;  
+}
+.button-container {  
+  display: flex;  
+  justify-content: space-between; /* Cách đều các items */
+}  
+.navbar-button:hover {  
+  background-color: rgba(75, 67, 67, 0.2); /* Hiệu ứng hover cho nút */  
+}  

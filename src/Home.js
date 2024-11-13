@@ -68,24 +68,19 @@ const Home = () => {
         setCart(cart.filter(item => item.id !== productId));
     };
 
-    const handleSearch = () => {
-        let filtered = [...products];
-
-        // Lọc theo danh mục
-        if (category !== 'All') {
-            filtered = filtered.filter(product => product.category === category);
-        }
-
-        // Lọc theo từ khóa tìm kiếm
-        if (searchTerm) {
-            filtered = filtered.filter(product =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-        }
-
-        setFilteredProducts(filtered);
+    const handleSearch = (searchTerm, category) => {  
+        console.log("Searching for:", searchTerm, "in category:", category);  
+        let filtered = [...products]; // Giả sử products là mảng sản phẩm  
+        if (category !== 'All') {  
+            filtered = filtered.filter(product => product.category === category);  
+        }  
+        if (searchTerm) {  
+            filtered = filtered.filter(product =>  
+                product.name.toLowerCase().includes(searchTerm.toLowerCase())  
+            );  
+        }  
+        setFilteredProducts(filtered); // Cập nhật danh sách sản phẩm đã lọc  
     };
-
     return (
         <>
             <Navbar 
