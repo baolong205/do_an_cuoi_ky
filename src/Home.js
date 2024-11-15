@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Nav/Navbar';
 import Banner from './components/banner';
 import ProductList from './components/ProductList';
@@ -7,12 +7,17 @@ import Cart from './components/card';
 import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
+import Admin from './Auth/AdminInfo';
+import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
 import products, { filterProducts, addToCart, removeFromCart, getBestSellingProducts } from './Data/ProductData';
-import './Home.css'
+import './Home.css';
+import { useUserContext } from './UserContext';
+
 const Home = () => {
-    const location = useLocation(); 
+    const location = useLocation();
+    const navigate = useNavigate();
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [category, setCategory] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
@@ -20,10 +25,18 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 10;
     const [bestSellingProducts, setBestSellingProducts] = useState([]);
+    const { isLogin, currentUser } = useUserContext(); // Lấy trạng thái đăng nhập và user từ UserContext
 
     useEffect(() => {
         setBestSellingProducts(getBestSellingProducts(products)); // Lấy 4 sản phẩm bán chạy
     }, []);
+
+    useEffect(() => {
+        // Điều hướng đến trang login nếu chưa đăng nhập
+        if (!isLogin && (location.pathname === "/cart" || location.pathname === "/checkout")) {
+            navigate('/account');
+        }
+    }, [isLogin, location.pathname, navigate]);
 
     const handleSearch = (searchTerm, category) => {
         const result = filterProducts(products, searchTerm, category);
@@ -66,18 +79,17 @@ const Home = () => {
             <div className="app">
                 {location.pathname === "/" && (
                     <div className="best-selling">
-                    <h2>Best selling products</h2>
-                    <ProductList
-                        products={bestSellingProducts}
-                        // addToCart={handleAddToCart}
-                    />
-                </div>
+                        <h2>Best selling products</h2>
+                        <ProductList
+                            products={bestSellingProducts}
+                        />
+                    </div>
                 )}
                 <Routes>
                     <Route
                         path="/"
                         element={
-                            <ProductList    
+                            <ProductList
                                 products={currentProducts}
                                 addToCart={handleAddToCart}
                                 currentPage={currentPage}
@@ -87,10 +99,10 @@ const Home = () => {
                             />
                         }
                     />
-                    <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={handleRemoveFromCart} />} />
-                    <Route path="/checkout" element={<Checkout cartItems={cart} />} />
+                    <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart} /> : <Account />} />
+                    <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} /> : <Account />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/account" element={<Account />} />
+                    <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
                 </Routes>
             </div>
