@@ -1,47 +1,83 @@
+.cart {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
 .cart-item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .cart-item-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-right: 20px;
-  }
-  
-  .cart-item-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .remove-item-btn {
-    margin-top: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    width: 80px;
-  }
-  
-  .remove-item-btn:hover {
-    background-color: darkred;
-  }
-  
-  .checkout-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .checkout-btn:hover {
-    background-color: #218838;
-  }
-  
+  display: flex;
+  flex-direction: row; /* Hiển thị theo hàng ngang */
+  align-items: center; /* Căn giữa các phần tử */
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cart-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-image {
+  width: 50px; /* Thay đổi kích thước chiều rộng */
+  height: 50px; /* Thay đổi kích thước chiều cao */
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  color: #555;
+}
+
+.remove-item-btn {
+  margin-top: 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-item-btn:hover {
+  background-color: darkred;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
+}
