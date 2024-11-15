@@ -147,7 +147,7 @@ const products = [
         name: 'Sách Python cho người mới bắt đầu',
         price: 350000,
         category: 'Books',
-        image: require('../assets/images/image14.jpg'),
+        image: require('../assets/anh do-an/sach-lap-trinh-cho-nguoi-moi-bat-dau.jpg'),
         description: 'Beginner-friendly book on Python programming.',
         rating: 4.8,
         stock: 100,
@@ -157,13 +157,57 @@ const products = [
         id: 15,
         name: 'Laptop Asus Gaming G731-VEV089T',
         price: 39990000,
-        category: 'Electronics',
-        image: require('../assets/images/image15.jpg'),
+        category: 'Laptop>',
+        image: require('../assets/anh do-an/Laptop-Asus-Gaming-G731-VEV089T.jpg'),
         description: 'High-performance gaming laptop with advanced specs.',
         rating: 4.9,
         stock: 25,
         discount: 0.2
     },
+    {
+        id: 16,
+        name: 'Tai nghe Bluetooth Chụp Tai Zadez GP-803B',
+        price: 175000,
+        category: 'Headphone',
+        image: require('../assets/anh do-an/tai-nghe-bluetooth-chup-tai-zadez-gp-803-thumb-600x600.jpg'),
+        description: 'Zadez GP-803B Bluetooth over-ear headphones with superior sound quality, comfortable fit, and long battery life, ideal for music lovers and gamers.',
+        rating: 4.9,
+        stock: 25,
+        discount: 0.2
+    },
+    {
+        id: 17,
+        name: 'Laptop Dell XPS 13',
+        price: 25000000,
+        category: 'Laptop',
+        image: require('../assets/anh do-an/dell-xps-13.jpg'),
+        description: 'Compact and powerful laptop with Intel i7 processor and 16GB RAM, ideal for professionals.',
+        rating: 4.8,
+        stock: 30,
+        discount: 0.1
+    },
+    {
+        id: 18,
+        name: 'MacBook Pro 16-inch',
+        price: 45000000,
+        category: 'Laptop',
+        image: require('../assets/anh do-an/macbook-pro-16.jpg'),
+        description: 'High-end MacBook with M1 Pro chip, perfect for heavy-duty tasks and creative work.',
+        rating: 4.9,
+        stock: 15,
+        discount: 0.15
+    },
+    {
+        id: 19,
+        name: 'HP Spectre x360',
+        price: 22000000,
+        category: 'Laptop',
+        image: require('../assets/anh do-an/hp-spectre-x360.jpg'),
+        description: 'Versatile 2-in-1 laptop with a stunning 4K display, great for work and entertainment.',
+        rating: 4.7,
+        stock: 20,
+        discount: 0.1
+    }
 ];
 
 export const filterProducts = (products, searchTerm, category) => {
@@ -194,6 +238,12 @@ export const addToCart = (cart, product) => {
 
 export const removeFromCart = (cart, productId) => {
     return cart.filter(item => item.id !== productId);
+};
+export const getBestSellingProducts = (products) => {
+    return products
+        .filter(product => product.rating >= 4.5 && product.stock > 10)
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 4);
 };
 
 export default products;

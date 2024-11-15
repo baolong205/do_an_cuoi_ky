@@ -2,13 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './card.css';
 
-const Cart = ({ cartItems, removeFromCart }) => {
+const Cart = ({ cartItems, removeFromCart, discount = 0 }) => {
   // Tính tổng tiền và đảm bảo price và quantity là số hợp lệ
   const totalAmount = cartItems.reduce((total, item) => {
     const price = parseFloat(item.price) || 0; // Đảm bảo giá trị price là số hợp lệ
     const quantity = parseInt(item.quantity, 10) || 1; // Đảm bảo quantity là số nguyên hợp lệ, mặc định là 1
     return total + (price * quantity);
   }, 0);
+
+  // Tính tổng tiền sau khi áp dụng mức giảm giá
+  const discountedAmount = totalAmount * (1 - discount / 100);
 
   return (
     <div className="cart">
@@ -34,8 +37,14 @@ const Cart = ({ cartItems, removeFromCart }) => {
           </div>
         ))
       )}
-      {/* Hiển thị tổng tiền */}
+      {/* Hiển thị tổng tiền và tổng tiền sau giảm giá */}
       <h3>Total: {totalAmount.toLocaleString('vi-VN')} VND</h3>
+      {discount > 0 && (
+        <h4>
+          Discounted Total: {discountedAmount.toLocaleString('vi-VN')} VND
+          <span> ({discount}% off)</span>
+        </h4>
+      )}
 
       <Link to="/checkout">
         <button className="checkout-btn">Proceed to Checkout</button>
