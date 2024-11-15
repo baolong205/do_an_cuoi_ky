@@ -1,0 +1,83 @@
+/* checkout.css */
+
+/* Styling the main container */
+.checkout {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Heading styles */
+  .checkout h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkout h3 {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+  }
+  
+  /* Empty cart message */
+  .checkout p {
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  
+  /* Styling each item in the cart */
+  .checkout div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .checkout div:last-child {
+    border-bottom: none;
+  }
+  
+  .checkout div p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Total amount */
+  .checkout h3:last-of-type {
+    text-align: right;
+    font-size: 1.4rem;
+    color: #222;
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  /* Proceed button */
+  .proceed-payment-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .proceed-payment-btn:hover {
+    background-color: #0056b3;
+  }
