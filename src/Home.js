@@ -64,18 +64,20 @@ const Home = () => {
             />
             {location.pathname === "/" && <Banner />}
             <div className="app">
-                <div className="best-selling">
+                {location.pathname === "/" && (
+                    <div className="best-selling">
                     <h2>Best selling products</h2>
                     <ProductList
                         products={bestSellingProducts}
                         // addToCart={handleAddToCart}
                     />
                 </div>
+                )}
                 <Routes>
                     <Route
                         path="/"
                         element={
-                            <ProductList
+                            <ProductList    
                                 products={currentProducts}
                                 addToCart={handleAddToCart}
                                 currentPage={currentPage}
