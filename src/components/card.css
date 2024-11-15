@@ -70,6 +70,8 @@
 
 /* Remove item button */
 .remove-item-btn {
+  margin-left: 270px;
+  width: 80px;
   padding: 5px 10px;
   background-color: #ff6b6b;
   color: #fff;
