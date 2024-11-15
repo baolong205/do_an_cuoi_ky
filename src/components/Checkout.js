@@ -1,5 +1,6 @@
 // src/components/Checkout.js
 import React from 'react';
+import './checkout.css';
 
 const Checkout = ({ cartItems }) => {
   // Tính tổng tiền và định dạng số tiền
