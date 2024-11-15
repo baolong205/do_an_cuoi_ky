@@ -65,7 +65,7 @@ const Home = () => {
             {location.pathname === "/" && <Banner />}
             <div className="app">
                 <div className="best-selling">
-                    <h2>Sản phẩm bán chạy</h2>
+                    <h2>Best selling products</h2>
                     <ProductList
                         products={bestSellingProducts}
                         // addToCart={handleAddToCart}
