@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Checkout.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Checkout.css";
 
 const Checkout = ({ cartItems }) => {
   const [customerInfo, setCustomerInfo] = useState({
-    name: '',
-    phone: '',
-    address: '',
-    paymentMethod: 'cash',
+    name: "",
+    phone: "",
+    address: "",
+    paymentMethod: "cash",
   });
 
   // Calculate the total amount based on discounted prices
@@ -20,7 +20,7 @@ const Checkout = ({ cartItems }) => {
 
   // Format currency with dots as separators
   const formatCurrency = (amount) => {
-    return amount.toLocaleString('en-US') + 'VND';
+    return amount.toLocaleString("en-US") + "VND";
   };
 
   // Handle customer information change
@@ -32,10 +32,10 @@ const Checkout = ({ cartItems }) => {
   // Handle order confirmation
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
-      alert('Your order has been placed successfully!');
-      console.log('Order details:', { customerInfo, cartItems, totalAmount });
+      alert("Your order has been placed successfully!");
+      console.log("Order details:", { customerInfo, cartItems, totalAmount });
     } else {
-      alert('Please fill in all the shipping information!');
+      alert("Please fill in all the shipping information!");
     }
   };
 
@@ -61,18 +61,31 @@ const Checkout = ({ cartItems }) => {
 
               return (
                 <div key={item.id} className="checkout-item">
-                  <img src={item.image} alt={item.name} className="checkout-item-image" />
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="checkout-item-image"
+                  />
                   <div className="checkout-item-details">
                     <p className="checkout-item-name">{item.name}</p>
                     <p className="checkout-item-prices">
-                      Original Price: <span className="original-price">{formatCurrency(item.price)}</span>
+                      Original Price:{" "}
+                      <span className="original-price">
+                        {formatCurrency(item.price)}
+                      </span>
                       {item.discount && (
                         <>
-                          {' '}| Discounted Price: <span className="discounted-price">{formatCurrency(discountedPrice)}</span>
+                          {" "}
+                          | Discounted Price:{" "}
+                          <span className="discounted-price">
+                            {formatCurrency(discountedPrice)}
+                          </span>
                         </>
                       )}
                     </p>
-                    <p className="checkout-item-quantity">Quantity: {item.quantity}</p>
+                    <p className="checkout-item-quantity">
+                      Quantity: {item.quantity}
+                    </p>
                     <p className="checkout-item-total">
                       Total: {formatCurrency(discountedPrice * item.quantity)}
                     </p>
@@ -131,7 +144,65 @@ const Checkout = ({ cartItems }) => {
               </select>
             </div>
           </div>
+          {customerInfo.paymentMethod === "card" && (
+            <div className="payment-card-details">
+              <div className="form-group">
+                <label htmlFor="cardNumber">Card Number:</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  name="cardNumber"
+                  placeholder="Enter your card number"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cardExpiry">Expiry Date:</label>
+                <input
+                  type="text"
+                  id="cardExpiry"
+                  name="cardExpiry"
+                  placeholder="MM/YY"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="cardCVV">CVV:</label>
+                <input
+                  type="text"
+                  id="cardCVV"
+                  name="cardCVV"
+                  placeholder="Enter CVV"
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+          )}
 
+          {customerInfo.paymentMethod === "e-wallet" && (
+            <div className="payment-e-wallet-details">
+              <div className="form-group">
+                <label htmlFor="walletProvider">E-Wallet Provider:</label>
+                <input
+                  type="text"
+                  id="walletProvider"
+                  name="walletProvider"
+                  placeholder="Enter wallet provider (e.g., PayPal, MoMo)"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="walletNumber">Wallet Number:</label>
+                <input
+                  type="text"
+                  id="walletNumber"
+                  name="walletNumber"
+                  placeholder="Enter your wallet number"
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+          )}
           {/* Order Summary */}
           <div className="checkout-summary">
             <h3>Total Amount: {formatCurrency(totalAmount)}</h3>
