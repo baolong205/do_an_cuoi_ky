@@ -55,3 +55,12 @@
 .proceed-payment-btn:hover {
   background-color: #218838;
 }
+.payment-card-details,
+.payment-e-wallet-details {
+  margin-top: 15px;
+}
+
+.payment-card-details .form-group,
+.payment-e-wallet-details .form-group {
+  margin-bottom: 10px;
+}
