@@ -39,6 +39,12 @@ const Home = () => {
         const updatedCart = removeFromCart(cart, productId);
         setCart(updatedCart);
     };
+    const handleUpdateQuantity = (productId, newQuantity) => {
+        const updatedCart = cart.map((item) =>
+            item.id === productId ? { ...item, quantity: newQuantity } : item
+        ).filter((item) => item.quantity > 0); // Remove items with quantity <= 0
+        setCart(updatedCart);
+    };
 
     // Pagination logic
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -87,7 +93,7 @@ const Home = () => {
                             />
                         }
                     />
-                    <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={handleRemoveFromCart} />} />
+                    <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={handleRemoveFromCart}  updateQuantity={handleUpdateQuantity}/>} />
                     <Route path="/checkout" element={<Checkout cartItems={cart} />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/account" element={<Account />} />
