@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Checkout.css";
+import "./checkout.css";
 
 const Checkout = ({ cartItems }) => {
   const [customerInfo, setCustomerInfo] = useState({
