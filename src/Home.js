@@ -105,7 +105,7 @@ const Home = () => {
                             />
                         }
                     />
-                    <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart} /> : <Account />} />
+                    <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart}  updateQuantity={handleUpdateQuantity} /> : <Account />} />
                     <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} /> : <Account />} />
 
                     <Route path="/about" element={<About />} />
