@@ -1,32 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
+import './components.css';
 
-import './components.css'
-// Hàm định dạng giá tiền
-const formatPrice = (price) => {
-  return new Intl.NumberFormat('vi-VN').format(price) + ' VND'; 
+// Hàm tạo sao
+const renderStars = (rating) => {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 !== 0;
+  const emptyStars = 5 - Math.ceil(rating);
+
+  let stars = [];
+  for (let i = 0; i < fullStars; i++) {
+    stars.push(<FontAwesomeIcon key={`full-${i}`} icon={faStar} style={{ color: 'gold' }} />);
+  }
+  if (halfStar) {
+    stars.push(<FontAwesomeIcon key="half" icon={faStarHalfAlt} style={{ color: 'gold' }} />);
+  }
+  for (let i = 0; i < emptyStars; i++) {
+    stars.push(<FontAwesomeIcon key={`empty-${i}`} icon={faStarEmpty} style={{ color: '#d3d3d3' }} />);
+  }
+  return stars;
 };
 
-const ProductCard = React.memo(({ product, addToCart }) => {
-  const imageUrl = product.image
-
+const ProductCard = ({ product }) => {
   return (
     <div className="product-card">
-      <img
-        src={imageUrl}
-        alt={product.name || 'Product image'}
-        loading="lazy" // Giúp tải hình ảnh nhẹ nhàng hơn
-      />
+      <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
-      {/* Hiển thị giá đã được định dạng với "VND" */}
-      <p>{formatPrice(product.price)}</p>
-      <Link to={`/product/${product.id}`}>
-        <button className="view-product-btn">
-          View Product
-        </button>
-      </Link>
+      <p>{new Intl.NumberFormat('vi-VN').format(product.price)} VND</p>
+      <div className="product-card-footer">
+        <div className="rating">{renderStars(product.rating)}</div>
+        <Link to={`/product/${product.id}`}>
+          <button className="buy-product-btn">Buy</button>
+        </Link>
+      </div>
     </div>
   );
-});
+};
 
 export default ProductCard;

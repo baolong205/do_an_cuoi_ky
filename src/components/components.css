@@ -56,14 +56,19 @@ button:focus {
 
 /* Định dạng cho các thẻ sản phẩm */
 .product-card {
+  position: relative;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
   width: 200px;
+  /* Cố định chiều cao */
   background-color: #fff;
   margin: 16px;
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Giữ các phần cách đều */
 }
 
 .product-card:hover {
@@ -75,7 +80,7 @@ button:focus {
   max-width: 100%;
   height: 150px;
   border-radius: 8px;
-  margin-bottom: 10px; /* Thêm khoảng cách dưới ảnh */
+  margin-bottom: 10px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -96,16 +101,42 @@ button:focus {
   margin: 10px 0;
 }
 
-.view-product-btn {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
+/* Container cho ngôi sao và nút */
+.product-card-footer {
+  display: flex;
+  justify-content: space-between; /* Căn đều giữa sao và nút */
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px; /* Tạo khoảng cách từ nội dung trên */
 }
 
-.view-product-btn:hover {
-  background-color: #0056b3;
+/* Ngôi sao */
+.star-rating {
+  display: flex;
+  font-size: 16px;
+  color: gold;
+}
+
+.star-rating .fa-star {
+  margin-right: 2px;
+}
+
+.star-rating .fa-star-o {
+  color: #888;
+}
+
+/* Nút "Buy" */
+.buy-product-btn {
+  background-color: #4392e7;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.buy-product-btn:hover {
+  background-color: #0077b3;
 }
 
 /* Định dạng chung cho các nút */
@@ -168,7 +199,7 @@ button:focus {
 .product-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 10px;
   margin: 20px 0;
   padding: 0 10px;
 }
@@ -199,17 +230,4 @@ button:focus {
 .pagination-controls button:disabled {
   background-color: #ddd;
   cursor: not-allowed;
-}
-.star-rating {
-  display: flex;
-  font-size: 20px;
-  color: #ffd700; /* Màu vàng cho sao đầy đủ */
-}
-
-.star-rating .fa-star {
-  margin-right: 5px;
-}
-
-.star-rating .fa-star-o {
-  color: #888; /* Màu xám cho sao rỗng */
 }

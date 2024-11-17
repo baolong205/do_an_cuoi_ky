@@ -6,7 +6,7 @@ const products = [
         category: 'Phone',
         image: require('../assets/anh do-an/iphone-11-trang-600x600.jpg'),
         description: 'Premium smartphone with A16 Bionic chipset.',
-        rating: 4.8,
+        rating: 2,
         stock: 25,
         discount: 0.1
     },
@@ -17,7 +17,7 @@ const products = [
         category: 'Phone',
         image: require('../assets/anh do-an/iphone-12-xanh-la-new-2-600x600.jpg'),
         description: 'Smartphone with cutting-edge features.',
-        rating: 4.5,
+        rating: 3,
         stock: 50,
         discount: 0
     },
@@ -193,7 +193,7 @@ const products = [
         category: 'Laptop',
         image: require('../assets/anh do-an/macbook-pro-16.jpg'),
         description: 'High-end MacBook with M1 Pro chip, perfect for heavy-duty tasks and creative work.',
-        rating: 4.9,
+        rating: 3,
         stock: 15,
         discount: 0.15
     },
