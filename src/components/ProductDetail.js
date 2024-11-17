@@ -8,12 +8,15 @@ const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // Tìm sản phẩm theo ID
   const product = products.find((p) => p.id === parseInt(id));
 
+  // Nếu không tìm thấy sản phẩm, hiển thị thông báo
   if (!product) {
     return <p>Product not found!</p>;
   }
 
+  // Tính giá đã giảm (nếu có)
   const discountedPrice = product.discount
     ? product.price - product.price * product.discount
     : product.price;

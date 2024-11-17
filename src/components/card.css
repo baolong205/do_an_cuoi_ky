@@ -1,83 +1,118 @@
-.cart {
-  margin-top: 20px;
+.cart-page {
+  font-family: Arial, sans-serif;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 20px auto;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.cart-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.empty-cart {
+  text-align: center;
+}
+
+.empty-cart p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.continue-shopping {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.cart-items-container {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .cart-item {
   display: flex;
-  flex-direction: row; /* Hiển thị theo hàng ngang */
-  align-items: center; /* Căn giữa các phần tử */
-  margin-bottom: 20px;
-  padding: 10px;
+  align-items: center;
   border-bottom: 1px solid #ddd;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.cart-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
 }
 
 .cart-item-image {
-  width: 50px; /* Thay đổi kích thước chiều rộng */
-  height: 50px; /* Thay đổi kích thước chiều cao */
-  object-fit: cover;
+  width: 80px;
+  height: 80px;
   margin-right: 20px;
-  border-radius: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  object-fit: cover;
 }
 
-.cart-item-info {
+.cart-item-details {
   flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .cart-item-name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
 .cart-item-price {
-  font-size: 14px;
-  color: #555;
+  color: #f44336;
+  margin: 10px 0;
 }
 
-.remove-item-btn {
-  margin-top: 10px;
-  background-color: #d9534f;
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-quantity button {
+  background-color: #ddd;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart-item-quantity span {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+.cart-item-remove {
+  background-color: #ff4d4f;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 5px 10px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
 }
 
-.remove-item-btn:hover {
-  background-color: darkred;
+.cart-summary {
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  text-align: right;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .checkout-btn {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #28a745;
+  background-color: #4caf50;
   color: white;
   border: none;
+  padding: 10px 20px;
+  font-size: 18px;
   cursor: pointer;
-  width: 100%;
   border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .checkout-btn:hover {
-  background-color: #218838;
+  background-color: #45a049;
 }
