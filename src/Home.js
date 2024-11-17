@@ -32,7 +32,6 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        // Điều hướng đến trang login nếu chưa đăng nhập
         if (!isLogin && (location.pathname === "/cart" || location.pathname === "/checkout")) {
             navigate('/account');
         }
@@ -52,11 +51,16 @@ const Home = () => {
         const updatedCart = removeFromCart(cart, productId);
         setCart(updatedCart);
     };
+
     const handleUpdateQuantity = (productId, newQuantity) => {
         const updatedCart = cart.map((item) =>
             item.id === productId ? { ...item, quantity: newQuantity } : item
         ).filter((item) => item.quantity > 0); // Remove items with quantity <= 0
         setCart(updatedCart);
+    };
+
+    const clearCart = () => {
+        setCart([]); // Làm sạch giỏ hàng
     };
 
     // Pagination logic
@@ -105,9 +109,8 @@ const Home = () => {
                             />
                         }
                     />
-                    <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart}  updateQuantity={handleUpdateQuantity} /> : <Account />} />
-                    <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} /> : <Account />} />
-
+                    <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart} updateQuantity={handleUpdateQuantity} /> : <Account />} />
+                    <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />

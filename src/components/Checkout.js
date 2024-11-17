@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./checkout.css";
 
-const Checkout = ({ cartItems }) => {
+const Checkout = ({ cartItems, clearCart }) => {
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     phone: "",
@@ -29,11 +29,11 @@ const Checkout = ({ cartItems }) => {
     setCustomerInfo({ ...customerInfo, [name]: value });
   };
 
-  // Handle order confirmation
+  // Handle order confirmation and clear cart
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
       alert("Your order has been placed successfully!");
-      console.log("Order details:", { customerInfo, cartItems, totalAmount });
+      clearCart();  // Call clearCart to remove items from the cart
     } else {
       alert("Please fill in all the shipping information!");
     }
