@@ -82,10 +82,12 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
             <div className="cart-total">
               <p>Total: </p>
               <p>{formatCurrency(totalAmount)}</p>
-            </div>
+            </div >
+            <div class="checkout-btn-container">
             <button className="checkout-btn" onClick={handleCheckout}>
               Pay
             </button>
+            </div>
           </div>
         </>
       )}
