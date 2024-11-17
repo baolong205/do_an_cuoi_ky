@@ -1,39 +1,46 @@
+/* Định dạng cho banner */
 .banner {
-    position: relative;
-    width: 1390px;
-    height: 300px;
-    overflow: hidden;
+  position: relative;
+  width: 100%; /* Đặt chiều rộng của banner bằng 100% */
+  max-width: 1390px; /* Đảm bảo chiều rộng không vượt quá 1390px */
+  height: 300px;
+  overflow: hidden;
+  margin: 0 auto; /* Căn giữa banner */
+  display: block; /* Đảm bảo banner là phần tử block */
 }
 
+/* Định dạng cho ảnh trong banner */
 .banner-image {
-    width: 1390px;
-    height: 300px;
-    object-fit: cover;
+  width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của banner */
+  height: 100%;
+  object-fit: cover;
 }
 
+/* Định dạng cho các nút trong banner */
 .banner-buttons {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%); /* Căn giữa theo chiều dọc */
 }
 
+/* Định dạng cho các nút điều hướng */
 .banner-button {
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-
+/* Các nút bên trái và phải */
 .left {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .right {
-    margin-right: 20px;
+  margin-right: 20px;
 }
