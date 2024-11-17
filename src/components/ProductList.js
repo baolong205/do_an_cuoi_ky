@@ -19,7 +19,6 @@ const ProductList = ({ products, addToCart, currentPage, nextPage, prevPage, has
         <button onClick={nextPage} disabled={!hasNextPage}>Next</button>
       </div>
     </div>
-
   );
 };
 

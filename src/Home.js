@@ -11,6 +11,8 @@ import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
 import products, { filterProducts, addToCart, removeFromCart, getBestSellingProducts } from './Data/ProductData';
 import './Home.css'
+import Admin from './components/Admin';
+
 const Home = () => {
     const location = useLocation(); 
     const [filteredProducts, setFilteredProducts] = useState(products);
@@ -90,6 +92,7 @@ const Home = () => {
                     <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={handleRemoveFromCart} />} />
                     <Route path="/checkout" element={<Checkout cartItems={cart} />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="/account" element={<Account />} />
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
                 </Routes>

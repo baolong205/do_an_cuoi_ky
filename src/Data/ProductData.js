@@ -208,6 +208,7 @@ const products = [
         stock: 20,
         discount: 0.1
     }
+    
 ];
 
 export const filterProducts = (products, searchTerm, category) => {
@@ -245,5 +246,31 @@ export const getBestSellingProducts = (products) => {
         .sort((a, b) => b.rating - a.rating)
         .slice(0, 4);
 };
+export const getProducts = () => products;
+
+
+export const addProduct = (newProduct) => {
+    products.push(newProduct); // Thêm trực tiếp vào mảng
+};
+
+
+export const editProduct = (updatedProduct) => {
+    const index = products.findIndex(product => product.id === updatedProduct.id);
+    if (index !== -1) {
+        products[index] = updatedProduct; // Cập nhật sản phẩm trực tiếp
+    }
+};
+
+
+export const deleteProduct = (productId) => {
+    const index = products.findIndex(product => product.id === productId);
+    if (index !== -1) {
+        products.splice(index, 1); // Xóa phần tử trực tiếp trong mảng
+        return true; // Xóa thành công
+    }
+    return false; // Không tìm thấy sản phẩm để xóa
+};
+
+
 
 export default products;
