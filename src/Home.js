@@ -25,7 +25,10 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 10;
     const [bestSellingProducts, setBestSellingProducts] = useState([]);
-    const { isLogin, currentUser } = useUserContext(); // Lấy trạng thái đăng nhập và user từ UserContext
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(50000000); // Giá trị tối đa là 50 triệu
+    const { isLogin, currentUser } = useUserContext();
+    const [isFilterOpen, setIsFilterOpen] = useState(false); // Thêm trạng thái để mở/đóng bộ lọc
 
     useEffect(() => {
         setBestSellingProducts(getBestSellingProducts(products)); // Lấy 4 sản phẩm bán chạy
@@ -63,6 +66,23 @@ const Home = () => {
         setCart([]); // Làm sạch giỏ hàng
     };
 
+    const filterProductsByPrice = (min, max) => {
+        return products.filter(product => product.price >= min && product.price <= max);
+    };
+
+    const handlePriceFilter = () => {
+        const filtered = filterProductsByPrice(minPrice, maxPrice);
+        setFilteredProducts(filtered);
+    };
+
+    // Định dạng giá trị số với dấu phân cách nghìn
+    const formatPrice = (price) => {
+        return price.toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+    };
+
     // Pagination logic
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -95,6 +115,48 @@ const Home = () => {
                         />
                     </div>
                 )}
+
+                {/* Button to toggle filter */}
+                <div
+                    className="filter-toggle"
+                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                    title="Filter by Price"
+                >
+                    <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span> {/* Dấu tròn */}
+                </div>
+
+                {/* Price filter content */}
+                {isFilterOpen && (
+                    <div className="price-filter">
+                        <h3>Filter by Price</h3>
+                        <div className="slider-container">
+                            <input
+                                type="range"
+                                min="175000"
+                                max="50000000"
+                                step="1000"
+                                value={minPrice}
+                                onChange={(e) => setMinPrice(Number(e.target.value))}
+                                className="slider"
+                            />
+                            <input
+                                type="range"
+                                min="175000"
+                                max="50000000"
+                                step="1000"
+                                value={maxPrice}
+                                onChange={(e) => setMaxPrice(Number(e.target.value))}
+                                className="slider"
+                            />
+                        </div>
+                        <div className="slider-values">
+                            <span>{`Min Price: ${formatPrice(minPrice)}`}</span>
+                            <span>{`Max Price: ${formatPrice(maxPrice)}`}</span>
+                        </div>
+                        <button className='btn-price' onClick={handlePriceFilter}>Apply Price Filter</button>
+                    </div>
+                )}
+
                 <Routes>
                     <Route
                         path="/"
