@@ -193,7 +193,7 @@ const products = [
         category: 'Laptop',
         image: require('../assets/anh do-an/macbook-pro-16.jpg'),
         description: 'High-end MacBook with M1 Pro chip, perfect for heavy-duty tasks and creative work.',
-        rating: 3,
+        rating: 4.9,
         stock: 15,
         discount: 0.15
     },
@@ -210,6 +210,7 @@ const products = [
     }
 ];
 
+// Lọc sản phẩm theo từ khóa và danh mục
 export const filterProducts = (products, searchTerm, category) => {
     let filtered = [...products];
     if (category !== 'All') {
@@ -223,6 +224,7 @@ export const filterProducts = (products, searchTerm, category) => {
     return filtered;
 };
 
+// Thêm sản phẩm vào giỏ hàng
 export const addToCart = (cart, product) => {
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
@@ -236,9 +238,12 @@ export const addToCart = (cart, product) => {
     }
 };
 
+// Xóa sản phẩm khỏi giỏ hàng
 export const removeFromCart = (cart, productId) => {
     return cart.filter(item => item.id !== productId);
 };
+
+// Lấy các sản phẩm bán chạy nhất
 export const getBestSellingProducts = (products) => {
     return products
         .filter(product => product.rating >= 4.5 && product.stock > 10)
@@ -246,4 +251,31 @@ export const getBestSellingProducts = (products) => {
         .slice(0, 4);
 };
 
+// Lấy danh sách tất cả sản phẩm
+export const getProducts = () => {
+    return products;
+};
+
+// Thêm một sản phẩm mới
+export const addProduct = (newProduct) => {
+    products.push({ ...newProduct, id: Date.now() }); // Tạo ID ngẫu nhiên dựa trên thời gian
+};
+
+// Chỉnh sửa thông tin sản phẩm
+export const editProduct = (id, updatedProduct) => {
+    const index = products.findIndex((product) => product.id === id);
+    if (index !== -1) {
+        products[index] = { ...products[index], ...updatedProduct };
+    }
+};
+
+// Xóa sản phẩm theo ID
+export const deleteProduct = (id) => {
+    const index = products.findIndex((product) => product.id === id);
+    if (index !== -1) {
+        products.splice(index, 1); // Loại bỏ sản phẩm khỏi danh sách
+    }
+};
+
+// Xuất các hàm
 export default products;

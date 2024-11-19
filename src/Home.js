@@ -7,7 +7,7 @@ import Cart from './components/card';
 import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
-import Admin from './Auth/AdminInfo';
+import Admin from './Auth/AdminPanel'; // Đảm bảo đường dẫn tới Admin Panel chính xác
 import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
@@ -25,10 +25,13 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 10;
     const [bestSellingProducts, setBestSellingProducts] = useState([]);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(50000000);
     const { isLogin, currentUser } = useUserContext();
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     useEffect(() => {
-        setBestSellingProducts(getBestSellingProducts(products)); // Lấy 4 sản phẩm bán chạy
+        setBestSellingProducts(getBestSellingProducts(products));
     }, []);
 
     useEffect(() => {
@@ -55,15 +58,30 @@ const Home = () => {
     const handleUpdateQuantity = (productId, newQuantity) => {
         const updatedCart = cart.map((item) =>
             item.id === productId ? { ...item, quantity: newQuantity } : item
-        ).filter((item) => item.quantity > 0); // Remove items with quantity <= 0
+        ).filter((item) => item.quantity > 0);
         setCart(updatedCart);
     };
 
     const clearCart = () => {
-        setCart([]); // Làm sạch giỏ hàng
+        setCart([]);
     };
 
-    // Pagination logic
+    const filterProductsByPrice = (min, max) => {
+        return products.filter(product => product.price >= min && product.price <= max);
+    };
+
+    const handlePriceFilter = () => {
+        const filtered = filterProductsByPrice(minPrice, maxPrice);
+        setFilteredProducts(filtered);
+    };
+
+    const formatPrice = (price) => {
+        return price.toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+    };
+
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -96,6 +114,45 @@ const Home = () => {
                     </div>
                 )}
 
+                <div
+                    className="filter-toggle"
+                    onClick={() => setIsFilterOpen(!isFilterOpen)}
+                    title="Filter by Price"
+                >
+                    <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span>
+                </div>
+
+                {isFilterOpen && (
+                    <div className="price-filter">
+                        <h3>Filter by Price</h3>
+                        <div className="slider-container">
+                            <input
+                                type="range"
+                                min="175000"
+                                max="50000000"
+                                step="1000"
+                                value={minPrice}
+                                onChange={(e) => setMinPrice(Number(e.target.value))}
+                                className="slider"
+                            />
+                            <input
+                                type="range"
+                                min="175000"
+                                max="50000000"
+                                step="1000"
+                                value={maxPrice}
+                                onChange={(e) => setMaxPrice(Number(e.target.value))}
+                                className="slider"
+                            />
+                        </div>
+                        <div className="slider-values">
+                            <span>{`Min Price: ${formatPrice(minPrice)}`}</span>
+                            <span>{`Max Price: ${formatPrice(maxPrice)}`}</span>
+                        </div>
+                        <button className='btn-price' onClick={handlePriceFilter}>Apply Price Filter</button>
+                    </div>
+                )}
+
                 <Routes>
                     <Route
                         path="/"
@@ -114,6 +171,7 @@ const Home = () => {
                     <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
+                    <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} /> {/* Admin Panel */}
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
                 </Routes>
             </div>
