@@ -1,34 +1,49 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-// Tạo ngữ cảnh người dùng
 const UserContext = createContext();
 
-// Hook để sử dụng UserContext
 export const useUserContext = () => {
   return useContext(UserContext);
 };
 
-// Provider cho UserContext
 export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  // State quản lý trạng thái đăng nhập
-  const [isLogin, setIsLogin] = useState(false);
+  // Lấy dữ liệu từ localStorage hoặc gán giá trị mặc định
+  const getUsersFromLocalStorage = () => {
+    const storedUsers = localStorage.getItem('users');
+    return storedUsers ? JSON.parse(storedUsers) : [
+      { username: 'admin1', password: '123456', isAdmin: true },
+      { username: 'user1', password: 'user1password', isAdmin: false },
+    ];
+  };
 
-  // Tài khoản mẫu
-  const [users, setUsers] = useState([
-    { username: 'admin1', password: 'adminpassword', isAdmin: true },
-    { username: 'user1', password: 'user1password', isAdmin: false }
-  ]);
+  const getCurrentUserFromLocalStorage = () => {
+    const storedUser = localStorage.getItem('currentUser');
+    return storedUser ? JSON.parse(storedUser) : null;
+  };
 
-  // Người dùng hiện tại
-  const [currentUser, setCurrentUser] = useState(null);
+  const [isLogin, setIsLogin] = useState(!!getCurrentUserFromLocalStorage());
+  const [users, setUsers] = useState(getUsersFromLocalStorage());
+  const [currentUser, setCurrentUser] = useState(getCurrentUserFromLocalStorage());
 
-  // Đăng ký người dùng mới
+  // Lưu dữ liệu vào localStorage khi users thay đổi
+  useEffect(() => {
+    localStorage.setItem('users', JSON.stringify(users));
+  }, [users]);
+
+  // Lưu currentUser vào localStorage
+  useEffect(() => {
+    if (currentUser) {
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    } else {
+      localStorage.removeItem('currentUser');
+    }
+  }, [currentUser]);
+
   const register = (user) => {
-    // Kiểm tra trùng username
     if (users.some((u) => u.username === user.username)) {
       toast.error('Tên đăng nhập đã tồn tại!');
       return;
@@ -38,7 +53,6 @@ export const UserProvider = ({ children }) => {
     toast.success('Đăng ký thành công!');
   };
 
-  // Đăng nhập
   const login = (username, password) => {
     const user = users.find((u) => u.username === username && u.password === password);
     if (user) {
@@ -47,25 +61,23 @@ export const UserProvider = ({ children }) => {
 
       if (user.isAdmin) {
         toast.success('Bạn đã đăng nhập với vai trò Admin');
-        navigate('/admin-info'); // Điều hướng đến trang Admin
+        navigate('/admin');
       } else {
         toast.success('Đăng nhập thành công!');
-        navigate('/user-info'); // Điều hướng đến trang User
+        navigate('/');
       }
     } else {
       toast.error('Tên đăng nhập hoặc mật khẩu không chính xác!');
     }
   };
 
-  // Đăng xuất
   const logout = () => {
     setIsLogin(false);
     setCurrentUser(null);
     toast.info('Đã đăng xuất!');
-    navigate('/'); // Điều hướng về trang đăng nhập
+    navigate('/');
   };
 
-  // Giá trị cung cấp cho ngữ cảnh
   return (
     <UserContext.Provider value={{ isLogin, users, currentUser, register, login, logout }}>
       {children}

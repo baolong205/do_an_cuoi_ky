@@ -7,7 +7,7 @@ import Cart from './components/card';
 import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
-import Admin from './Auth/AdminInfo';
+import Admin from './Auth/AdminPanel'; // Đảm bảo đường dẫn tới Admin Panel chính xác
 import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
@@ -26,12 +26,12 @@ const Home = () => {
     const productsPerPage = 10;
     const [bestSellingProducts, setBestSellingProducts] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(50000000); // Giá trị tối đa là 50 triệu
+    const [maxPrice, setMaxPrice] = useState(50000000);
     const { isLogin, currentUser } = useUserContext();
-    const [isFilterOpen, setIsFilterOpen] = useState(false); // Thêm trạng thái để mở/đóng bộ lọc
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     useEffect(() => {
-        setBestSellingProducts(getBestSellingProducts(products)); // Lấy 4 sản phẩm bán chạy
+        setBestSellingProducts(getBestSellingProducts(products));
     }, []);
 
     useEffect(() => {
@@ -58,12 +58,12 @@ const Home = () => {
     const handleUpdateQuantity = (productId, newQuantity) => {
         const updatedCart = cart.map((item) =>
             item.id === productId ? { ...item, quantity: newQuantity } : item
-        ).filter((item) => item.quantity > 0); // Remove items with quantity <= 0
+        ).filter((item) => item.quantity > 0);
         setCart(updatedCart);
     };
 
     const clearCart = () => {
-        setCart([]); // Làm sạch giỏ hàng
+        setCart([]);
     };
 
     const filterProductsByPrice = (min, max) => {
@@ -75,7 +75,6 @@ const Home = () => {
         setFilteredProducts(filtered);
     };
 
-    // Định dạng giá trị số với dấu phân cách nghìn
     const formatPrice = (price) => {
         return price.toLocaleString('vi-VN', {
             style: 'currency',
@@ -83,7 +82,6 @@ const Home = () => {
         });
     };
 
-    // Pagination logic
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -116,16 +114,14 @@ const Home = () => {
                     </div>
                 )}
 
-                {/* Button to toggle filter */}
                 <div
                     className="filter-toggle"
                     onClick={() => setIsFilterOpen(!isFilterOpen)}
                     title="Filter by Price"
                 >
-                    <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span> {/* Dấu tròn */}
+                    <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span>
                 </div>
 
-                {/* Price filter content */}
                 {isFilterOpen && (
                     <div className="price-filter">
                         <h3>Filter by Price</h3>
@@ -175,6 +171,7 @@ const Home = () => {
                     <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
+                    <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} /> {/* Admin Panel */}
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
                 </Routes>
             </div>
