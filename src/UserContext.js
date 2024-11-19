@@ -11,69 +11,64 @@ export const useUserContext = () => {
 export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
 
-  // Lấy dữ liệu từ localStorage hoặc gán giá trị mặc định
+  // Danh sách admin mặc định
+  const defaultAdmins = [
+    { username: 'admin', password: '123456', isAdmin: true },
+  ];
+
+  // Lấy danh sách người dùng thường từ localStorage
   const getUsersFromLocalStorage = () => {
     const storedUsers = localStorage.getItem('users');
-    return storedUsers ? JSON.parse(storedUsers) : [
-      { username: 'admin1', password: '123456', isAdmin: true },
-      { username: 'user1', password: 'user1password', isAdmin: false },
-    ];
+    return storedUsers ? JSON.parse(storedUsers) : [];
   };
 
-  const getCurrentUserFromLocalStorage = () => {
-    const storedUser = localStorage.getItem('currentUser');
-    return storedUser ? JSON.parse(storedUser) : null;
-  };
+  // Quản lý trạng thái người dùng
+  const [users, setUsers] = useState([...defaultAdmins, ...getUsersFromLocalStorage()]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLogin, setIsLogin] = useState(false);
 
-  const [isLogin, setIsLogin] = useState(!!getCurrentUserFromLocalStorage());
-  const [users, setUsers] = useState(getUsersFromLocalStorage());
-  const [currentUser, setCurrentUser] = useState(getCurrentUserFromLocalStorage());
-
-  // Lưu dữ liệu vào localStorage khi users thay đổi
+  // Cập nhật danh sách người dùng thường vào localStorage khi `users` thay đổi
   useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users));
+    const nonAdminUsers = users.filter((user) => !user.isAdmin); // Lọc chỉ tài khoản thường
+    localStorage.setItem('users', JSON.stringify(nonAdminUsers));
   }, [users]);
 
-  // Lưu currentUser vào localStorage
-  useEffect(() => {
-    if (currentUser) {
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    } else {
-      localStorage.removeItem('currentUser');
-    }
-  }, [currentUser]);
-
+  // Hàm đăng ký người dùng mới
   const register = (user) => {
     if (users.some((u) => u.username === user.username)) {
       toast.error('Tên đăng nhập đã tồn tại!');
       return;
     }
 
-    setUsers((prevUsers) => [...prevUsers, user]);
+    user.isAdmin = user.isAdmin || false; // Đảm bảo tài khoản mới luôn có `isAdmin`
+    setUsers((prevUsers) => [...prevUsers, user]); // Thêm vào danh sách người dùng
     toast.success('Đăng ký thành công!');
   };
 
+  // Hàm đăng nhập
   const login = (username, password) => {
     const user = users.find((u) => u.username === username && u.password === password);
+
     if (user) {
       setCurrentUser(user);
       setIsLogin(true);
 
       if (user.isAdmin) {
         toast.success('Bạn đã đăng nhập với vai trò Admin');
-        navigate('/admin');
+        navigate('/admin'); // Điều hướng đến trang admin
       } else {
         toast.success('Đăng nhập thành công!');
-        navigate('/');
+        navigate('/'); // Điều hướng đến trang chủ cho người dùng thường
       }
     } else {
       toast.error('Tên đăng nhập hoặc mật khẩu không chính xác!');
     }
   };
 
+  // Hàm đăng xuất
   const logout = () => {
-    setIsLogin(false);
     setCurrentUser(null);
+    setIsLogin(false);
     toast.info('Đã đăng xuất!');
     navigate('/');
   };
