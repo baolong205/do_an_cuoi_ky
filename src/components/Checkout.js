@@ -9,8 +9,9 @@ const Checkout = ({ cartItems, clearCart }) => {
     address: "",
     paymentMethod: "cash",
   });
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  // Calculate the total amount based on discounted prices
+  // Tính tổng tiền với giá sau khi giảm
   const totalAmount = cartItems.reduce((total, item) => {
     const discountedPrice = item.discount
       ? item.price - item.price * item.discount
@@ -18,22 +19,23 @@ const Checkout = ({ cartItems, clearCart }) => {
     return total + discountedPrice * item.quantity;
   }, 0);
 
-  // Format currency with dots as separators
+  // Định dạng tiền tệ
   const formatCurrency = (amount) => {
-    return amount.toLocaleString("en-US") + "VND";
+    return amount.toLocaleString("en-US") + " VND";
   };
 
-  // Handle customer information change
+  // Xử lý thay đổi thông tin khách hàng
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCustomerInfo({ ...customerInfo, [name]: value });
   };
 
-  // Handle order confirmation and clear cart
+  // Xử lý đặt hàng
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
-      alert("Your order has been placed successfully!");
-      clearCart();  // Call clearCart to remove items from the cart
+      setShowSuccessMessage(true); // Hiển thị thông báo thành công
+      setTimeout(() => setShowSuccessMessage(false), 10000); // Ẩn thông báo sau 10 giây
+      clearCart(); // Xóa giỏ hàng
     } else {
       alert("Please fill in all the shipping information!");
     }
@@ -42,6 +44,14 @@ const Checkout = ({ cartItems, clearCart }) => {
   return (
     <div className="checkout">
       <h2>Checkout</h2>
+
+      {showSuccessMessage && (
+        <div className="success-message">
+          <h2>Đặt Hàng Thành Công!</h2>
+          <p>Chúc mừng bạn! Đặt hàng của bạn đã được xác nhận.</p>
+          <p>Cảm ơn bạn đã mua hàng.</p>
+        </div>
+      )}
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
@@ -52,7 +62,7 @@ const Checkout = ({ cartItems, clearCart }) => {
         </div>
       ) : (
         <>
-          {/* Product Information */}
+          {/* Danh sách sản phẩm */}
           <div className="checkout-items">
             {cartItems.map((item) => {
               const discountedPrice = item.discount
@@ -95,7 +105,7 @@ const Checkout = ({ cartItems, clearCart }) => {
             })}
           </div>
 
-          {/* Shipping Information */}
+          {/* Thông tin giao hàng */}
           <div className="checkout-form">
             <h3>Shipping Information</h3>
             <div className="form-group">
@@ -144,66 +154,8 @@ const Checkout = ({ cartItems, clearCart }) => {
               </select>
             </div>
           </div>
-          {customerInfo.paymentMethod === "card" && (
-            <div className="payment-card-details">
-              <div className="form-group">
-                <label htmlFor="cardNumber">Card Number:</label>
-                <input
-                  type="text"
-                  id="cardNumber"
-                  name="cardNumber"
-                  placeholder="Enter your card number"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="cardExpiry">Expiry Date:</label>
-                <input
-                  type="text"
-                  id="cardExpiry"
-                  name="cardExpiry"
-                  placeholder="MM/YY"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="cardCVV">CVV:</label>
-                <input
-                  type="text"
-                  id="cardCVV"
-                  name="cardCVV"
-                  placeholder="Enter CVV"
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-          )}
 
-          {customerInfo.paymentMethod === "e-wallet" && (
-            <div className="payment-e-wallet-details">
-              <div className="form-group">
-                <label htmlFor="walletProvider">E-Wallet Provider:</label>
-                <input
-                  type="text"
-                  id="walletProvider"
-                  name="walletProvider"
-                  placeholder="Enter wallet provider (e.g., PayPal, MoMo)"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="walletNumber">Wallet Number:</label>
-                <input
-                  type="text"
-                  id="walletNumber"
-                  name="walletNumber"
-                  placeholder="Enter your wallet number"
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-          )}
-          {/* Order Summary */}
+          {/* Tổng tiền và nút đặt hàng */}
           <div className="checkout-summary">
             <h3>Total Amount: {formatCurrency(totalAmount)}</h3>
             <button className="proceed-payment-btn" onClick={handlePlaceOrder}>

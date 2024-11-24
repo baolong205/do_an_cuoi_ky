@@ -113,46 +113,6 @@ const Home = () => {
                         />
                     </div>
                 )}
-
-                <div
-                    className="filter-toggle"
-                    onClick={() => setIsFilterOpen(!isFilterOpen)}
-                    title="Filter by Price"
-                >
-                    <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span>
-                </div>
-
-                {isFilterOpen && (
-                    <div className="price-filter">
-                        <h3>Filter by Price</h3>
-                        <div className="slider-container">
-                            <input
-                                type="range"
-                                min="175000"
-                                max="50000000"
-                                step="1000"
-                                value={minPrice}
-                                onChange={(e) => setMinPrice(Number(e.target.value))}
-                                className="slider"
-                            />
-                            <input
-                                type="range"
-                                min="175000"
-                                max="50000000"
-                                step="1000"
-                                value={maxPrice}
-                                onChange={(e) => setMaxPrice(Number(e.target.value))}
-                                className="slider"
-                            />
-                        </div>
-                        <div className="slider-values">
-                            <span>{`Min Price: ${formatPrice(minPrice)}`}</span>
-                            <span>{`Max Price: ${formatPrice(maxPrice)}`}</span>
-                        </div>
-                        <button className='btn-price' onClick={handlePriceFilter}>Apply Price Filter</button>
-                    </div>
-                )}
-
                 <Routes>
                     <Route
                         path="/"
