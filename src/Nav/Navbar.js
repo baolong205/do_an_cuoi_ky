@@ -1,36 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Biểu tượng kính lúp
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css';
 
-const Navbar = ({ onSearch, category, setCategory, products }) => {
+const Navbar = ({ onSearch, setCategory }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const location = useLocation(); // Lấy vị trí hiện tại  
-  const productListRef = useRef(null); // Tạo một ref để tham chiếu đến danh sách sản phẩm
+  const location = useLocation(); // Lấy vị trí hiện tại
 
   const handleSearch = () => {
-    onSearch(searchTerm, category); // Gọi hàm tìm kiếm từ parent
-    if (productListRef.current) {
-      // Cuộn xuống phần danh sách sản phẩm
-      window.scrollTo({
-        top: productListRef.current.offsetTop,
-        behavior: 'smooth'
-      });
-    }
+    onSearch(searchTerm, '');
   };
 
-  const handleCategoryChange = (category) => {
-    setCategory(category);
-    onSearch(searchTerm, category); // Gọi hàm tìm kiếm khi thay đổi danh mục  
-  };
-
-  // Ẩn navbar khi ở trang Account  
+  // Kiểm tra nếu đang ở trang /account
   const isAccountPage = location.pathname === '/account';
 
   return (
     <nav>
-      <nav className="navbar">
+      <div className="navbar">
         <div className="navbar-logo">
           <Link to="/">E-commerce</Link>
         </div>
@@ -41,73 +28,74 @@ const Navbar = ({ onSearch, category, setCategory, products }) => {
             placeholder="Search products..."
             className="navbar-search-input"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Cập nhật term tìm kiếm  
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button className="navbar-search-button" onClick={handleSearch}>
-            <FontAwesomeIcon icon={faSearch} /> {/* Hiển thị biểu tượng kính lúp */}
+            <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
 
         <div className="navbar-links">
-
           <Link to="/account" className="navbar-link">Account</Link>
           <Link to="/about" className="navbar-link">About</Link>
           <Link to="/cart" className="navbar-link">
-
             <i className="fas fa-shopping-cart"></i> Cart
           </Link>
-
         </div>
-      </nav>
+      </div>
 
       {!isAccountPage && (
         <div className="navbar-category-buttons">
-          <button
-            className={`navbar-category-btn ${category === 'All' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('All')}
+          <Link
+            to="/"
+            className={`navbar-category-btn ${location.pathname === '/' ? 'active' : ''}`}
+            onClick={() => {
+              setCategory('All');
+              onSearch('', 'All'); // Hiển thị tất cả sản phẩm
+            }}
           >
-            All
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Phone' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Phone')}
+            Home
+          </Link>
+          <Link
+            to="/products/Phone"
+            className={`navbar-category-btn ${location.pathname.includes('/Phone') ? 'active' : ''}`}
+            onClick={() => {
+              setCategory('Phone');
+              onSearch('', 'Phone'); // Hiển thị sản phẩm Phone
+            }}
           >
             Phone
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Laptop' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Laptop')}
+          </Link>
+          <Link
+            to="/products/Laptop"
+            className={`navbar-category-btn ${location.pathname.includes('/Laptop') ? 'active' : ''}`}
+            onClick={() => {
+              setCategory('Laptop');
+              onSearch('', 'Laptop'); // Hiển thị sản phẩm Laptop
+            }}
           >
             Laptop
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Headphone' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Headphone')}
+          </Link>
+          <Link
+            to="/products/Headphone"
+            className={`navbar-category-btn ${location.pathname.includes('/Headphone') ? 'active' : ''}`}
+            onClick={() => {
+              setCategory('Headphone');
+              onSearch('', 'Headphone'); // Hiển thị sản phẩm Headphone
+            }}
           >
             Headphone
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Furniture' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Furniture')}
+          </Link>
+          <Link
+            to="/products/Furniture"
+            className={`navbar-category-btn ${location.pathname.includes('/Furniture') ? 'active' : ''}`}
+            onClick={() => {
+              setCategory('Furniture');
+              onSearch('', 'Furniture'); // Hiển thị sản phẩm Furniture
+            }}
           >
             Furniture
-          </button>
-        </div>
-      )}
-
-      {/* Hiển thị danh sách sản phẩm khi có kết quả tìm kiếm */}
-      {products && products.length > 0 && searchTerm && (
-        <div ref={productListRef} className="product-list">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <img src={product.image} alt={product.name} />
-              <h3>{product.name}</h3>
-              <p>{new Intl.NumberFormat('vi-VN').format(product.price)} VND</p>
-              <Link to={`/product/${product.id}`}>
-                <button className="buy-product-btn">View Details</button>
-              </Link>
-            </div>
-          ))}
+          </Link>
         </div>
       )}
     </nav>

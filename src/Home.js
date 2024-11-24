@@ -7,7 +7,7 @@ import Cart from './components/card';
 import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
-import Admin from './Auth/AdminPanel'; // Đảm bảo đường dẫn tới Admin Panel chính xác
+import Admin from './Auth/AdminPanel';
 import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
@@ -25,10 +25,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 10;
     const [bestSellingProducts, setBestSellingProducts] = useState([]);
-    const [minPrice, setMinPrice] = useState(0);
-    const [maxPrice, setMaxPrice] = useState(50000000);
     const { isLogin, currentUser } = useUserContext();
-    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     useEffect(() => {
         setBestSellingProducts(getBestSellingProducts(products));
@@ -66,22 +63,7 @@ const Home = () => {
         setCart([]);
     };
 
-    const filterProductsByPrice = (min, max) => {
-        return products.filter(product => product.price >= min && product.price <= max);
-    };
-
-    const handlePriceFilter = () => {
-        const filtered = filterProductsByPrice(minPrice, maxPrice);
-        setFilteredProducts(filtered);
-    };
-
-    const formatPrice = (price) => {
-        return price.toLocaleString('vi-VN', {
-            style: 'currency',
-            currency: 'VND',
-        });
-    };
-
+    // Các biến và hàm phân trang
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -109,7 +91,7 @@ const Home = () => {
                     <div className="best-selling">
                         <h2>Best selling products</h2>
                         <ProductList
-                            products={bestSellingProducts}
+                            products={bestSellingProducts.slice(0, 5)} // Hiển thị tối đa 5 sản phẩm
                         />
                     </div>
                 )}
@@ -131,7 +113,7 @@ const Home = () => {
                     <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
-                    <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} /> {/* Admin Panel */}
+                    <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} />
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
                 </Routes>
             </div>
