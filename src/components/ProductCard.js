@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalfAlt, faStar as faStarEmpty, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './components.css';
 
 // Hàm tạo sao
@@ -32,7 +32,9 @@ const ProductCard = ({ product }) => {
       <div className="product-card-footer">
         <div className="rating">{renderStars(product.rating)}</div>
         <Link to={`/product/${product.id}`}>
-          <button className="buy-product-btn">Buy</button>
+          <button className="add-to-cart-btn">
+            <FontAwesomeIcon icon={faShoppingCart} /> {/* Biểu tượng giỏ hàng */}
+          </button>
         </Link>
       </div>
     </div>

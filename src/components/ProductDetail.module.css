@@ -73,3 +73,26 @@
 .productInfo .backToHomeBtn:hover {
   background-color: #dc3545;
 }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Tối hơn để làm nổi bật ảnh */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent img {
+  width: 100%; /* Chiều rộng đầy màn hình */
+  height: 100%; /* Chiều cao đầy màn hình */
+  object-fit: contain; /* Giữ tỷ lệ ảnh */
+  background-color: black; /* Đảm bảo không có vùng trống xung quanh ảnh */
+}
+
+.modal:hover {
+  cursor: pointer;
+}

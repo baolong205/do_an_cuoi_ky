@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './ProductDetail.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,7 @@ import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-
 const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isModalOpen, setModalOpen] = useState(false); // Trạng thái mở/đóng modal
 
   // Tìm sản phẩm theo ID
   const product = products.find((p) => p.id === parseInt(id));
@@ -23,23 +24,20 @@ const ProductDetail = ({ products, addToCart }) => {
 
   // Hàm tạo sao với màu sắc và xử lý sao nửa
   const renderStars = (rating) => {
-    const fullStars = Math.floor(rating); // Số sao đầy đủ
-    const halfStar = rating % 1 !== 0; // Kiểm tra có sao nửa không
-    const emptyStars = 5 - Math.ceil(rating); // Số sao rỗng
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+    const emptyStars = 5 - Math.ceil(rating);
 
     let stars = [];
 
-    // Thêm sao đầy
     for (let i = 0; i < fullStars; i++) {
       stars.push(<FontAwesomeIcon key={`full-${i}`} icon={faStar} style={{ color: 'gold' }} />);
     }
 
-    // Thêm sao nửa nếu có
     if (halfStar) {
       stars.push(<FontAwesomeIcon key="half" icon={faStarHalfAlt} style={{ color: 'gold' }} />);
     }
 
-    // Thêm sao rỗng
     for (let i = 0; i < emptyStars; i++) {
       stars.push(<FontAwesomeIcon key={`empty-${i}`} icon={faStarEmpty} style={{ color: '#d3d3d3' }} />);
     }
@@ -50,7 +48,13 @@ const ProductDetail = ({ products, addToCart }) => {
   return (
     <div className={styles.productDetail}>
       <div className={styles.productImage}>
-        <img src={product.image} alt={product.name} loading="lazy" />
+        <img
+          src={product.image}
+          alt={product.name}
+          loading="lazy"
+          onClick={() => setModalOpen(true)} // Mở modal khi nhấp vào ảnh
+          style={{ cursor: 'pointer' }}
+        />
       </div>
       <div className={styles.productInfo}>
         <h2>{product.name}</h2>
@@ -82,6 +86,15 @@ const ProductDetail = ({ products, addToCart }) => {
           Back
         </button>
       </div>
+
+      {/* Modal hiển thị ảnh full */}
+      {isModalOpen && (
+        <div className={styles.modal} onClick={() => setModalOpen(false)}>
+          <div className={styles.modalContent}>
+            <img src={product.image} alt={product.name} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -8,8 +8,22 @@ const Checkout = ({ cartItems, clearCart }) => {
     phone: "",
     address: "",
     paymentMethod: "cash",
+    cardNumber: "",
+    cardExpiry: "",
+    cardCVV: "",
+    bankAccount: "",
+    selectedBank: "",  // Trường chọn ngân hàng
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  // Danh sách các ngân hàng
+  const banks = [
+    { id: "vietcombank", name: "Vietcombank" },
+    { id: "techcombank", name: "Techcombank" },
+    { id: "bidv", name: "BIDV" },
+    { id: "agribank", name: "Agribank" },
+    { id: "mbbank", name: "MB Bank" },
+  ];
 
   // Tính tổng tiền với giá sau khi giảm
   const totalAmount = cartItems.reduce((total, item) => {
@@ -30,20 +44,25 @@ const Checkout = ({ cartItems, clearCart }) => {
     setCustomerInfo({ ...customerInfo, [name]: value });
   };
 
+  // Xử lý thay đổi phương thức thanh toán
+  const handlePaymentMethodChange = (e) => {
+    setCustomerInfo({ ...customerInfo, paymentMethod: e.target.value });
+  };
+
   // Xử lý đặt hàng
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
       setShowSuccessMessage(true); // Hiển thị thông báo thành công
-      setTimeout(() => setShowSuccessMessage(false), 10000); // Ẩn thông báo sau 10 giây
+      setTimeout(() => setShowSuccessMessage(false), 5000); // Ẩn thông báo sau 10 giây
       clearCart(); // Xóa giỏ hàng
     } else {
-      alert("Please fill in all the shipping information!");
+      alert("Vui lòng điền đầy đủ thông tin giao hàng!");
     }
   };
 
   return (
     <div className="checkout">
-      <h2>Checkout</h2>
+      <h2>Thanh Toán</h2>
 
       {showSuccessMessage && (
         <div className="success-message">
@@ -55,9 +74,9 @@ const Checkout = ({ cartItems, clearCart }) => {
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <p>Your cart is currently empty!</p>
+          <p>Giỏ hàng của bạn hiện tại trống!</p>
           <Link to="/" className="continue-shopping-btn">
-            Continue Shopping
+            Tiếp tục mua sắm
           </Link>
         </div>
       ) : (
@@ -79,14 +98,14 @@ const Checkout = ({ cartItems, clearCart }) => {
                   <div className="checkout-item-details">
                     <p className="checkout-item-name">{item.name}</p>
                     <p className="checkout-item-prices">
-                      Original Price:{" "}
+                      Giá Gốc:{" "}
                       <span className="original-price">
                         {formatCurrency(item.price)}
                       </span>
                       {item.discount && (
                         <>
                           {" "}
-                          | Discounted Price:{" "}
+                          | Giá Sau Giảm:{" "}
                           <span className="discounted-price">
                             {formatCurrency(discountedPrice)}
                           </span>
@@ -94,10 +113,10 @@ const Checkout = ({ cartItems, clearCart }) => {
                       )}
                     </p>
                     <p className="checkout-item-quantity">
-                      Quantity: {item.quantity}
+                      Số Lượng: {item.quantity}
                     </p>
                     <p className="checkout-item-total">
-                      Total: {formatCurrency(discountedPrice * item.quantity)}
+                      Tổng Cộng: {formatCurrency(discountedPrice * item.quantity)}
                     </p>
                   </div>
                 </div>
@@ -107,59 +126,129 @@ const Checkout = ({ cartItems, clearCart }) => {
 
           {/* Thông tin giao hàng */}
           <div className="checkout-form">
-            <h3>Shipping Information</h3>
+            <h3>Thông Tin Giao Hàng</h3>
             <div className="form-group">
-              <label htmlFor="name">Full Name:</label>
+              <label htmlFor="name">Họ và Tên:</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={customerInfo.name}
                 onChange={handleInputChange}
-                placeholder="Enter your full name"
+                placeholder="Nhập họ và tên của bạn"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Phone Number:</label>
+              <label htmlFor="phone">Số Điện Thoại:</label>
               <input
                 type="text"
                 id="phone"
                 name="phone"
                 value={customerInfo.phone}
                 onChange={handleInputChange}
-                placeholder="Enter your phone number"
+                placeholder="Nhập số điện thoại của bạn"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="address">Address:</label>
+              <label htmlFor="address">Địa Chỉ:</label>
               <input
                 type="text"
                 id="address"
                 name="address"
                 value={customerInfo.address}
                 onChange={handleInputChange}
-                placeholder="Enter your shipping address"
+                placeholder="Nhập địa chỉ giao hàng"
               />
             </div>
             <div className="form-group">
-              <label>Payment Method:</label>
+              <label>Phương Thức Thanh Toán:</label>
               <select
                 name="paymentMethod"
                 value={customerInfo.paymentMethod}
-                onChange={handleInputChange}
+                onChange={handlePaymentMethodChange}
               >
-                <option value="cash">Cash on Delivery</option>
-                <option value="card">Credit/Debit Card</option>
-                <option value="e-wallet">E-Wallet</option>
+                <option value="cash">Thanh Toán Khi Nhận Hàng</option>
+                <option value="card">Thẻ Tín Dụng/Ghi Nợ</option>
+                <option value="bank">Thanh toán qua ngân hàng</option>
               </select>
             </div>
+
+            {/* Thông tin thanh toán */}
+            {customerInfo.paymentMethod === "card" && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="cardNumber">Số Thẻ:</label>
+                  <input
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    value={customerInfo.cardNumber}
+                    onChange={handleInputChange}
+                    placeholder="Nhập số thẻ của bạn"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cardExpiry">Ngày Hết Hạn:</label>
+                  <input
+                    type="text"
+                    id="cardExpiry"
+                    name="cardExpiry"
+                    value={customerInfo.cardExpiry}
+                    onChange={handleInputChange}
+                    placeholder="Nhập ngày hết hạn thẻ"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="cardCVV">CVV:</label>
+                  <input
+                    type="text"
+                    id="cardCVV"
+                    name="cardCVV"
+                    value={customerInfo.cardCVV}
+                    onChange={handleInputChange}
+                    placeholder="Nhập mã CVV"
+                  />
+                </div>
+              </>
+            )}
+
+            {customerInfo.paymentMethod === "bank" && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="selectedBank">Chọn Ngân Hàng:</label>
+                  <select
+                    name="selectedBank"
+                    value={customerInfo.selectedBank}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Chọn ngân hàng</option>
+                    {banks.map((bank) => (
+                      <option key={bank.id} value={bank.id}>
+                        {bank.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="bankAccount">Số Tài Khoản Ngân Hàng:</label>
+                  <input
+                    type="text"
+                    id="bankAccount"
+                    name="bankAccount"
+                    value={customerInfo.bankAccount}
+                    onChange={handleInputChange}
+                    placeholder="Nhập số tài khoản ngân hàng của bạn"
+                  />
+                </div>
+              </>
+            )}
           </div>
 
           {/* Tổng tiền và nút đặt hàng */}
           <div className="checkout-summary">
-            <h3>Total Amount: {formatCurrency(totalAmount)}</h3>
+            <h3>Tổng Tiền: {formatCurrency(totalAmount)}</h3>
             <button className="proceed-payment-btn" onClick={handlePlaceOrder}>
-              Place Order
+              Đặt Hàng
             </button>
           </div>
         </>
