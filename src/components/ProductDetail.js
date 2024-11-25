@@ -14,7 +14,7 @@ const ProductDetail = ({ products, addToCart }) => {
 
   // Nếu không tìm thấy sản phẩm, hiển thị thông báo
   if (!product) {
-    return <p>Product not found!</p>;
+    return <p>Không tìm thấy sản phẩm!</p>;
   }
 
   // Tính giá đã giảm (nếu có)
@@ -69,21 +69,21 @@ const ProductDetail = ({ products, addToCart }) => {
           {new Intl.NumberFormat('vi-VN').format(discountedPrice)} VND
         </p>
         <p>
-          <strong>Rating: </strong>
+          <strong>Đánh giá: </strong>
           <span className={styles.starRating}>
             {renderStars(product.rating)}
           </span>
-          ({product.rating} out of 5)
+          ({product.rating} trên 5)
         </p>
-        <p>{product.stock} in stock</p>
+        <p>{product.stock} sản phẩm còn lại</p>
         <div className="product-description">
-          <p><strong>Description:</strong> {product.description}</p>
+          <p><strong>Mô tả:</strong> {product.description}</p>
         </div>
         <button onClick={() => addToCart(product)} className={styles.addToCartBtn}>
-          Add to Cart
+          Thêm vào giỏ hàng
         </button>
         <button onClick={() => navigate('/')} className={styles.backToHomeBtn}>
-          Back
+          Quay lại trang chủ
         </button>
       </div>
 

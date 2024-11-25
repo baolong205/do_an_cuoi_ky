@@ -1,21 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 
-const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm }) => {
-  const location = useLocation(); // Lấy vị trí hiện tại
+const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) => {
+  const [searchSuggestions, setSearchSuggestions] = useState([]); // Lưu trữ gợi ý tìm kiếm
+  const location = useLocation();
+
   const handleSearch = () => {
     onSearch(searchTerm, "All"); // Tìm kiếm tất cả sản phẩm khi nhấn nút tìm kiếm
+  
+    // Cuộn xuống phần sản phẩm
+    const productSection = document.getElementById("products-section");
+    if (productSection) {
+      productSection.scrollIntoView({ behavior: "smooth" }); // Cuộn mượt đến phần sản phẩm
+    }
   };
+  
 
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
-    onSearch(e.target.value, "All");
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value, "All");
+
+    // Kiểm tra nếu products tồn tại và là mảng trước khi sử dụng filter
+    if (value) {
+      const suggestions = Array.isArray(products) ? products.filter(product =>
+        product.name.toLowerCase().includes(value.toLowerCase())
+      ).slice(0, 5) : []; // Giới hạn 5 gợi ý
+      setSearchSuggestions(suggestions);
+    } else {
+      setSearchSuggestions([]); // Nếu không có giá trị, xóa gợi ý
+    }
   };
 
-  // Kiểm tra nếu đang ở trang /account
   const isAccountPage = location.pathname === "/account";
 
   return (
@@ -36,6 +55,22 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm }) => {
           <button className="navbar-search-button" onClick={handleSearch}>
             <FontAwesomeIcon icon={faSearch} />
           </button>
+
+          {/* Hiển thị gợi ý tìm kiếm nếu có */}
+          {searchSuggestions.length > 0 && (
+            <div className="search-suggestions">
+              {searchSuggestions.map((suggestion, index) => (
+                <Link 
+                  to={`/product/${suggestion.id}`} 
+                  key={index} 
+                  className="search-suggestion-item"
+                  onClick={() => onSearch(suggestion.name, "All")}
+                >
+                  {suggestion.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="navbar-links">
