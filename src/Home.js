@@ -22,7 +22,6 @@ const Home = () => {
   const [category, setCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);  // State mới để lưu kết quả tìm kiếm thu nhỏ
   const { isLogin, currentUser } = useUserContext();
 
   useEffect(() => {
@@ -33,8 +32,7 @@ const Home = () => {
 
   const handleSearch = (searchTerm, category) => {
     const result = filterProducts(products, searchTerm, category);
-    setFilteredProducts(result);
-    setSearchResults(result);  // Cập nhật kết quả tìm kiếm thu nhỏ
+    setFilteredProducts(result); // Cập nhật danh sách sản phẩm sau khi lọc
   };
 
   const handleAddToCart = (product) => {
@@ -78,21 +76,12 @@ const Home = () => {
             />
           </div>
         )}
-        {searchTerm && (
-          <div className="search-results">
-            <h3>Kết quả tìm kiếm</h3>
-            <ProductList
-              products={searchResults.slice(0, 5)}  // Hiển thị tối đa 5 sản phẩm tìm kiếm
-              addToCart={handleAddToCart}
-            />
-          </div>
-        )}
         <Routes>
           <Route
             path="/"
             element={
               <ProductList
-                products={filteredProducts}  // Tất cả sản phẩm sau khi lọc
+                products={filteredProducts} // Tất cả sản phẩm sau khi lọc
                 addToCart={handleAddToCart}
               />
             }
