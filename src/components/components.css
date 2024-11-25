@@ -196,10 +196,3 @@ button:focus {
 }
 
 /* Định dạng danh sách sản phẩm */
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  margin: 20px 0;
-  padding: 0 10px;
-}

@@ -454,17 +454,13 @@ const products = [
 
 // Lọc sản phẩm theo từ khóa và danh mục
 export const filterProducts = (products, searchTerm, category) => {
-    let filtered = [...products];
-    if (category !== 'All') {
-        filtered = filtered.filter(product => product.category === category);
-    }
-    if (searchTerm) {
-        filtered = filtered.filter(product =>
-            product.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    }
-    return filtered;
-};
+    return products.filter(product => {
+      const matchesCategory = category === 'All' || product.category === category;
+      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  };
+  
 
 
 // Thêm sản phẩm vào giỏ hàng
