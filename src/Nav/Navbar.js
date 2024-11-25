@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import './Navbar.css';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import "./Navbar.css";
 
 const Navbar = ({ onSearch, setCategory }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation(); // Lấy vị trí hiện tại
 
   const handleSearch = () => {
-    onSearch(searchTerm, '');
+    onSearch(searchTerm, "");
   };
 
   // Kiểm tra nếu đang ở trang /account
-  const isAccountPage = location.pathname === '/account';
+  const isAccountPage = location.pathname === "/account";
 
   return (
     <nav>
@@ -36,8 +36,12 @@ const Navbar = ({ onSearch, setCategory }) => {
         </div>
 
         <div className="navbar-links">
-          <Link to="/account" className="navbar-link">Account</Link>
-          <Link to="/about" className="navbar-link">About</Link>
+          <Link to="/account" className="navbar-link">
+            Account
+          </Link>
+          <Link to="/about" className="navbar-link">
+            About
+          </Link>
           <Link to="/cart" className="navbar-link">
             <i className="fas fa-shopping-cart"></i> Cart
           </Link>
@@ -48,53 +52,63 @@ const Navbar = ({ onSearch, setCategory }) => {
         <div className="navbar-category-buttons">
           <Link
             to="/"
-            className={`navbar-category-btn ${location.pathname === '/' ? 'active' : ''}`}
+            className={`navbar-category-btn ${
+              location.pathname === "/" ? "active" : ""
+            }`}
             onClick={() => {
-              setCategory('All');
-              onSearch('', 'All'); // Hiển thị tất cả sản phẩm
+              setCategory("All");
+              onSearch("", "All"); // Hiển thị tất cả sản phẩm
             }}
           >
             Home
           </Link>
           <Link
             to="/products/Phone"
-            className={`navbar-category-btn ${location.pathname.includes('/Phone') ? 'active' : ''}`}
+            className={`navbar-category-btn ${
+              location.pathname.includes("/Phone") ? "active" : ""
+            }`}
             onClick={() => {
-              setCategory('Phone');
-              onSearch('', 'Phone'); // Hiển thị sản phẩm Phone
+              setCategory("Phone");
+              onSearch("", "Phone"); // Hiển thị sản phẩm Phone
             }}
           >
             Phone
           </Link>
           <Link
             to="/products/Laptop"
-            className={`navbar-category-btn ${location.pathname.includes('/Laptop') ? 'active' : ''}`}
+            className={`navbar-category-btn ${
+              location.pathname.includes("/Laptop") ? "active" : ""
+            }`}
             onClick={() => {
-              setCategory('Laptop');
-              onSearch('', 'Laptop'); // Hiển thị sản phẩm Laptop
+              setCategory("Laptop");
+              onSearch("", "Laptop"); // Hiển thị sản phẩm Laptop
             }}
           >
             Laptop
           </Link>
           <Link
             to="/products/Headphone"
-            className={`navbar-category-btn ${location.pathname.includes('/Headphone') ? 'active' : ''}`}
+            className={`navbar-category-btn ${
+              location.pathname.includes("/Headphone") ? "active" : ""
+            }`}
             onClick={() => {
-              setCategory('Headphone');
-              onSearch('', 'Headphone'); // Hiển thị sản phẩm Headphone
+              setCategory("Headphone");
+              onSearch("", "Headphone"); // Hiển thị sản phẩm Headphone
             }}
           >
             Headphone
           </Link>
           <Link
-            to="/products/Furniture"
-            className={`navbar-category-btn ${location.pathname.includes('/Furniture') ? 'active' : ''}`}
+            to="/products/Keyboard"
+            className={`navbar-category-btn ${
+              location.pathname.includes("/Keyboard") ? "active" : ""
+            }`}
             onClick={() => {
-              setCategory('Furniture');
-              onSearch('', 'Furniture'); // Hiển thị sản phẩm Furniture
+              setCategory("Keyboard");
+              onSearch("", "Keyboard"); // Hiển thị sản phẩm Keyboard
             }}
           >
-            Furniture
+            Keyboard
           </Link>
         </div>
       )}

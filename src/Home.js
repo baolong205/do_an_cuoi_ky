@@ -12,7 +12,7 @@ import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
 import products, { filterProducts, addToCart, removeFromCart, getBestSellingProducts } from './Data/ProductData';
-import './Home.css';
+import './components/ProductList.css';
 import { useUserContext } from './UserContext';
 
 const Home = () => {
@@ -22,14 +22,7 @@ const Home = () => {
     const [category, setCategory] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
     const [cart, setCart] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 10;
-    const [bestSellingProducts, setBestSellingProducts] = useState([]);
     const { isLogin, currentUser } = useUserContext();
-
-    useEffect(() => {
-        setBestSellingProducts(getBestSellingProducts(products));
-    }, []);
 
     useEffect(() => {
         if (!isLogin && (location.pathname === "/cart" || location.pathname === "/checkout")) {
@@ -63,19 +56,6 @@ const Home = () => {
         setCart([]);
     };
 
-    // Các biến và hàm phân trang
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-
-    const nextPage = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
-
-    const prevPage = () => {
-        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-    };
-
     return (
         <>
             <Navbar
@@ -89,9 +69,10 @@ const Home = () => {
             <div className="app">
                 {location.pathname === "/" && (
                     <div className="best-selling">
-                        <h2>Best selling products</h2>
+                        <h2>Sản Phẩm Bán Chạy</h2>
                         <ProductList
-                            products={bestSellingProducts.slice(0, 5)} // Hiển thị tối đa 5 sản phẩm
+                            products={getBestSellingProducts(products).slice(0, 4)} // Hiển thị tối đa 5 sản phẩm
+                            addToCart={handleAddToCart}
                         />
                     </div>
                 )}
@@ -100,12 +81,8 @@ const Home = () => {
                         path="/"
                         element={
                             <ProductList
-                                products={currentProducts}
+                                products={filteredProducts} // Tất cả sản phẩm sau khi lọc
                                 addToCart={handleAddToCart}
-                                currentPage={currentPage}
-                                nextPage={nextPage}
-                                prevPage={prevPage}
-                                hasNextPage={indexOfLastProduct < filteredProducts.length}
                             />
                         }
                     />
@@ -115,6 +92,26 @@ const Home = () => {
                     <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
                     <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} />
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
+                    
+                    {/* Routes cho các danh mục */}
+                    <Route
+                        path="/products/Headphone"
+                        element={
+                            <ProductList
+                                products={filteredProducts.filter(product => product.category === 'Headphone')}
+                                addToCart={handleAddToCart}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/products/Keyboard"
+                        element={
+                            <ProductList
+                                products={filteredProducts.filter(product => product.category === 'Keyboard')}
+                                addToCart={handleAddToCart}
+                            />
+                        }
+                    />
                 </Routes>
             </div>
             <Footer />
