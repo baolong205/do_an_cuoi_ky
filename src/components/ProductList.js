@@ -1,39 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ProductCard from './ProductCard';
-import "./ProductList.css";
+import './ProductList.css';
 
 const ProductList = ({ products = [], addToCart, bestSellers = [] }) => {
   const [visibleProducts, setVisibleProducts] = useState([]); // Danh sách sản phẩm hiển thị
-  const [visibleBestSellers, setVisibleBestSellers] = useState([]); // Danh sách sản phẩm bán chạy hiển thị
   const [currentIndex, setCurrentIndex] = useState(10); // Chỉ số của sản phẩm tiếp theo để hiển thị
   const itemsPerPage = 10; // Số sản phẩm tải thêm mỗi lần
 
-  // Cập nhật danh sách sản phẩm khi có thay đổi trong props
-  useEffect(() => {
-    setVisibleProducts(products.slice(0, itemsPerPage));
-    setVisibleBestSellers(bestSellers.slice(0, itemsPerPage));
-  }, [products, bestSellers]);
+  // Hàm lấy sản phẩm và phân trang
+  const getVisibleProducts = useCallback(() => {
+    return products.slice(0, currentIndex);
+  }, [products, currentIndex]);
 
-  // Hàm "Xem thêm" để tải thêm sản phẩm
+  useEffect(() => {
+    setVisibleProducts(getVisibleProducts()); // Lấy sản phẩm hiển thị mỗi khi sản phẩm thay đổi
+  }, [getVisibleProducts]);
+
   const loadMore = () => {
-    if (currentIndex < products.length) {
-      const nextIndex = currentIndex + itemsPerPage;
-      setVisibleProducts((prevVisibleProducts) => [
-        ...prevVisibleProducts,
-        ...products.slice(currentIndex, nextIndex),
-      ]);
-      setCurrentIndex(nextIndex); // Cập nhật chỉ số của sản phẩm tiếp theo
-    }
+    setCurrentIndex(prevIndex => prevIndex + itemsPerPage); // Tải thêm sản phẩm
   };
 
   return (
     <div className="product-list">
-      {/* Hiển thị sản phẩm bán chạy */}
+      {/* Hiển thị sản phẩm bán chạy (không lọc theo giá) */}
       {bestSellers && bestSellers.length > 0 && (
         <div className="best-sellers">
           <h2>Sản phẩm bán chạy</h2>
           <div className="product-list">
-            {visibleBestSellers.map((product) => (
+            {bestSellers.map((product) => (
               <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))}
           </div>
@@ -42,7 +36,11 @@ const ProductList = ({ products = [], addToCart, bestSellers = [] }) => {
 
       {/* Hiển thị sản phẩm */}
       {visibleProducts.map((product) => (
-        <ProductCard key={product.id} product={product} addToCart={addToCart} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          addToCart={addToCart}
+        />
       ))}
 
       {/* Nút Xem thêm chỉ hiển thị nếu có sản phẩm còn lại để hiển thị */}
