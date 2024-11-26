@@ -7,7 +7,7 @@ import Cart from './components/card';
 import Checkout from './components/Checkout';
 import About from './components/About';
 import Account from './Auth/Account';
-import Admin from './Auth/AdminPanel'; // Đảm bảo đường dẫn tới Admin Panel chính xác
+import Admin from './Auth/AdminPanel';
 import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
@@ -22,8 +22,7 @@ const Home = () => {
     const [category, setCategory] = useState('All');
     const [searchTerm, setSearchTerm] = useState('');
     const [cart, setCart] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 10;
+    const [visibleCount, setVisibleCount] = useState(20); // Initial products visible
     const [bestSellingProducts, setBestSellingProducts] = useState([]);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(50000000);
@@ -82,47 +81,46 @@ const Home = () => {
         });
     };
 
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-
-    const nextPage = () => {
-        setCurrentPage((prevPage) => prevPage + 1);
-    };
-
-    const prevPage = () => {
-        setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+    const handleSeeMore = () => {
+        setVisibleCount(visibleCount + 20); // Load more products
     };
 
     return (
         <>
-            <Navbar
-                onSearch={handleSearch}
-                category={category}
-                setCategory={setCategory}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-            />
-            {location.pathname === "/" && <Banner />}
+            {!currentUser?.isAdmin && (
+                <Navbar
+                    onSearch={handleSearch}
+                    category={category}
+                    setCategory={setCategory}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                />
+            )}
+
+            {location.pathname === "/" && !currentUser?.isAdmin && <Banner />}
+
             <div className="app">
-                {location.pathname === "/" && (
+                {location.pathname === "/" && !currentUser?.isAdmin && (
                     <div className="best-selling">
                         <h2>Best selling products</h2>
                         <ProductList
                             products={bestSellingProducts}
+                            addToCart={handleAddToCart}
                         />
                     </div>
                 )}
 
-                <div
-                    className="filter-toggle"
-                    onClick={() => setIsFilterOpen(!isFilterOpen)}
-                    title="Filter by Price"
-                >
-                    <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span>
-                </div>
+                {!currentUser?.isAdmin && (
+                    <div
+                        className="filter-toggle"
+                        onClick={() => setIsFilterOpen(!isFilterOpen)}
+                        title="Filter by Price"
+                    >
+                        <span className="filter-icon">{isFilterOpen ? '-' : '+'}</span>
+                    </div>
+                )}
 
-                {isFilterOpen && (
+                {isFilterOpen && !currentUser?.isAdmin && (
                     <div className="price-filter">
                         <h3>Filter by Price</h3>
                         <div className="slider-container">
@@ -158,12 +156,8 @@ const Home = () => {
                         path="/"
                         element={
                             <ProductList
-                                products={currentProducts}
+                                products={filteredProducts.slice(0, visibleCount)}
                                 addToCart={handleAddToCart}
-                                currentPage={currentPage}
-                                nextPage={nextPage}
-                                prevPage={prevPage}
-                                hasNextPage={indexOfLastProduct < filteredProducts.length}
                             />
                         }
                     />
@@ -171,11 +165,19 @@ const Home = () => {
                     <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
-                    <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} /> {/* Admin Panel */}
+                    <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} />
                     <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
                 </Routes>
+
+                {/* Show See More Button */}
+                {filteredProducts.length > visibleCount && (
+                    <button className="see-more-btn" onClick={handleSeeMore}>
+                        See More
+                    </button>
+                )}
             </div>
-            <Footer />
+
+            {!currentUser?.isAdmin && <Footer />}
         </>
     );
 };

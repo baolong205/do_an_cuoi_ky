@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./checkout.css";
 
@@ -10,6 +10,14 @@ const Checkout = ({ cartItems, clearCart }) => {
     paymentMethod: "cash",
   });
 
+  // Load saved customer info if available in localStorage
+  useEffect(() => {
+    const savedCustomerInfo = JSON.parse(localStorage.getItem("customerInfo"));
+    if (savedCustomerInfo) {
+      setCustomerInfo(savedCustomerInfo);
+    }
+  }, []);
+
   // Calculate the total amount based on discounted prices
   const totalAmount = cartItems.reduce((total, item) => {
     const discountedPrice = item.discount
@@ -20,7 +28,7 @@ const Checkout = ({ cartItems, clearCart }) => {
 
   // Format currency with dots as separators
   const formatCurrency = (amount) => {
-    return amount.toLocaleString("en-US") + "VND";
+    return amount.toLocaleString("en-US") + " VND";
   };
 
   // Handle customer information change
@@ -33,6 +41,10 @@ const Checkout = ({ cartItems, clearCart }) => {
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
       alert("Your order has been placed successfully!");
+
+      // Save customer info to localStorage
+      localStorage.setItem("customerInfo", JSON.stringify(customerInfo));
+
       clearCart();  // Call clearCart to remove items from the cart
     } else {
       alert("Please fill in all the shipping information!");
@@ -144,6 +156,7 @@ const Checkout = ({ cartItems, clearCart }) => {
               </select>
             </div>
           </div>
+
           {customerInfo.paymentMethod === "card" && (
             <div className="payment-card-details">
               <div className="form-group">
@@ -203,6 +216,7 @@ const Checkout = ({ cartItems, clearCart }) => {
               </div>
             </div>
           )}
+
           {/* Order Summary */}
           <div className="checkout-summary">
             <h3>Total Amount: {formatCurrency(totalAmount)}</h3>

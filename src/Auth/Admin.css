@@ -1,144 +1,284 @@
-/* Tổng quan admin panel */
+/* Admin.css */
 .admin-panel {
-  max-width: 800px;
-  margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
 }
 
-/* Tiêu đề */
-.admin-panel h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 24px;
-}
-
-/* Thông báo */
-.notification {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-  border: 1px solid #c3e6cb;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: bold;
-}
-
-/* Form quản lý sản phẩm */
-.form-gz {
+.admin-content {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 20px;
 }
 
-.form-gz input,
-.form-gz textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  width: 100%;
-  box-sizing: border-box;
+.left-column {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.form-gz textarea {
-  resize: vertical;
-  min-height: 80px;
+.right-column {
+  flex: 2;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.form-gz button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.left-column h3 {
+  text-align: center;
 }
 
-.form-gz button:hover {
-  background-color: #0056b3;
-}
-
-.form-gz button:nth-child(2) {
-  background-color: #6c757d;
-}
-
-.form-gz button:nth-child(2):hover {
-  background-color: #5a6268;
-}
-
-/* Danh sách sản phẩm */
-.product-lists {
-  list-style: none;
+.left-column ul {
+  list-style-type: none;
   padding: 0;
-  margin: 0;
+}
+
+.left-column ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.left-column ul li:hover {
+  background-color: #ddd;
+}
+
+.product-form input,
+.product-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.product-list {
+  list-style-type: none;
+  padding: 0;
 }
 
 .product-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 
-.product-info {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.product-actions button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
-.product-info img {
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.edit-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
-.product-info span {
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.notification {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* CSS for Account Management */
+.account-management {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.account-management h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.account-management .notification {
+  background-color: #f0f8ff;
+  color: #333;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
   font-size: 16px;
-  font-weight: 500;
 }
 
-/* Nút chỉnh sửa và xóa */
-.product-actions {
+.account-management .new-user-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.account-management .new-user-form input,
+.account-management .new-user-form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.account-management .new-user-form input[type="text"],
+.account-management .new-user-form input[type="password"] {
+  width: calc(100% - 22px);
+}
+
+.account-management .new-user-form label {
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.account-management .new-user-form button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.account-management .new-user-form button:hover {
+  background-color: #45a049;
+}
+
+.account-management .user-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.account-management .user-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.account-management .user-item span {
+  font-size: 16px;
+  color: #333;
+}
+
+.account-management .user-item button {
+  padding: 8px 12px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.account-management .user-item button:hover {
+  background-color: #e53935;
+}
+/* CSS for Order Management */
+.order-management {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.order-management h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.order-management h3 {
+  font-size: 20px;
+  margin-top: 30px;
+  color: #333;
+}
+
+.order-management .customer-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.order-management .customer-info p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
+}
+
+.order-management .order-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-management .order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.order-management .order-info {
+  font-size: 16px;
+  color: #333;
+}
+
+.order-management .order-actions {
   display: flex;
   gap: 10px;
 }
 
-.product-actions button {
-  padding: 5px 10px;
-  font-size: 14px;
+.order-management .order-actions button {
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.product-actions button:hover {
-  opacity: 0.9;
+.order-management .order-actions button:hover {
+  background-color: #45a049;
 }
 
-.product-actions .edit-btn {
-  background-color: #ffc107;
-  color: white;
+.order-management .order-actions button.ship {
+  background-color: #2196f3;
 }
 
-.product-actions .edit-btn:hover {
-  background-color: #e0a800;
+.order-management .order-actions button.ship:hover {
+  background-color: #1976d2;
 }
 
-.product-actions .delete-btn {
-  background-color: #dc3545;
-  color: white;
+.order-management .order-actions button.view {
+  background-color: #ff9800;
 }
 
-.product-actions .delete-btn:hover {
-  background-color: #c82333;
+.order-management .order-actions button.view:hover {
+  background-color: #fb8c00;
 }

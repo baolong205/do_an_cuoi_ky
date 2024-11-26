@@ -1,0 +1,43 @@
+/* AdminNav.css */
+.admin-navbar {
+  background-color: #333; /* Background color of navbar */
+  padding: 10px 20px; /* Add padding */
+  display: flex;
+  justify-content: space-between; /* Distribute items to both sides */
+  align-items: center; /* Vertically center items */
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  margin-right: 20px; /* Add space between items */
+}
+
+.nav-list li a {
+  color: white; /* Text color for links */
+  text-decoration: none; /* Remove underline from links */
+  font-weight: bold;
+}
+
+.welcome-message {
+  color: white; /* Set color of "Welcome, Admin" text */
+  font-size: 18px; /* Font size for the welcome text */
+}
+
+.logout {
+  margin-right: -1000px; /* This moves the logout link to the right */
+}
+
+.nav-list li:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+/* Optional: Add hover effect for the logout link */
+.nav-list li a:hover {
+  color: #f39c12; /* Change color of the logout link when hovered */
+}

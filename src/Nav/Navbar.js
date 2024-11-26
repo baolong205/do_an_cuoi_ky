@@ -66,7 +66,7 @@ const Navbar = ({ onSearch, category, setCategory, products }) => {
             className={`navbar-category-btn ${category === 'All' ? 'active' : ''}`}
             onClick={() => handleCategoryChange('All')}
           >
-            All
+            Home
           </button>
           <button
             className={`navbar-category-btn ${category === 'Phone' ? 'active' : ''}`}

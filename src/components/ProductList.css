@@ -1,34 +1,17 @@
-.product-sections {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px;
-  }
-  
-  .product-section {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-  }
-  
-  .section-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 15px;
-  }
-  
-  .pagination-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 10px;
-  }
-  
+.see-more-btn {
+  display: inline-block; /* Để nút hành xử như một liên kết */
+  text-decoration: none; /* Loại bỏ gạch dưới */
+  color: #007bff; /* Màu giống liên kết */
+  background: none; /* Không có nền */
+  border: none; /* Không có viền */
+  font-size: 16px; /* Kích thước chữ */
+  cursor: pointer; /* Chỉ báo con trỏ chuột */
+  margin-top: 20px; /* Khoảng cách phía trên */
+  text-align: center; /* Căn giữa */
+  font-weight: bold; /* Chữ đậm */
+}
+
+.see-more-btn:hover {
+  color: #0056b3; /* Màu khi hover */
+  text-decoration: underline; /* Gạch dưới khi hover */
+}
