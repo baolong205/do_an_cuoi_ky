@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./checkout.css";
 
@@ -15,6 +15,15 @@ const Checkout = ({ cartItems, clearCart }) => {
     selectedBank: "",  // Trường chọn ngân hàng
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // Load saved customer info if available in localStorage
+  useEffect(() => {
+    const savedCustomerInfo = JSON.parse(localStorage.getItem("customerInfo"));
+    if (savedCustomerInfo) {
+      setCustomerInfo(savedCustomerInfo);
+    }
+  }, []);
+
+  // Calculate the total amount based on discounted prices
 
   // Danh sách các ngân hàng
   const banks = [
@@ -52,9 +61,12 @@ const Checkout = ({ cartItems, clearCart }) => {
   // Xử lý đặt hàng
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
-      setShowSuccessMessage(true); // Hiển thị thông báo thành công
-      setTimeout(() => setShowSuccessMessage(false), 5000); // Ẩn thông báo sau 10 giây
-      clearCart(); // Xóa giỏ hàng
+      alert("Your order has been placed successfully!");
+
+      // Save customer info to localStorage
+      localStorage.setItem("customerInfo", JSON.stringify(customerInfo));
+
+      clearCart();  // Call clearCart to remove items from the cart
     } else {
       alert("Vui lòng điền đầy đủ thông tin giao hàng!");
     }
@@ -245,6 +257,7 @@ const Checkout = ({ cartItems, clearCart }) => {
           </div>
 
           {/* Tổng tiền và nút đặt hàng */}
+
           <div className="checkout-summary">
             <h3>Tổng Tiền: {formatCurrency(totalAmount)}</h3>
             <button className="proceed-payment-btn" onClick={handlePlaceOrder}>

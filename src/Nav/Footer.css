@@ -1,109 +1,109 @@
 /* General styling for footer */
 .footer {
-    background-color: #fff;
-    color: #333;
-    padding: 40px 20px;
-    text-align: center;
-    border-top: 3px solid #ccc;
-  }
-  
+  background-color: #283646; /* Giữ màu nền */
+  color: #ffffff; /* Màu chữ trắng */
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 3px solid #ccc;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.footer-section {
+  flex: 1 1 250px; /* Đảm bảo các phần footer co giãn phù hợp */
+  margin: 10px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff; /* Màu chữ tiêu đề */
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin: 5px 0;
+}
+
+.footer-section a {
+  color: #ffffff; /* Màu chữ link trắng */
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline; /* Hiệu ứng hover */
+}
+
+.footer-section form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.footer-section input[type="email"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 70%;
+  font-size: 14px;
+}
+
+.footer-section button {
+  padding: 10px 20px;
+  background-color: #007bff; /* Nút subscribe */
+  color: white; /* Màu chữ trắng */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-section button:hover {
+  background-color: #0056b3; /* Hiệu ứng hover nút */
+}
+
+/* Footer bottom text */
+.footer-bottom {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #ffffff; /* Màu chữ trắng */
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
   .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 30px;
-  }
-  
-  .footer-section {
-    flex: 1 1 250px;
-    margin: 10px;
-  }
-  
-  .footer-section h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px; /* Controls the space between title and items */
-   
-  }
-  
-  .footer-section ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 5px; /* Adjusts space between title and list items */
-  }
-  
-  .footer-section li {
-    margin: 5px 0;
-  }
-  
-  .footer-section a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .footer-section a:hover {
-    text-decoration: underline;
-  }
-  
-  .footer-section form {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* Chuyển thành cột trên màn hình nhỏ */
     align-items: center;
-    margin-top: 20px;
   }
-  
-  .footer-section input[type="email"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 70%;
+
+  .footer-section {
+    margin-bottom: 20px;
+    text-align: center;
   }
-  
+
+  .footer-section form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-section input[type="email"],
   .footer-section button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 50%;
+    width: 100%;
+    margin-bottom: 10px;
   }
-  
-  .footer-section button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Footer bottom text */
-  .footer-bottom {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #777;
-  }
-  
-  .footer-bottom p {
-    margin: 0;
-  }
-  
-  /* Media Query for smaller screens */
-  @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .footer-section {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-  
-    .footer-section form {
-      flex-direction: column;
-      align-items: stretch;
-    }
-  
-    .footer-section input[type="email"], .footer-section button {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-  
+}

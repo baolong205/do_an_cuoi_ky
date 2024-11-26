@@ -97,14 +97,11 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
             }}
           >
             Home
+          </button>
+          <button
+            className={`navbar-category-btn ${category === 'Phone' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('Phone')}
           </Link>
-          <Link
-            to="/products/Phone"
-            className={`navbar-category-btn ${location.pathname.includes("/Phone") ? "active" : ""}`}
-            onClick={() => {
-              setCategory("Phone");
-              onSearch("", "Phone"); // Hiển thị sản phẩm Phone
-            }}
           >
             Phone
           </Link>
