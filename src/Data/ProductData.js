@@ -120,6 +120,7 @@ const products = [
     rating: 4.4,
     stock: 35,
     discount: 0,
+    brand: "Dell",
   },
   {
     id: 12,
@@ -131,6 +132,7 @@ const products = [
     rating: 4.6,
     stock: 70,
     discount: 0.15,
+    brand: "ASUS"
   },
   {
     id: 13,
@@ -142,18 +144,9 @@ const products = [
     rating: 4.7,
     stock: 50,
     discount: 0.1,
+    brand: "Acer"
   },
-  {
-    id: 14,
-    name: "Sách Python cho người mới bắt đầu",
-    price: 350000,
-    category: "Books",
-    image: require("../assets/anh do-an/sach-lap-trinh-cho-nguoi-moi-bat-dau.jpg"),
-    description: "Cuốn sách dành cho người mới bắt đầu học lập trình Python.",
-    rating: 4.8,
-    stock: 100,
-    discount: 0.05,
-  },
+
   {
     id: 15,
     name: "Laptop Asus Gaming G731-VEV089T",
@@ -165,6 +158,7 @@ const products = [
     rating: 4.9,
     stock: 25,
     discount: 0.2,
+    brand: "ASUS",
   },
   {
     id: 16,
@@ -189,6 +183,7 @@ const products = [
     rating: 4.8,
     stock: 30,
     discount: 0.1,
+    brand: "Dell"
   },
   {
     id: 18,
@@ -201,18 +196,20 @@ const products = [
     rating: 4.9,
     stock: 15,
     discount: 0.15,
+    brand: "APPLE"
   },
   {
     id: 19,
-    name: "HP Spectre x360",
-    price: 22000000,
+    name: "Acer Asprie Lite 14",
+    price: 182000000,
     category: "Laptop",
-    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    image: require("../assets/Laptop/acer-aspire-lite-14-51m-59bn-i5-nxktxsv001-glr-2-750x500.jpg"),
     description:
       "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
+    brand: "Acer",
   },
   {
     id: 20,
@@ -490,6 +487,173 @@ const products = [
     stock: 13,
     discount: 0.07,
   },
+  {
+    id: 43,
+    name: "Acer Asprire 7",
+    price: 25000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/LaptopAcer Aspire 7.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "Acer"
+  },
+  {
+    id: 44,
+    name: "Acer Nitro AN515",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/acer-nitro-an515-58-773y-i7-12700h-nhqfksv00116g-2-638603105924516989-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "Acer"
+  },
+  {
+    id: 45,
+    name: "Asus TUF Gaming A15",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/asus-tuf-gaming-a15-fa506nf-r5-hn012w-glr-2-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "ASUS"
+  },
+  {
+    id: 46,
+    name: "Asus Vivobook",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/asus-vivobook-k3605zf-i5-rp745w-glr-2-638611359324594835-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "ASUS"
+  },
+  {
+    id: 47,
+    name: "HP 15",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/hp-15-fd0303tu-i3-a2nl4pa-glr-2-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "Dell"
+  },
+  {
+    id: 48,
+    name: "HP Pavilion",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/hp-pavilion-x360-14-ek2024tu-core-5-9z2v6pa-glr-2-638611372375476285-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "Dell"
+  },
+  {
+    id: 49,
+    name: "Lenovo Ideapad Slim 3",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/lenovo-ideapad-slim-3-15amn8-r5-82xq00j0vn-12-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "Lenovo"
+  },
+  {
+    id: 50,
+    name: "Macbook Air 13",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/macbook-air-13-inch-m3-16gb-256gb-8gpu-011124-123817-671-600x600.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "APPLE"
+  },
+  {
+    id: 51,
+    name: "Macbook Air M1",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/macbook-air-m1-2020-gray-600x600.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "APPLE"
+  },
+  {
+    id: 52,
+    name: "MSI GF63",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/msi-gf63-thin-12ve-i5-460vn-2-750x500.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: "Lenovo"
+  },
+  {
+    id: 53,
+    name: "HP Spectre x360",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+  },
+  {
+    id: 54,
+    name: "HP Spectre x360",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+  },
+  {
+    id: 55,
+    name: "HP Spectre x360",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    description:
+      "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+  },
+
 ];
 
 // Lọc sản phẩm theo từ khóa và danh mục
@@ -555,6 +719,12 @@ export const deleteProduct = (id) => {
   }
   return false; // Không tìm thấy sản phẩm để xóa
 };
+// searchByBrand.js
+
+export const searchByBrand = (products, brand) => {
+  return products.filter(product => product.brand && product.brand.toLowerCase() === brand.toLowerCase());
+};
+
 
 // Xuất các hàm
 export default products;

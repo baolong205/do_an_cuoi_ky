@@ -1,7 +1,8 @@
+// src/Home.js
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Nav/Navbar';
-import Banner from './components/banner';
+import LaptopPage from './Pages/LaptopPage';  // Import LaptopPage
 import ProductList from './components/ProductList';
 import Cart from './components/card';
 import Checkout from './components/Checkout';
@@ -11,7 +12,7 @@ import Admin from './Auth/AdminPanel';
 import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
 import Footer from './Nav/Footer';
-import products, { filterProducts, addToCart, removeFromCart, getBestSellingProducts } from './Data/ProductData';
+import products, { filterProducts, addToCart, removeFromCart } from './Data/ProductData';
 import './components/ProductList.css';
 import { useUserContext } from './UserContext';
 
@@ -56,68 +57,41 @@ const Home = () => {
     setCart([]);
   };
 
+  const isAdminPage = location.pathname.includes("/admin");
+
   return (
     <>
-      <Navbar
-        onSearch={handleSearch}
-        category={category}
-        setCategory={setCategory}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
-      {location.pathname === "/" && <Banner />}
-      <div className="app">
-        {location.pathname === "/" && (
-          <div className="best-selling">
-            <h2>Sản Phẩm Bán Chạy</h2>
-            <ProductList
-              products={getBestSellingProducts(products).slice(0, 4)} // Hiển thị tối đa 5 sản phẩm
-              addToCart={handleAddToCart}
-            />
-          </div>
-        )}
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <ProductList
-                products={filteredProducts} // Tất cả sản phẩm sau khi lọc
-                addToCart={handleAddToCart}
-              />
-            }
+      {/* Chỉ hiển thị Navbar và Footer nếu không phải trang Admin */}
+      {!isAdminPage && (
+        <>
+          <Navbar
+            onSearch={handleSearch}
+            category={category}
+            setCategory={setCategory}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            products={products}  // Pass products to Navbar
           />
+        </>
+      )}
+
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<ProductList products={filteredProducts} addToCart={handleAddToCart} />} />
+          <Route path="/laptops" element={<LaptopPage addToCart={handleAddToCart} />} /> {/* Route cho LaptopPage */}
           <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart} updateQuantity={handleUpdateQuantity} /> : <Account />} />
           <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
           <Route path="/about" element={<About />} />
           <Route path="/account" element={isLogin ? (currentUser?.isAdmin ? <Admin /> : <User />) : <Account />} />
           <Route path="/admin" element={isLogin && currentUser?.isAdmin ? <Admin /> : <Account />} />
           <Route path="/product/:id" element={<ProductDetail products={products} addToCart={handleAddToCart} />} />
-          
-          {/* Routes cho các danh mục */}
-          <Route
-            path="/products/Headphone"
-            element={
-              <ProductList
-                products={filteredProducts.filter(product => product.category === 'Headphone')}
-                addToCart={handleAddToCart}
-              />
-            }
-          />
-          <Route
-            path="/products/Keyboard"
-            element={
-              <ProductList
-                products={filteredProducts.filter(product => product.category === 'Keyboard')}
-                addToCart={handleAddToCart}
-              />
-            }
-          />
         </Routes>
       </div>
-      <Footer />
+
+      {/* Hiển thị Footer chỉ khi không phải trang Admin */}
+      {!isAdminPage && <Footer />}
     </>
   );
-
 };
 
 export default Home;

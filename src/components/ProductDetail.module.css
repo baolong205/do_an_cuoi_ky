@@ -96,3 +96,8 @@
 .modal:hover {
   cursor: pointer;
 }
+.successMessage {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}

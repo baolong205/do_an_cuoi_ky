@@ -3,11 +3,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styles from './ProductDetail.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
+import { useUserContext } from '../UserContext'; // Import useUserContext (hoặc phương thức quản lý người dùng của bạn)
 
 const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isModalOpen, setModalOpen] = useState(false); // Trạng thái mở/đóng modal
+  const [successMessage, setSuccessMessage] = useState(''); // Trạng thái thông báo thành công
+
+  // Lấy thông tin người dùng từ context
+  const { isLogin } = useUserContext();
 
   // Tìm sản phẩm theo ID
   const product = products.find((p) => p.id === parseInt(id));
@@ -45,6 +50,18 @@ const ProductDetail = ({ products, addToCart }) => {
     return stars;
   };
 
+  // Hàm xử lý khi bấm "Thêm vào giỏ hàng"
+  const handleAddToCart = () => {
+    if (isLogin) {
+      addToCart(product);
+      setSuccessMessage('Thêm vào giỏ hàng thành công!'); // Hiển thị thông báo thành công
+      setTimeout(() => setSuccessMessage(''), 3000); // Ẩn thông báo sau 3 giây
+    } else {
+      alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
+      navigate('/account'); // Điều hướng người dùng đến trang đăng nhập
+    }
+  };
+
   return (
     <div className={styles.productDetail}>
       <div className={styles.productImage}>
@@ -64,8 +81,7 @@ const ProductDetail = ({ products, addToCart }) => {
             <span style={{ textDecoration: 'line-through', color: '#888' }}>
               {new Intl.NumberFormat('vi-VN').format(product.price)} VND
             </span>
-          )}
-          {' '}
+          )}{' '}
           {new Intl.NumberFormat('vi-VN').format(discountedPrice)} VND
         </p>
         <p>
@@ -79,12 +95,15 @@ const ProductDetail = ({ products, addToCart }) => {
         <div className="product-description">
           <p><strong>Mô tả:</strong> {product.description}</p>
         </div>
-        <button onClick={() => addToCart(product)} className={styles.addToCartBtn}>
+        <button onClick={handleAddToCart} className={styles.addToCartBtn}>
           Thêm vào giỏ hàng
         </button>
         <button onClick={() => navigate('/')} className={styles.backToHomeBtn}>
           Quay lại trang chủ
         </button>
+
+        {/* Hiển thị thông báo thành công */}
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
       </div>
 
       {/* Modal hiển thị ảnh full */}
