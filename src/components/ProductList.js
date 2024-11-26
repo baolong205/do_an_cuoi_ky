@@ -179,6 +179,6 @@ const ProductList = ({ products = [], addToCart }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProductList;
