@@ -61,16 +61,18 @@ const Checkout = ({ cartItems, clearCart }) => {
   // Xử lý đặt hàng
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
-      alert("Your order has been placed successfully!");
-
+      setShowSuccessMessage(true); // Hiển thị thông báo thành công
+      setTimeout(() => setShowSuccessMessage(false), 5000); // Ẩn thông báo sau 5 giây
+  
       // Save customer info to localStorage
       localStorage.setItem("customerInfo", JSON.stringify(customerInfo));
-
-      clearCart();  // Call clearCart to remove items from the cart
+  
+      clearCart(); // Call clearCart to remove items from the cart
     } else {
       alert("Vui lòng điền đầy đủ thông tin giao hàng!");
     }
   };
+  
 
   return (
     <div className="checkout">

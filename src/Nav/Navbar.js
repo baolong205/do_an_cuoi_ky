@@ -10,12 +10,6 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
 
   const handleSearch = () => {
     onSearch(searchTerm, "All"); // Tìm kiếm tất cả sản phẩm khi nhấn nút tìm kiếm
-  
-    // Cuộn xuống phần sản phẩm
-    const productSection = document.getElementById("products-section");
-    if (productSection) {
-      productSection.scrollIntoView({ behavior: "smooth" }); // Cuộn mượt đến phần sản phẩm
-    }
   };
   
 
@@ -97,11 +91,14 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
             }}
           >
             Home
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Phone' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Phone')}
           </Link>
+          <Link
+            to="/products/Phone"
+            className={`navbar-category-btn ${location.pathname.includes("/Phone") ? "active" : ""}`}
+            onClick={() => {
+              setCategory("Phone");
+              onSearch("", "Phone"); // Hiển thị sản phẩm Phone
+            }}
           >
             Phone
           </Link>
