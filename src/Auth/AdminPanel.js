@@ -63,9 +63,10 @@ const AdminPanel = () => {
             alert("Không thể xóa sản phẩm!");
             return;
         }
-
+    
         const updatedProducts = products.filter((product) => product.id !== productId);
         setProducts(updatedProducts);
+        localStorage.setItem("products", JSON.stringify(updatedProducts)); // Cập nhật lại localStorage
         alert("Sản phẩm đã được xóa thành công!");
     };
 
