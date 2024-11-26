@@ -3,8 +3,7 @@
   position: relative;
   width: 100%; /* Đặt chiều rộng của banner bằng 100% */
   max-width: 1390px; /* Đảm bảo chiều rộng không vượt quá 1390px */
-  height: 300px;
-  overflow: hidden;
+  height: 300px; /* Chiều cao của banner */
   margin: 0 auto; /* Căn giữa banner */
   display: block; /* Đảm bảo banner là phần tử block */
 }
@@ -12,28 +11,32 @@
 /* Định dạng cho ảnh trong banner */
 .banner-image {
   width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của banner */
-  height: 100%;
-  object-fit: cover;
+  height: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều cao của banner */
+  object-fit: cover; /* Đảm bảo ảnh không bị méo và bao phủ toàn bộ diện tích */
 }
 
 /* Định dạng cho các nút trong banner */
 .banner-buttons {
   position: absolute;
   top: 50%;
-  width: 100%;
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Căn giữa các nút điều hướng */
   transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+  padding: 0 20px; /* Thêm khoảng cách từ các cạnh */
 }
 
 /* Định dạng cho các nút điều hướng */
 .banner-button {
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 24px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  background-color: transparent; /* Loại bỏ nền (nền trong suốt) */
+  color: #fff; /* Màu chữ (có thể điều chỉnh theo ý thích) */
+  border: none; /* Không viền */
+  padding: 10px; /* Khoảng cách trong nút */
+  font-size: 24px; /* Kích thước chữ */
+  cursor: pointer; /* Con trỏ chuột khi hover */
+  border-radius: 5px; /* Bo góc cho nút */
+  transition: color 0.3s ease; /* Hiệu ứng thay đổi màu chữ khi hover */
 }
 
 /* Các nút bên trái và phải */
@@ -43,4 +46,9 @@
 
 .right {
   margin-right: 20px;
+}
+
+/* Hiệu ứng hover cho nút */
+.banner-button:hover {
+  color: #f0f0f0; /* Thay đổi màu chữ khi di chuột qua */
 }

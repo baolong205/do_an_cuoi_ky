@@ -15,3 +15,131 @@
   color: #0056b3; /* Màu khi hover */
   text-decoration: underline; /* Gạch dưới khi hover */
 }
+/* Đặt kiểu cho danh sách sản phẩm */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Đặt kiểu cho các sản phẩm */
+.product-card {
+  width: 230px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+/* Đặt kiểu cho bộ lọc giá */
+.price-filter {
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.price-filter label {
+  margin-right: 10px;
+}
+
+.price-filter select {
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Đặt kiểu cho nút Xem thêm */
+.pagination-controls {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 700px;
+}
+
+.pagination-controls button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #0056b3;
+}
+
+/* Đặt kiểu cho các sản phẩm hiển thị */
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card .product-info {
+  padding: 15px;
+}
+
+.product-card .product-info h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.product-card .product-info p {
+  font-size: 16px;
+  color: #555;
+}
+
+.product-card .product-info .price {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+.best-selling {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #e7dddd;
+  border-radius: 8px;
+}
+
+.best-selling h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Danh sách sản phẩm bán chạy */
+.best-selling .product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Giảm số cột xuống 4 cho phù hợp với màn hình */
+  gap: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .best-selling .product-list {
+    grid-template-columns: repeat(3, 1fr); /* Màn hình lớn, giảm xuống 3 cột */
+  }
+}
+
+@media (max-width: 992px) {
+  .best-selling .product-list {
+    grid-template-columns: repeat(2, 1fr); /* Màn hình medium, giảm xuống 2 cột */
+  }
+}
+
+@media (max-width: 600px) {
+  .best-selling .product-list {
+    grid-template-columns: 1fr; /* Màn hình nhỏ, chỉ 1 cột */
+  }
+}

@@ -21,13 +21,13 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
 
   return (
     <div className="cart-page">
-      <h2 className="cart-title">Shopping Cart</h2>
+      <h2 className="cart-title">Giỏ hàng</h2>
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <p>Your shopping cart is currently empty.</p>
+          <p>Giỏ hàng của bạn hiện đang trống.</p>
           <Link to="/" className="continue-shopping">
-            Continue shopping
+            Tiếp tục mua sắm
           </Link>
         </div>
       ) : (
@@ -44,10 +44,10 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
                   <div className="cart-item-details">
                     <p className="cart-item-name">{item.name}</p>
                     <p className="cart-item-prices">
-                      Original Price: <span className="original-price">{formatCurrency(item.price)}</span>
+                      Giá gốc: <span className="original-price">{formatCurrency(item.price)}</span>
                       {item.discount && (
                         <>
-                          {' '}| Discounted Price: <span className="discounted-price">{formatCurrency(discountedPrice)}</span>
+                          {' '}| Giá đã giảm: <span className="discounted-price">{formatCurrency(discountedPrice)}</span>
                         </>
                       )}
                     </p>
@@ -64,14 +64,14 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
                       </button>
                     </div>
                     <p className="cart-item-total">
-                      Subtotal: {formatCurrency(discountedPrice * item.quantity)}
+                      Tổng phụ: {formatCurrency(discountedPrice * item.quantity)}
                     </p>
                   </div>
                   <button
                     className="cart-item-remove"
                     onClick={() => removeFromCart(item.id)}
                   >
-                    Delete
+                    Xóa
                   </button>
                 </div>
               );
@@ -80,13 +80,13 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
 
           <div className="cart-summary">
             <div className="cart-total">
-              <p>Total: </p>
+              <p>Tổng cộng: </p>
               <p>{formatCurrency(totalAmount)}</p>
-            </div >
-            <div class="checkout-btn-container">
-            <button className="checkout-btn" onClick={handleCheckout}>
-              Pay
-            </button>
+            </div>
+            <div className="checkout-btn-container">
+              <button className="checkout-btn" onClick={handleCheckout}>
+                Thanh toán
+              </button>
             </div>
           </div>
         </>

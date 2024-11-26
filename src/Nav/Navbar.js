@@ -1,36 +1,45 @@
-import React, { useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'; // Biểu tượng kính lúp
-import './Navbar.css';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import "./Navbar.css";
 
-const Navbar = ({ onSearch, category, setCategory, products }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const location = useLocation(); // Lấy vị trí hiện tại  
-  const productListRef = useRef(null); // Tạo một ref để tham chiếu đến danh sách sản phẩm
+const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) => {
+  const [searchSuggestions, setSearchSuggestions] = useState([]); // Lưu trữ gợi ý tìm kiếm
+  const location = useLocation();
 
   const handleSearch = () => {
-    onSearch(searchTerm, category); // Gọi hàm tìm kiếm từ parent
-    if (productListRef.current) {
-      // Cuộn xuống phần danh sách sản phẩm
-      window.scrollTo({
-        top: productListRef.current.offsetTop,
-        behavior: 'smooth'
-      });
+    onSearch(searchTerm, "All"); // Tìm kiếm tất cả sản phẩm khi nhấn nút tìm kiếm
+  
+    // Cuộn xuống phần sản phẩm
+    const productSection = document.getElementById("products-section");
+    if (productSection) {
+      productSection.scrollIntoView({ behavior: "smooth" }); // Cuộn mượt đến phần sản phẩm
+    }
+  };
+  
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value, "All");
+
+    // Kiểm tra nếu products tồn tại và là mảng trước khi sử dụng filter
+    if (value) {
+      const suggestions = Array.isArray(products) ? products.filter(product =>
+        product.name.toLowerCase().includes(value.toLowerCase())
+      ).slice(0, 5) : []; // Giới hạn 5 gợi ý
+      setSearchSuggestions(suggestions);
+    } else {
+      setSearchSuggestions([]); // Nếu không có giá trị, xóa gợi ý
     }
   };
 
-  const handleCategoryChange = (category) => {
-    setCategory(category);
-    onSearch(searchTerm, category); // Gọi hàm tìm kiếm khi thay đổi danh mục  
-  };
-
-  // Ẩn navbar khi ở trang Account  
-  const isAccountPage = location.pathname === '/account';
+  const isAccountPage = location.pathname === "/account";
 
   return (
     <nav>
-      <nav className="navbar">
+      <div className="navbar">
         <div className="navbar-logo">
           <Link to="/">E-commerce</Link>
         </div>
@@ -41,73 +50,91 @@ const Navbar = ({ onSearch, category, setCategory, products }) => {
             placeholder="Search products..."
             className="navbar-search-input"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Cập nhật term tìm kiếm  
+            onChange={handleInputChange}
           />
           <button className="navbar-search-button" onClick={handleSearch}>
-            <FontAwesomeIcon icon={faSearch} /> {/* Hiển thị biểu tượng kính lúp */}
+            <FontAwesomeIcon icon={faSearch} />
           </button>
+
+          {/* Hiển thị gợi ý tìm kiếm nếu có */}
+          {searchSuggestions.length > 0 && (
+            <div className="search-suggestions">
+              {searchSuggestions.map((suggestion, index) => (
+                <Link 
+                  to={`/product/${suggestion.id}`} 
+                  key={index} 
+                  className="search-suggestion-item"
+                  onClick={() => onSearch(suggestion.name, "All")}
+                >
+                  {suggestion.name}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="navbar-links">
-
-          <Link to="/account" className="navbar-link">Account</Link>
-          <Link to="/about" className="navbar-link">About</Link>
+          <Link to="/account" className="navbar-link">
+            Account
+          </Link>
+          <Link to="/about" className="navbar-link">
+            About
+          </Link>
           <Link to="/cart" className="navbar-link">
-
             <i className="fas fa-shopping-cart"></i> Cart
           </Link>
-
         </div>
-      </nav>
+      </div>
 
       {!isAccountPage && (
         <div className="navbar-category-buttons">
-          <button
-            className={`navbar-category-btn ${category === 'All' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('All')}
+          <Link
+            to="/"
+            className={`navbar-category-btn ${location.pathname === "/" ? "active" : ""}`}
+            onClick={() => {
+              setCategory("All");
+              onSearch("", "All"); // Hiển thị tất cả sản phẩm
+            }}
           >
             Home
           </button>
           <button
             className={`navbar-category-btn ${category === 'Phone' ? 'active' : ''}`}
             onClick={() => handleCategoryChange('Phone')}
+          </Link>
           >
             Phone
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Laptop' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Laptop')}
+          </Link>
+          <Link
+            to="/products/Laptop"
+            className={`navbar-category-btn ${location.pathname.includes("/Laptop") ? "active" : ""}`}
+            onClick={() => {
+              setCategory("Laptop");
+              onSearch("", "Laptop"); // Hiển thị sản phẩm Laptop
+            }}
           >
             Laptop
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Headphone' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Headphone')}
+          </Link>
+          <Link
+            to="/products/Headphone"
+            className={`navbar-category-btn ${location.pathname.includes("/Headphone") ? "active" : ""}`}
+            onClick={() => {
+              setCategory("Headphone");
+              onSearch("", "Headphone"); // Hiển thị sản phẩm Headphone
+            }}
           >
             Headphone
-          </button>
-          <button
-            className={`navbar-category-btn ${category === 'Furniture' ? 'active' : ''}`}
-            onClick={() => handleCategoryChange('Furniture')}
+          </Link>
+          <Link
+            to="/products/Keyboard"
+            className={`navbar-category-btn ${location.pathname.includes("/Keyboard") ? "active" : ""}`}
+            onClick={() => {
+              setCategory("Keyboard");
+              onSearch("", "Keyboard"); // Hiển thị sản phẩm Keyboard
+            }}
           >
-            Furniture
-          </button>
-        </div>
-      )}
-
-      {/* Hiển thị danh sách sản phẩm khi có kết quả tìm kiếm */}
-      {products && products.length > 0 && searchTerm && (
-        <div ref={productListRef} className="product-list">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <img src={product.image} alt={product.name} />
-              <h3>{product.name}</h3>
-              <p>{new Intl.NumberFormat('vi-VN').format(product.price)} VND</p>
-              <Link to={`/product/${product.id}`}>
-                <button className="buy-product-btn">View Details</button>
-              </Link>
-            </div>
-          ))}
+            Keyboard
+          </Link>
         </div>
       )}
     </nav>

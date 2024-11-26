@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: white;
+  background-color: rgba(45, 27, 144, 0.482);
   color: #333;
 }
 
@@ -16,6 +16,7 @@
 }
 
 .navbar-search {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -31,15 +32,23 @@
   border: none;
 }
 
+/* Thay đổi kích thước biểu tượng tìm kiếm */
 .navbar-search-button {
-  background-color: #007bff;
-  color: white;
-  padding: 5px 10px;
+  background-color: transparent;
   border: none;
-  border-radius: 50%; /* Đổi thành hình tròn */
   cursor: pointer;
-  margin-left: 5px; /* Khoảng cách giữa ô tìm kiếm và button */
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Thay đổi kích thước của FontAwesome icon */
+.navbar-search-button .fa-search {
+  font-size: 16px; /* Thay đổi kích thước tại đây */
+  color: #333; /* Màu sắc của biểu tượng */
+}
+
 
 .navbar-links {
   display: flex;
@@ -97,4 +106,35 @@
 }
 .navbar-links a:hover {
   color: #007bff;
+}
+.search-suggestions {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.search-suggestion-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.search-suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.search-suggestion-item:last-child {
+  border-bottom: none;
 }

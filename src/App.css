@@ -11,12 +11,6 @@
   flex-grow: 1; /* Nội dung chính sẽ chiếm phần còn lại */
 }
 
-.product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* Căn giữa các sản phẩm */
-}
 
 /* Định dạng sản phẩm */
 .product-card {
