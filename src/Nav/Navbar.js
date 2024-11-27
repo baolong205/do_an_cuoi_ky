@@ -1,5 +1,5 @@
 // src/Nav/Navbar.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -10,27 +10,44 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const location = useLocation();
 
+  const [hideSuggestionsTimeout, setHideSuggestionsTimeout] = useState(null);
+
   const handleSearch = () => {
-    onSearch(searchTerm, "All"); // Logic vẫn giữ nguyên
+    onSearch(searchTerm, "All"); // Tìm kiếm tất cả sản phẩm khi nhấn nút tìm kiếm
   };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-    onSearch(value, "All"); // Logic vẫn giữ nguyên
+    onSearch(value, "All");
 
     if (value) {
       const suggestions = Array.isArray(products)
-        ? products.filter((product) =>
-          product.name.toLowerCase().includes(value.toLowerCase())
-        ).slice(0, 5)
+        ? products
+            .filter((product) =>
+              product.name.toLowerCase().includes(value.toLowerCase())
+            )
+            .slice(0, 5) // Giới hạn 5 gợi ý
         : [];
       setSearchSuggestions(suggestions);
     } else {
-      setSearchSuggestions([]);
+      setSearchSuggestions([]); // Nếu không có giá trị, xóa gợi ý
     }
   };
 
+  // Tự động ẩn gợi ý sau 2 giây khi không tương tác
+  useEffect(() => {
+    if (searchSuggestions.length > 0) {
+      if (hideSuggestionsTimeout) {
+        clearTimeout(hideSuggestionsTimeout);
+      }
+      const timeout = setTimeout(() => {
+        setSearchSuggestions([]);
+      }, 2000); // 2 giây
+      setHideSuggestionsTimeout(timeout);
+    }
+  }, [searchSuggestions]);
+  
   const isAccountPage = location.pathname === "/account";
 
   return (
@@ -54,6 +71,7 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
             <FontAwesomeIcon icon={faSearch} />
           </button>
 
+          {/* Hiển thị gợi ý tìm kiếm nếu có */}
           {searchSuggestions.length > 0 && (
             <div className="search-suggestions">
               {searchSuggestions.map((suggestion, index) => (
@@ -61,7 +79,11 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
                   to={`/product/${suggestion.id}`}
                   key={index}
                   className="search-suggestion-item"
-                  onClick={() => onSearch(suggestion.name, "All")}
+                  onClick={() => {
+                    setSearchTerm(suggestion.name); // Gán lại giá trị đã chọn vào input
+                    onSearch(suggestion.name, "All");
+                    setSearchSuggestions([]); // Ẩn gợi ý ngay lập tức khi nhấn
+                  }}
                 >
                   {suggestion.name}
                 </Link>
@@ -96,8 +118,8 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
             Trang chủ
           </Link>
           <Link
-            to="/products/Phone"
-            className={`navbar-category-btn ${location.pathname.includes("/Phone") ? "active" : ""}`}
+            to="/iphones"
+            className={`navbar-category-btn ${location.pathname.includes("/iphones") ? "active" : ""}`}
             onClick={() => {
               setCategory("Phone");
               onSearch("", "Phone");
