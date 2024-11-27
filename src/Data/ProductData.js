@@ -956,6 +956,49 @@ const products = [
     stock: 7,
     discount: 0.12,
   },
+
+  {
+    id: 98,
+    name: "HP Spectre x360",
+    price: 22000000,
+    category: "Headphone",
+    image: require("../assets/Headphone/bluetooth-airpods-max-apple-thumb3-600x600.jpeg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand:'Hp',
+  },
+  {
+    id: 99,
+    name: "HP Spectre x360",
+    price: 22000000,
+    category: "Headphone",
+    image: require("../assets/Headphone/tai-nghe-bluetooth-true-wireless-samsung-galaxy-buds-3-pro-r630n-xam-1-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Hp',
+  },
+  {
+    id: 100,
+    name: "HP Spectre x360",
+    price: 22000000,
+    category: "Headphone",
+    image: require("../assets/Headphone/bluetooth-airpods-max-apple-thumb3-600x600.jpeg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Hp',
+
+  },
+  
+
 ];
 
 // Lọc sản phẩm theo từ khóa và danh mục
