@@ -9,6 +9,7 @@ const products = [
     rating: 2,
     stock: 25,
     discount: 0.1,
+    brand:'Apple' ,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const products = [
     rating: 3,
     stock: 50,
     discount: 0,
+    brand:'Apple' ,
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ const products = [
     rating: 4.7,
     stock: 15,
     discount: 0.05,
+    brand:'Apple' ,
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ const products = [
     rating: 4.2,
     stock: 100,
     discount: 0.2,
+    brand:'Apple' ,
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ const products = [
     rating: 4.6,
     stock: 30,
     discount: 0.15,
+    brand:'Yanz' ,
   },
   {
     id: 6,
@@ -64,6 +69,7 @@ const products = [
     rating: 4.9,
     stock: 20,
     discount: 0.1,
+    brand:'Yanz' ,
   },
   {
     id: 7,
@@ -75,6 +81,7 @@ const products = [
     rating: 4.8,
     stock: 12,
     discount: 0,
+    brand:'Yanz' ,
   },
   {
     id: 8,
@@ -86,6 +93,7 @@ const products = [
     rating: 5.0,
     stock: 200,
     discount: 0.1,
+    brand:'Gz' ,
   },
   {
     id: 9,
@@ -98,6 +106,7 @@ const products = [
     rating: 4.5,
     stock: 10,
     discount: 0.05,
+    brand:'Gz' ,
   },
   {
     id: 10,
@@ -109,6 +118,7 @@ const products = [
     rating: 5.0,
     stock: 45,
     discount: 0.1,
+    brand:'Gz' ,
   },
   {
     id: 11,
@@ -121,6 +131,7 @@ const products = [
     stock: 35,
     discount: 0,
     brand: "Dell",
+    
   },
   {
     id: 12,
