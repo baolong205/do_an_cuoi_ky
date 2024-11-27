@@ -143,7 +143,7 @@ const products = [
     rating: 4.6,
     stock: 70,
     discount: 0.15,
-    brand: "ASUS"
+    brand: "ASUS",
   },
   {
     id: 13,
@@ -155,7 +155,7 @@ const products = [
     rating: 4.7,
     stock: 50,
     discount: 0.1,
-    brand: "Acer"
+    brand: "Acer",
   },
 
   {
@@ -194,7 +194,7 @@ const products = [
     rating: 4.8,
     stock: 30,
     discount: 0.1,
-    brand: "Dell"
+    brand: "Dell",
   },
   {
     id: 18,
@@ -207,7 +207,7 @@ const products = [
     rating: 4.9,
     stock: 15,
     discount: 0.15,
-    brand: "APPLE"
+    brand: "APPLE",
   },
   {
     id: 19,
@@ -227,6 +227,7 @@ const products = [
     name: "Logitech MX Keys",
     price: 2500000,
     category: "Keyboard",
+    brand: "Logitech",
     image: require("../assets/anh do-an/logitech-mx-keys.jpg"),
     description:
       "Bàn phím cơ học cao cấp với đèn nền và khả năng kết nối đa thiết bị.",
@@ -239,10 +240,11 @@ const products = [
     name: "Razer BlackWidow V3",
     price: 3200000,
     category: "Keyboard",
+    brand: "Razer",
     image: require("../assets/anh do-an/razer-blackwidow-v3.jpg"),
     description:
       "Mechanical gaming keyboard with RGB lighting and durable key switches.",
-    rating: 4.7,
+    rating: 4.5,
     stock: 25,
     discount: 0.15,
   },
@@ -251,6 +253,7 @@ const products = [
     name: "Corsair K95 RGB Platinum",
     price: 4800000,
     category: "Keyboard",
+    brand: "Corsair",
     image: require("../assets/anh do-an/corsair-k95-rgb.jpg"),
     description:
       "High-end mechanical keyboard with customizable RGB lighting and dedicated media controls.",
@@ -263,6 +266,7 @@ const products = [
     name: "SteelSeries Apex Pro",
     price: 4500000,
     category: "Keyboard",
+    brand: "SteelSeries",
     image: require("../assets/anh do-an/steelseries-apex-pro.jpg"),
     description:
       "Mechanical keyboard with adjustable actuation switches and RGB lighting.",
@@ -275,6 +279,7 @@ const products = [
     name: "Microsoft Sculpt Ergonomic Keyboard",
     price: 1500000,
     category: "Keyboard",
+    brand: "Microsoft",
     image: require("../assets/anh do-an/microsoft-sculpt.jpg"),
     description:
       "Ergonomic wireless keyboard designed for comfort and productivity.",
@@ -287,6 +292,7 @@ const products = [
     name: "Logitech G Pro X",
     price: 3500000,
     category: "Keyboard",
+    brand: "Logitech",
     image: require("../assets/anh do-an/logitech-g-pro-x.jpg"),
     description:
       "Gaming keyboard with hot-swappable switches and RGB lighting.",
@@ -299,6 +305,7 @@ const products = [
     name: "Keychron K2 V2",
     price: 2200000,
     category: "Keyboard",
+    brand: "Keychron",
     image: require("../assets/anh do-an/keychron-k2-v2.jpg"),
     description:
       "Wireless mechanical keyboard with customizable RGB lighting, great for both work and gaming.",
@@ -311,6 +318,7 @@ const products = [
     name: "Apple Magic Keyboard",
     price: 3500000,
     category: "Keyboard",
+    brand: "Apple",
     image: require("../assets/anh do-an/apple-magic-keyboard.jpg"),
     description:
       "Compact wireless keyboard with a slim profile, perfect for Mac users.",
@@ -323,6 +331,7 @@ const products = [
     name: "HyperX Alloy FPS Pro",
     price: 2700000,
     category: "Keyboard",
+    brand: "HyperX",
     image: require("../assets/anh do-an/hyperx-alloy-fps-pro.jpg"),
     description:
       "Tenkeyless mechanical keyboard designed for FPS gaming with red LED backlighting.",
@@ -335,6 +344,7 @@ const products = [
     name: "Logitech G915 TKL",
     price: 6500000,
     category: "Keyboard",
+    brand: "Logitech",
     image: require("../assets/anh do-an/logitech-g915-tkl.jpg"),
     description:
       "Low-profile mechanical gaming keyboard with wireless connectivity and RGB lighting.",
@@ -343,154 +353,11 @@ const products = [
     discount: 0.2,
   },
   {
-    id: 30,
-    name: "Corsair K70 RGB MK.2",
-    price: 4000000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/corsair-k70-rgb.jpg"),
-    description:
-      "Full-size mechanical keyboard with Cherry MX switches and RGB lighting.",
-    rating: 4.7,
-    stock: 25,
-    discount: 0.15,
-  },
-  {
-    id: 31,
-    name: "Razer Huntsman Elite",
-    price: 6000000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/razer-huntsman-elite.jpg"),
-    description:
-      "Premium gaming keyboard with opto-mechanical switches and a comfortable wrist rest.",
-    rating: 4.9,
-    stock: 15,
-    discount: 0.2,
-  },
-  {
-    id: 32,
-    name: "SteelSeries Apex 7",
-    price: 4000000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/steelseries-apex-7.jpg"),
-    description:
-      "Mechanical gaming keyboard with OLED smart display and RGB lighting.",
-    rating: 4.7,
-    stock: 20,
-    discount: 0.15,
-  },
-  {
-    id: 33,
-    name: "Das Keyboard 4 Professional",
-    price: 4500000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/das-keyboard-4.jpg"),
-    description:
-      "High-quality mechanical keyboard with full-size layout and media controls.",
-    rating: 4.8,
-    stock: 18,
-    discount: 0.1,
-  },
-  {
-    id: 34,
-    name: "Logitech K780 Multi-Device Wireless Keyboard",
-    price: 1700000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/logitech-k780.jpg"),
-    description:
-      "Wireless keyboard with the ability to connect to multiple devices simultaneously.",
-    rating: 4.5,
-    stock: 25,
-    discount: 0.12,
-  },
-  {
-    id: 35,
-    name: "Keychron K6",
-    price: 2000000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/keychron-k6.jpg"),
-    description:
-      "Compact wireless mechanical keyboard with RGB backlighting, perfect for travel.",
-    rating: 4.6,
-    stock: 30,
-    discount: 0.1,
-  },
-  {
-    id: 36,
-    name: "Razer Cynosa V2",
-    price: 2000000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/razer-cynosa-v2.jpg"),
-    description:
-      "Budget-friendly gaming keyboard with RGB lighting and quiet membrane switches.",
-    rating: 4.3,
-    stock: 40,
-    discount: 0.05,
-  },
-  {
-    id: 37,
-    name: "Corsair K63 Wireless Mechanical Keyboard",
-    price: 2800000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/corsair-k63-wireless.jpg"),
-    description:
-      "Wireless mechanical keyboard with Cherry MX switches and compact design.",
-    rating: 4.7,
-    stock: 18,
-    discount: 0.15,
-  },
-  {
-    id: 38,
-    name: "Logitech G413 SE",
-    price: 2200000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/logitech-g413-se.jpg"),
-    description:
-      "Affordable mechanical keyboard with red LED backlighting and Romer-G switches.",
-    rating: 4.5,
-    stock: 30,
-    discount: 0.1,
-  },
-  {
-    id: 39,
-    name: "Razer Ornata V2",
-    price: 2300000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/razer-ornata-v2.jpg"),
-    description:
-      "Hybrid membrane-mechanical keyboard with RGB lighting and dedicated media controls.",
-    rating: 4.6,
-    stock: 28,
-    discount: 0.1,
-  },
-  {
-    id: 40,
-    name: "Corsair K70 RGB MK.2 Low Profile",
-    price: 4200000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/corsair-k70-low-profile.jpg"),
-    description:
-      "Low-profile mechanical keyboard with RGB lighting and Cherry MX low profile switches.",
-    rating: 4.8,
-    stock: 15,
-    discount: 0.2,
-  },
-  {
-    id: 41,
-    name: "Razer Huntsman Mini",
-    price: 3500000,
-    category: "Keyboard",
-    image: require("../assets/anh do-an/razer-huntsman-mini.jpg"),
-    description:
-      "Compact 60% keyboard with opto-mechanical switches and RGB lighting.",
-    rating: 4.7,
-    stock: 20,
-    discount: 0.1,
-  },
-  {
     id: 42,
     name: "ASUS ROG Strix Scope",
     price: 3200000,
     category: "Keyboard",
+    brand: "ASUS",
     image: require("../assets/anh do-an/asus-rog-strix-scope.jpg"),
     description:
       "Gaming keyboard with extended Ctrl key and RGB lighting for FPS gamers.",
@@ -509,7 +376,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "Acer"
+    brand: "Acer",
   },
   {
     id: 44,
@@ -522,7 +389,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "Acer"
+    brand: "Acer",
   },
   {
     id: 45,
@@ -535,7 +402,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "ASUS"
+    brand: "ASUS",
   },
   {
     id: 46,
@@ -548,7 +415,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "ASUS"
+    brand: "ASUS",
   },
   {
     id: 47,
@@ -561,7 +428,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "Dell"
+    brand: "Dell",
   },
   {
     id: 48,
@@ -574,7 +441,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "Dell"
+    brand: "Dell",
   },
   {
     id: 49,
@@ -587,7 +454,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "Lenovo"
+    brand: "Lenovo",
   },
   {
     id: 50,
@@ -600,7 +467,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "APPLE"
+    brand: "APPLE",
   },
   {
     id: 51,
@@ -613,7 +480,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "APPLE"
+    brand: "APPLE",
   },
   {
     id: 52,
@@ -626,7 +493,7 @@ const products = [
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: "Lenovo"
+    brand: "Lenovo",
   },
   {
     id: 53,
@@ -664,7 +531,442 @@ const products = [
     stock: 20,
     discount: 0.1,
   },
-
+  {
+    id: 56,
+    name: "Logitech G Pro X Tenkeyless",
+    price: 3500000,
+    category: "Keyboard",
+    brand: "Logitech",
+    image: require("../assets/anh do-an/logitech-g-pro-x-tenkeyless.jpg"),
+    description:
+      "Bàn phím cơ học tenkeyless với switch tùy chỉnh, thiết kế gọn nhẹ, phù hợp cho game thủ chuyên nghiệp và không gian làm việc nhỏ.",
+    rating: 4.8,
+    stock: 22,
+    discount: 0.1,
+  },
+  {
+    id: 57,
+    name: "Razer BlackWidow V3 Mini",
+    price: 4000000,
+    category: "Keyboard",
+    brand: "Razer",
+    image: require("../assets/anh do-an/razer-blackwidow-v3-mini.jpg"),
+    description:
+      "Bàn phím cơ học mini với đèn nền RGB Chroma, switch Green, thiết kế nhỏ gọn cho không gian hạn chế.",
+    rating: 4.0,
+    stock: 18,
+    discount: 0.15,
+  },
+  {
+    id: 58,
+    name: "Corsair K95 RGB Platinum XT",
+    price: 5500000,
+    category: "Keyboard",
+    brand: "Corsair",
+    image: require("../assets/anh do-an/corsair-k95-rgb-platinum-xt.jpg"),
+    description:
+      "Bàn phím cơ học cao cấp với đèn nền RGB, switch Cherry MX và các phím macro tùy chỉnh.",
+    rating: 5,
+    stock: 12,
+    discount: 0.2,
+  },
+  {
+    id: 59,
+    name: "SteelSeries Apex 7",
+    price: 4800000,
+    category: "Keyboard",
+    brand: "SteelSeries",
+    image: require("../assets/anh do-an/steelseries-apex-7.jpg"),
+    description:
+      "Bàn phím cơ học với switch OLED, đèn nền RGB và thiết kế chắc chắn, phù hợp cho game thủ chuyên nghiệp.",
+    rating: 4.8,
+    stock: 20,
+    discount: 0.1,
+  },
+  {
+    id: 60,
+    name: "Microsoft Surface Keyboard",
+    price: 2000000,
+    category: "Keyboard",
+    brand: "Microsoft",
+    image: require("../assets/anh do-an/microsoft-surface-keyboard.jpg"),
+    description:
+      "Bàn phím không dây mỏng nhẹ, thiết kế sang trọng, tương thích tốt với các thiết bị Windows.",
+    rating: 4.6,
+    stock: 30,
+    discount: 0.1,
+  },
+  {
+    id: 61,
+    name: "Keychron K8",
+    price: 3500000,
+    category: "Keyboard",
+    brand: "Keychron",
+    image: require("../assets/anh do-an/keychron-k8.jpg"),
+    description:
+      "Bàn phím cơ học không dây với kết nối Bluetooth và đèn nền RGB, dễ dàng sử dụng cho nhiều hệ điều hành.",
+    rating: 4.8,
+    stock: 25,
+    discount: 0.18,
+  },
+  {
+    id: 62,
+    name: "Apple Magic Keyboard with Touch ID",
+    price: 3500000,
+    category: "Keyboard",
+    brand: "Apple",
+    image: require("../assets/anh do-an/apple-magic-keyboard-touchid.jpg"),
+    description:
+      "Bàn phím không dây tích hợp Touch ID, mang lại sự tiện lợi và bảo mật cao khi sử dụng với máy Mac.",
+    rating: 4.8,
+    stock: 15,
+    discount: 0.07,
+  },
+  {
+    id: 64,
+    name: "HyperX Alloy Elite 2",
+    price: 4500000,
+    category: "Keyboard",
+    brand: "HyperX",
+    image: require("../assets/anh do-an/hyperx-alloy-elite-2.jpg"),
+    description:
+      "Bàn phím cơ học full-size với đèn nền RGB và các phím media tích hợp, dành cho game thủ chuyên nghiệp.",
+    rating: 4.8,
+    stock: 14,
+    discount: 0.12,
+  },
+  {
+    id: 64,
+    name: "ASUS ROG Strix Scope RX",
+    price: 4500000,
+    category: "Keyboard",
+    brand: "ASUS",
+    image: require("../assets/anh do-an/asus-rog-strix-scope-rx.jpg"),
+    description:
+      "Bàn phím cơ học với switch RX, đèn nền RGB và các tính năng cao cấp cho game thủ.",
+    rating: 4.8,
+    stock: 14,
+    discount: 0.15,
+  },
+  {
+    id: 65,
+    name: "Logitech G815 LIGHTSYNC",
+    price: 4800000,
+    category: "Keyboard",
+    brand: "Logitech",
+    image: require("../assets/anh do-an/logitech-g815-lightsync.jpg"),
+    description:
+      "Bàn phím cơ học với switch GL, đèn nền RGB và thiết kế siêu mỏng, hoàn hảo cho game thủ.",
+    rating: 4.9,
+    stock: 19,
+    discount: 0.12,
+  },
+  {
+    id: 66,
+    name: "Razer BlackWidow V3 Mini HyperSpeed",
+    price: 4500000,
+    category: "Keyboard",
+    brand: "Razer",
+    image: require("../assets/anh do-an/razer-blackwidow-v3-mini-hyperspeed.jpg"),
+    description:
+      "Bàn phím cơ học 65% với switch Green, kết nối không dây HyperSpeed cho hiệu suất cao, đèn nền RGB Chroma.",
+    rating: 5,
+    stock: 12,
+    discount: 0.2,
+  },
+  {
+    id: 67,
+    name: "Razer Ornata V2",
+    price: 2800000,
+    category: "Keyboard",
+    brand: "Razer",
+    image: require("../assets/anh do-an/razer-ornata-v2.jpg"),
+    description:
+      "Bàn phím hybrid với switch mecha-membrane, đèn nền RGB Chroma, và âm thanh cực kỳ êm ái khi gõ.",
+    rating: 3.0,
+    stock: 18,
+    discount: 0.18,
+  },
+  {
+    id: 68,
+    name: "Razer BlackWidow V3 Wireless",
+    price: 5000000,
+    category: "Keyboard",
+    brand: "Razer",
+    image: require("../assets/anh do-an/razer-blackwidow-v3-wireless.jpg"),
+    description:
+      "Bàn phím cơ học không dây với switch Yellow, đèn nền RGB Chroma, kết nối qua Bluetooth hoặc 2.4GHz cho game thủ chuyên nghiệp.",
+    rating: 5,
+    stock: 10,
+    discount: 0.1,
+  },
+  {
+    id: 69,
+    name: "Corsair K70 RGB MK.2",
+    price: 3500000,
+    category: "Keyboard",
+    brand: "Corsair",
+    image: require("../assets/anh do-an/corsair-k70-rgb-mk-2.jpg"),
+    description:
+      "Bàn phím cơ học với ánh sáng RGB, phím macro, và switch Cherry MX, thiết kế bền bỉ với khung nhôm.",
+    rating: 4.7,
+    stock: 15,
+    discount: 0.1,
+  },
+  {
+    id: 70,
+    name: "Corsair K55 RGB",
+    price: 2200000,
+    category: "Keyboard",
+    brand: "Corsair",
+    image: require("../assets/anh do-an/corsair-k55-rgb.jpg"),
+    description:
+      "Bàn phím có đèn nền RGB, tích hợp phím media và chống nước, phù hợp với nhu cầu gaming và làm việc.",
+    rating: 4.5,
+    stock: 25,
+    discount: 0.08,
+  },
+  {
+    id: 71,
+    name: "Corsair HS60 Haptic",
+    price: 3000000,
+    category: "Keyboard",
+    brand: "Corsair",
+    image: require("../assets/anh do-an/corsair-hs60-haptic.jpg"),
+    description:
+      "Bàn phím với công nghệ haptic feedback, hệ thống âm thanh vòm 7.1, và thiết kế tiện lợi.",
+    rating: 4.6,
+    stock: 18,
+    discount: 0.12,
+  },
+  {
+    id: 78,
+    name: "SteelSeries Apex 5",
+    price: 4000000,
+    category: "Keyboard",
+    brand: "SteelSeries",
+    image: require("../assets/anh do-an/steelseries-apex-5.jpg"),
+    description:
+      "Bàn phím cơ học với các phím được trang bị switch hybrid, đèn nền RGB, và khung kim loại chắc chắn.",
+    rating: 4.6,
+    stock: 25,
+    discount: 0.08,
+  },
+  {
+    id: 79,
+    name: "SteelSeries Apex 3",
+    price: 2000000,
+    category: "Keyboard",
+    brand: "SteelSeries",
+    image: require("../assets/anh do-an/steelseries-apex-3.jpg"),
+    description:
+      "Bàn phím chống nước, đèn nền RGB, với thiết kế cho game thủ và những người làm việc lâu dài.",
+    rating: 4.4,
+    stock: 30,
+    discount: 0.1,
+  },
+  {
+    id: 80,
+    name: "SteelSeries Stratus Duo",
+    price: 3000000,
+    category: "Keyboard",
+    brand: "SteelSeries",
+    image: require("../assets/anh do-an/steelseries-stratus-duo.jpg"),
+    description:
+      "Bàn phím không dây với kết nối dễ dàng và đèn nền RGB đẹp mắt, tối ưu cho chơi game di động và PC.",
+    rating: 4.5,
+    stock: 20,
+    discount: 0.1,
+  },
+  {
+    id: 81,
+    name: "Microsoft Modern Keyboard",
+    price: 2700000,
+    category: "Keyboard",
+    brand: "Microsoft",
+    image: require("../assets/anh do-an/microsoft-modern-keyboard.jpg"),
+    description:
+      "Bàn phím Microsoft Modern với thiết kế gọn nhẹ và kiểu dáng hiện đại, kết nối không dây qua Bluetooth, hỗ trợ cả Windows và macOS.",
+    rating: 4.6,
+    stock: 25,
+    discount: 0.08,
+  },
+  {
+    id: 82,
+    name: "Microsoft Arc Keyboard",
+    price: 2200000,
+    category: "Keyboard",
+    brand: "Microsoft",
+    image: require("../assets/anh do-an/microsoft-arc-keyboard.jpg"),
+    description:
+      "Bàn phím không dây với thiết kế cong, siêu mỏng, dễ dàng di động và kết nối với nhiều thiết bị.",
+    rating: 4.6,
+    stock: 20,
+    discount: 0.08,
+  },
+  {
+    id: 83,
+    name: "Microsoft Wireless Keyboard 850",
+    price: 1500000,
+    category: "Keyboard",
+    brand: "Microsoft",
+    image: require("../assets/anh do-an/microsoft-wireless-850.jpg"),
+    description:
+      "Bàn phím không dây với thiết kế đơn giản, thoải mái và dễ dàng kết nối với máy tính.",
+    rating: 4.2,
+    stock: 25,
+    discount: 0.1,
+  },
+  {
+    id: 86,
+    name: "Keychron K2 Wireless",
+    price: 2800000,
+    category: "Keyboard",
+    brand: "Keychron",
+    image: require("../assets/anh do-an/keychron-k2-wireless.jpg"),
+    description:
+      "Bàn phím cơ không dây với layout nhỏ gọn, switch Gateron và hỗ trợ kết nối đa thiết bị.",
+    rating: 4.6,
+    stock: 25,
+    discount: 0.08,
+  },
+  {
+    id: 87,
+    name: "Keychron K8 Pro",
+    price: 3200000,
+    category: "Keyboard",
+    brand: "Keychron",
+    image: require("../assets/anh do-an/keychron-k8-pro.jpg"),
+    description:
+      "Bàn phím cơ layout TKL, switch hot-swappable, hỗ trợ cả kết nối có dây và không dây qua Bluetooth.",
+    rating: 4.7,
+    stock: 22,
+    discount: 0.1,
+  },
+  {
+    id: 88,
+    name: "Keychron Q1",
+    price: 4000000,
+    category: "Keyboard",
+    brand: "Keychron",
+    image: require("../assets/anh do-an/keychron-q1.jpg"),
+    description:
+      "Bàn phím cơ cao cấp với khung nhôm CNC, switch hot-swappable và tùy chỉnh keymap qua phần mềm QMK/VIA.",
+    rating: 4.8,
+    stock: 20,
+    discount: 0.15,
+  },
+  {
+    id: 89,
+    name: "Apple Magic Keyboard with Numeric Keypad",
+    price: 3800000,
+    category: "Keyboard",
+    brand: "Apple",
+    image: require("../assets/anh do-an/apple-magic-keyboard-numeric.jpg"),
+    description:
+      "Bàn phím không dây với bàn phím số, mang lại sự tiện lợi cho công việc văn phòng và xử lý dữ liệu.",
+    rating: 4.6,
+    stock: 12,
+    discount: 0.08,
+  },
+  {
+    id: 90,
+    name: "Apple Magic Keyboard Space Gray",
+    price: 5800000,
+    category: "Keyboard",
+    brand: "Apple",
+    image: require("../assets/anh do-an/apple-magic-keyboard-space-gray.jpg"),
+    description:
+      "Bàn phím không dây với màu xám không gian sang trọng, tích hợp pin sạc và kết nối Bluetooth.",
+    rating: 4.7,
+    stock: 10,
+    discount: 0.09,
+  },
+  {
+    id: 91,
+    name: "Apple Magic Keyboard for MacBook",
+    price: 5800000,
+    category: "Keyboard",
+    brand: "Apple",
+    image: require("../assets/anh do-an/apple-magic-keyboard-macbook.jpg"),
+    description:
+      "Bàn phím thiết kế đặc biệt dành cho MacBook, tối ưu hóa trải nghiệm gõ với hành trình phím mượt mà.",
+    rating: 4.8,
+    stock: 7,
+    discount: 0.1,
+  },
+  {
+    id: 92,
+    name: "HyperX Alloy FPS RGB",
+    price: 4000000,
+    category: "Keyboard",
+    brand: "HyperX",
+    image: require("../assets/anh do-an/hyperx-alloy-fps-rgb.jpg"),
+    description: "Bàn phím cơ học với đèn nền RGB, khung thép chắc chắn và switch Cherry MX cho trải nghiệm gõ tuyệt vời.",
+    rating: 4.7,
+    stock: 14,
+    discount: 0.1,
+  },
+  {
+    id: 93,
+    name: "HyperX Alloy Origins 100",
+    price: 3800000,
+    category: "Keyboard",
+    brand: "HyperX",
+    image: require("../assets/anh do-an/hyperx-alloy-origins-100.jpg"),
+    description: "Bàn phím cơ học 10-keyless, thiết kế nhỏ gọn và bền bỉ với đèn RGB.",
+    rating: 4.6,
+    stock: 18,
+    discount: 0.12,
+  },
+  {
+    id: 94,
+    name: "HyperX Alloy Elite RGB",
+    price: 4300000,
+    category: "Keyboard",
+    brand: "HyperX",
+    image: require("../assets/anh do-an/hyperx-alloy-elite-rgb.jpg"),
+    description: "Bàn phím cơ học với đèn RGB, phím macro có thể lập trình và thiết kế đẹp mắt cho game thủ.",
+    rating: 4.8,
+    stock: 10,
+    discount: 0.1,
+  },
+  {
+    id: 95,
+    name: "ASUS ROG Azoth",
+    price: 5300000,
+    category: "Keyboard",
+    brand: "ASUS",
+    image: require("../assets/anh do-an/asus-rog-azoth.jpg"),
+    description: "Bàn phím cơ học cao cấp với switch quang học và đèn RGB, thiết kế chắc chắn, mang lại trải nghiệm tuyệt vời cho game thủ.",
+    rating: 4.8,
+    stock: 10,
+    discount: 0.12,
+  },
+  {
+    id: 96,
+    name: "ASUS TUF Gaming K7",
+    price: 4200000,
+    category: "Keyboard",
+    brand: "ASUS",
+    image: require("../assets/anh do-an/asus-tuf-gaming-k7.jpg"),
+    description: "Bàn phím cơ học với switch quang học và đèn RGB, thiết kế chống nước và bền bỉ.",
+    rating: 4.7,
+    stock: 15,
+    discount: 0.1,
+  },
+  {
+    id: 97,
+    name: "ASUS ROG Strix Flare II",
+    price: 4800000,
+    category: "Keyboard",
+    brand: "ASUS",
+    image: require("../assets/anh do-an/asus-rog-strix-flare-ii.jpg"),
+    description: "Bàn phím cơ học với đèn RGB Aura Sync, các phím macro có thể lập trình, thích hợp cho game thủ.",
+    rating: 4.8,
+    stock: 7,
+    discount: 0.12,
+  },
 ];
 
 // Lọc sản phẩm theo từ khóa và danh mục
@@ -733,9 +1035,11 @@ export const deleteProduct = (id) => {
 // searchByBrand.js
 
 export const searchByBrand = (products, brand) => {
-  return products.filter(product => product.brand && product.brand.toLowerCase() === brand.toLowerCase());
+  return products.filter(
+    (product) =>
+      product.brand && product.brand.toLowerCase() === brand.toLowerCase()
+  );
 };
-
 
 // Xuất các hàm
 export default products;
