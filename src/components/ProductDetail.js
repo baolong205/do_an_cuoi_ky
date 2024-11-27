@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import styles from './ProductDetail.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt, faStar as faStarEmpty } from '@fortawesome/free-solid-svg-icons';
-import { useUserContext } from '../UserContext'; // Import useUserContext (hoặc phương thức quản lý người dùng của bạn)
+import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import styles from "./ProductDetail.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faStar,
+  faStarHalfAlt,
+  faStar as faStarEmpty,
+} from "@fortawesome/free-solid-svg-icons";
+import { useUserContext } from "../UserContext"; // Import useUserContext (hoặc phương thức quản lý người dùng của bạn)
 
 const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [isModalOpen, setModalOpen] = useState(false); // Trạng thái mở/đóng modal
-  const [successMessage, setSuccessMessage] = useState(''); // Trạng thái thông báo thành công
+  const [successMessage, setSuccessMessage] = useState(""); // Trạng thái thông báo thành công
 
   // Lấy thông tin người dùng từ context
   const { isLogin } = useUserContext();
@@ -36,15 +40,33 @@ const ProductDetail = ({ products, addToCart }) => {
     let stars = [];
 
     for (let i = 0; i < fullStars; i++) {
-      stars.push(<FontAwesomeIcon key={`full-${i}`} icon={faStar} style={{ color: 'gold' }} />);
+      stars.push(
+        <FontAwesomeIcon
+          key={`full-${i}`}
+          icon={faStar}
+          style={{ color: "gold" }}
+        />
+      );
     }
 
     if (halfStar) {
-      stars.push(<FontAwesomeIcon key="half" icon={faStarHalfAlt} style={{ color: 'gold' }} />);
+      stars.push(
+        <FontAwesomeIcon
+          key="half"
+          icon={faStarHalfAlt}
+          style={{ color: "gold" }}
+        />
+      );
     }
 
     for (let i = 0; i < emptyStars; i++) {
-      stars.push(<FontAwesomeIcon key={`empty-${i}`} icon={faStarEmpty} style={{ color: '#d3d3d3' }} />);
+      stars.push(
+        <FontAwesomeIcon
+          key={`empty-${i}`}
+          icon={faStarEmpty}
+          style={{ color: "#d3d3d3" }}
+        />
+      );
     }
 
     return stars;
@@ -54,11 +76,11 @@ const ProductDetail = ({ products, addToCart }) => {
   const handleAddToCart = () => {
     if (isLogin) {
       addToCart(product);
-      setSuccessMessage('Thêm vào giỏ hàng thành công!'); // Hiển thị thông báo thành công
-      setTimeout(() => setSuccessMessage(''), 3000); // Ẩn thông báo sau 3 giây
+      setSuccessMessage("Thêm vào giỏ hàng thành công!"); // Hiển thị thông báo thành công
+      setTimeout(() => setSuccessMessage(""), 3000); // Ẩn thông báo sau 3 giây
     } else {
-      alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
-      navigate('/account'); // Điều hướng người dùng đến trang đăng nhập
+      alert("Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!");
+      navigate("/account"); // Điều hướng người dùng đến trang đăng nhập
     }
   };
 
@@ -70,7 +92,7 @@ const ProductDetail = ({ products, addToCart }) => {
           alt={product.name}
           loading="lazy"
           onClick={() => setModalOpen(true)} // Mở modal khi nhấp vào ảnh
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
         />
       </div>
       <div className={styles.productInfo}>
@@ -78,11 +100,11 @@ const ProductDetail = ({ products, addToCart }) => {
         <p>{product.category}</p>
         <p>
           {product.discount > 0 && (
-            <span style={{ textDecoration: 'line-through', color: '#888' }}>
-              {new Intl.NumberFormat('vi-VN').format(product.price)} VND
+            <span style={{ textDecoration: "line-through", color: "#888" }}>
+              {new Intl.NumberFormat("vi-VN").format(product.price)} VND
             </span>
-          )}{' '}
-          {new Intl.NumberFormat('vi-VN').format(discountedPrice)} VND
+          )}{" "}
+          {new Intl.NumberFormat("vi-VN").format(discountedPrice)} VND
         </p>
         <p>
           <strong>Đánh giá: </strong>
@@ -93,17 +115,20 @@ const ProductDetail = ({ products, addToCart }) => {
         </p>
         <p>{product.stock} sản phẩm còn lại</p>
         <div className="product-description">
-          <p><strong>Mô tả:</strong> {product.description}</p>
+          <p>
+            <strong>Mô tả:</strong> {product.description}
+          </p>
         </div>
         <button onClick={handleAddToCart} className={styles.addToCartBtn}>
           Thêm vào giỏ hàng
         </button>
-        <button onClick={() => navigate('/')} className={styles.backToHomeBtn}>
-          Quay lại trang chủ
+        <button onClick={() => navigate(-1)} className={styles.backToHomeBtn}>
+          Quay lại
         </button>
-
         {/* Hiển thị thông báo thành công */}
-        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+        {successMessage && (
+          <p className={styles.successMessage}>{successMessage}</p>
+        )}
       </div>
 
       {/* Modal hiển thị ảnh full */}
