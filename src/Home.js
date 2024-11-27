@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Nav/Navbar';
 import LaptopPage from './Pages/LaptopPage';  // Import LaptopPage
+import Iphone from './Pages/Iphone';  // Import LaptopPage
 import ProductList from './components/ProductList';
 import Cart from './components/card';
 import Checkout from './components/Checkout';
@@ -78,6 +79,7 @@ const Home = () => {
       <div className="app">
         <Routes>
           <Route path="/" element={<ProductList products={filteredProducts} addToCart={handleAddToCart} />} />
+          <Route path="/iphones" element={<Iphone addToCart={handleAddToCart} />} /> {/* Route cho Iphone */}
           <Route path="/laptops" element={<LaptopPage addToCart={handleAddToCart} />} /> {/* Route cho LaptopPage */}
           <Route path="/cart" element={isLogin ? <Cart cartItems={cart} removeFromCart={handleRemoveFromCart} updateQuantity={handleUpdateQuantity} /> : <Account />} />
           <Route path="/checkout" element={isLogin ? <Checkout cartItems={cart} clearCart={clearCart} /> : <Account />} />
