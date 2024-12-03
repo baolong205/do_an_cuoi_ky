@@ -5,7 +5,7 @@ const defaultProducts = [
     name: "Iphone 11",
     price: 11000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-11-trang-600x600.jpg"),
+    image: require("../assets/Phone/iphone-11-trang-600x600.jpg"),
     description: "Điện thoại cao cấp với chip A16 Bionic.",
     rating: 2,
     stock: 25,
@@ -17,7 +17,7 @@ const defaultProducts = [
     name: "Iphone 12",
     price: 11900000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-12-xanh-la-new-2-600x600.jpg"),
+    image: require("../assets/Phone/iphone-12-xanh-la-new-2-600x600.jpg"),
     description: "Điện thoại thông minh với các tính năng hiện đại.",
     rating: 3,
     stock: 50,
@@ -29,7 +29,7 @@ const defaultProducts = [
     name: "Iphone 13",
     price: 13500000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-13-midnight-2-600x600.jpg"),
+    image: require("../assets/Phone/iphone-13-midnight-2-600x600.jpg"),
     description: "Điện thoại với màn hình Super Retina XDR OLED.",
     rating: 4.7,
     stock: 15,
@@ -41,7 +41,7 @@ const defaultProducts = [
     name: "Iphone 14 Plus",
     price: 24000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iPhone-14-plus-thumb-xanh-1-600x600.jpg"),
+    image: require("../assets/Phone/iPhone-14-plus-thumb-xanh-1-600x600.jpg"),
     description: "Thiết kế sang trọng và hiệu suất cải tiến.",
     rating: 4.2,
     stock: 100,
@@ -53,73 +53,73 @@ const defaultProducts = [
     name: "Iphone 15",
     price: 25000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-15-hong-thumb-1-600x600.jpg"),
+    image: require("../assets/Phone/iphone-15-hong-thumb-1-600x600.jpg"),
     description: "Điện thoại flagship với màn hình và hiệu suất tuyệt vời.",
     rating: 4.6,
     stock: 30,
     discount: 0.15,
-    brand: 'Yanz',
+    brand:'Apple' ,
   },
   {
     id: 6,
     name: "Iphone 15 Plus",
     price: 29000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-15-plus-128gb-den-thumb-600x600.jpg"),
+    image: require("../assets/Phone/iphone-15-plus-128gb-den-thumb-600x600.jpg"),
     description: "Mạnh mẽ và tinh tế, với các tính năng tiên tiến.",
     rating: 4.9,
     stock: 20,
     discount: 0.1,
-    brand: 'Yanz',
+    brand:'Apple' ,
   },
   {
     id: 7,
     name: "Iphone 15 Pro Max",
     price: 34900000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-15-pro-max-black-thumbnew-600x600.jpg"),
+    image: require("../assets/Phone/iphone-15-pro-max-black-thumbnew-600x600.jpg"),
     description: "Màn hình lớn với hiệu suất ấn tượng.",
     rating: 4.8,
     stock: 12,
     discount: 0,
-    brand: 'Yanz',
+    brand:'Apple' ,
   },
   {
     id: 8,
     name: "Iphone 16",
     price: 40000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-16-blue-600x600.png"),
+    image: require("../assets/Phone/iphone-16-blue-600x600.png"),
     description: "Điện thoại thế hệ tiếp theo với những tính năng cách mạng.",
     rating: 5.0,
     stock: 200,
     discount: 0.1,
-    brand: 'Gz',
+    brand:'Apple' ,
   },
   {
     id: 9,
     name: "Iphone 16 Plus",
     price: 42000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-16-plus-den-2-638639096269223702-750x500.jpg"),
+    image: require("../assets/Phone/iphone-16-plus-den-2-638639096269223702-750x500.jpg"),
     description:
       "Thời gian sử dụng pin lâu hơn và kích thước màn hình lớn hơn.",
     rating: 4.5,
     stock: 10,
     discount: 0.05,
-    brand: 'Gz',
+    brand:'Apple' ,
   },
   {
     id: 10,
     name: "Iphone 16 Pro Max",
     price: 45000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-16-pro-max-titan-sa-mac-1-638638962337813406-750x500.jpg"),
+    image: require("../assets/Phone/iphone-16-pro-max-titan-sa-mac-1-638638962337813406-750x500.jpg"),
     description: "Hiệu suất và chất lượng màn hình hàng đầu.",
     rating: 5.0,
     stock: 45,
     discount: 0.1,
-    brand: 'Gz',
+    brand:'Apple' ,
   },
   {
     id: 11,
@@ -229,7 +229,7 @@ const defaultProducts = [
     price: 2500000,
     category: "Keyboard",
     brand: "Logitech",
-    image: require("../assets/anh do-an/logitech-mx-keys.jpg"),
+    image: require("../assets/Keyboard/logitech-mx-keys.jpg"),
     description:
       "Bàn phím cơ học cao cấp với đèn nền và khả năng kết nối đa thiết bị.",
     rating: 4.8,
@@ -242,7 +242,7 @@ const defaultProducts = [
     price: 3200000,
     category: "Keyboard",
     brand: "Razer",
-    image: require("../assets/anh do-an/razer-blackwidow-v3.jpg"),
+    image: require("../assets/Keyboard/razer-blackwidow-v3.jpg"),
     description:
       "Mechanical gaming keyboard with RGB lighting and durable key switches.",
     rating: 4.5,
@@ -255,7 +255,7 @@ const defaultProducts = [
     price: 4800000,
     category: "Keyboard",
     brand: "Corsair",
-    image: require("../assets/anh do-an/corsair-k95-rgb.jpg"),
+    image: require("../assets/Keyboard/corsair-k95-rgb.jpg"),
     description:
       "High-end mechanical keyboard with customizable RGB lighting and dedicated media controls.",
     rating: 4.9,
@@ -268,7 +268,7 @@ const defaultProducts = [
     price: 4500000,
     category: "Keyboard",
     brand: "SteelSeries",
-    image: require("../assets/anh do-an/steelseries-apex-pro.jpg"),
+    image: require("../assets/Keyboard/steelseries-apex-pro.jpg"),
     description:
       "Mechanical keyboard with adjustable actuation switches and RGB lighting.",
     rating: 4.8,
@@ -281,7 +281,7 @@ const defaultProducts = [
     price: 1500000,
     category: "Keyboard",
     brand: "Microsoft",
-    image: require("../assets/anh do-an/microsoft-sculpt.jpg"),
+    image: require("../assets/Keyboard/microsoft-sculpt.jpg"),
     description:
       "Ergonomic wireless keyboard designed for comfort and productivity.",
     rating: 4.5,
@@ -294,7 +294,7 @@ const defaultProducts = [
     price: 3500000,
     category: "Keyboard",
     brand: "Logitech",
-    image: require("../assets/anh do-an/logitech-g-pro-x.jpg"),
+    image: require("../assets/Keyboard/logitech-g-pro-x.jpg"),
     description:
       "Gaming keyboard with hot-swappable switches and RGB lighting.",
     rating: 4.8,
@@ -307,7 +307,7 @@ const defaultProducts = [
     price: 2200000,
     category: "Keyboard",
     brand: "Keychron",
-    image: require("../assets/anh do-an/keychron-k2-v2.jpg"),
+    image: require("../assets/Keyboard/keychron-k2-v2.jpg"),
     description:
       "Wireless mechanical keyboard with customizable RGB lighting, great for both work and gaming.",
     rating: 4.0,
@@ -320,7 +320,7 @@ const defaultProducts = [
     price: 3500000,
     category: "Keyboard",
     brand: "Apple",
-    image: require("../assets/anh do-an/apple-magic-keyboard.jpg"),
+    image: require("../assets/Keyboard/apple-magic-keyboard.jpg"),
     description:
       "Compact wireless keyboard with a slim profile, perfect for Mac users.",
     rating: 4.6,
@@ -333,7 +333,7 @@ const defaultProducts = [
     price: 2700000,
     category: "Keyboard",
     brand: "HyperX",
-    image: require("../assets/anh do-an/hyperx-alloy-fps-pro.jpg"),
+    image: require("../assets/Keyboard/hyperx-alloy-fps-pro.jpg"),
     description:
       "Tenkeyless mechanical keyboard designed for FPS gaming with red LED backlighting.",
     rating: 4.6,
@@ -346,7 +346,7 @@ const defaultProducts = [
     price: 6500000,
     category: "Keyboard",
     brand: "Logitech",
-    image: require("../assets/anh do-an/logitech-g915-tkl.jpg"),
+    image: require("../assets/Keyboard/logitech-g915-tkl.jpg"),
     description:
       "Low-profile mechanical gaming keyboard with wireless connectivity and RGB lighting.",
     rating: 4.8,
@@ -359,7 +359,7 @@ const defaultProducts = [
     price: 3200000,
     category: "Keyboard",
     brand: "ASUS",
-    image: require("../assets/anh do-an/asus-rog-strix-scope.jpg"),
+    image: require("../assets/Keyboard/asus-rog-strix-scope.jpg"),
     description:
       "Gaming keyboard with extended Ctrl key and RGB lighting for FPS gamers.",
     rating: 5.0,
@@ -541,7 +541,7 @@ const defaultProducts = [
     price: 3500000,
     category: "Keyboard",
     brand: "Logitech",
-    image: require("../assets/anh do-an/logitech-g-pro-x-tenkeyless.jpg"),
+    image: require("../assets/Keyboard/logitech-g-pro-x-tenkeyless.jpg"),
     description:
       "Bàn phím cơ học tenkeyless với switch tùy chỉnh, thiết kế gọn nhẹ, phù hợp cho game thủ chuyên nghiệp và không gian làm việc nhỏ.",
     rating: 4.8,
@@ -554,7 +554,7 @@ const defaultProducts = [
     price: 4000000,
     category: "Keyboard",
     brand: "Razer",
-    image: require("../assets/anh do-an/razer-blackwidow-v3-mini.jpg"),
+    image: require("../assets/Keyboard/razer-blackwidow-v3-mini.jpg"),
     description:
       "Bàn phím cơ học mini với đèn nền RGB Chroma, switch Green, thiết kế nhỏ gọn cho không gian hạn chế.",
     rating: 4.0,
@@ -567,7 +567,7 @@ const defaultProducts = [
     price: 5500000,
     category: "Keyboard",
     brand: "Corsair",
-    image: require("../assets/anh do-an/corsair-k95-rgb-platinum-xt.jpg"),
+    image: require("../assets/Keyboard/corsair-k95-rgb-platinum-xt.jpg"),
     description:
       "Bàn phím cơ học cao cấp với đèn nền RGB, switch Cherry MX và các phím macro tùy chỉnh.",
     rating: 5,
@@ -580,7 +580,7 @@ const defaultProducts = [
     price: 4800000,
     category: "Keyboard",
     brand: "SteelSeries",
-    image: require("../assets/anh do-an/steelseries-apex-7.jpg"),
+    image: require("../assets/Keyboard/steelseries-apex-7.jpg"),
     description:
       "Bàn phím cơ học với switch OLED, đèn nền RGB và thiết kế chắc chắn, phù hợp cho game thủ chuyên nghiệp.",
     rating: 4.8,
@@ -593,7 +593,7 @@ const defaultProducts = [
     price: 2000000,
     category: "Keyboard",
     brand: "Microsoft",
-    image: require("../assets/anh do-an/microsoft-surface-keyboard.jpg"),
+    image: require("../assets/Keyboard/microsoft-surface-keyboard.jpg"),
     description:
       "Bàn phím không dây mỏng nhẹ, thiết kế sang trọng, tương thích tốt với các thiết bị Windows.",
     rating: 4.6,
@@ -606,7 +606,7 @@ const defaultProducts = [
     price: 3500000,
     category: "Keyboard",
     brand: "Keychron",
-    image: require("../assets/anh do-an/keychron-k8.jpg"),
+    image: require("../assets/Keyboard/keychron-k8.jpg"),
     description:
       "Bàn phím cơ học không dây với kết nối Bluetooth và đèn nền RGB, dễ dàng sử dụng cho nhiều hệ điều hành.",
     rating: 4.8,
@@ -619,7 +619,7 @@ const defaultProducts = [
     price: 3500000,
     category: "Keyboard",
     brand: "Apple",
-    image: require("../assets/anh do-an/apple-magic-keyboard-touchid.jpg"),
+    image: require("../assets/Keyboard/apple-magic-keyboard-touchid.jpg"),
     description:
       "Bàn phím không dây tích hợp Touch ID, mang lại sự tiện lợi và bảo mật cao khi sử dụng với máy Mac.",
     rating: 4.8,
@@ -632,7 +632,7 @@ const defaultProducts = [
     price: 4500000,
     category: "Keyboard",
     brand: "HyperX",
-    image: require("../assets/anh do-an/hyperx-alloy-elite-2.jpg"),
+    image: require("../assets/Keyboard/hyperx-alloy-elite-2.jpg"),
     description:
       "Bàn phím cơ học full-size với đèn nền RGB và các phím media tích hợp, dành cho game thủ chuyên nghiệp.",
     rating: 4.8,
@@ -645,7 +645,7 @@ const defaultProducts = [
     price: 4500000,
     category: "Keyboard",
     brand: "ASUS",
-    image: require("../assets/anh do-an/asus-rog-strix-scope-rx.jpg"),
+    image: require("../assets/Keyboard/asus-rog-strix-scope-rx.jpg"),
     description:
       "Bàn phím cơ học với switch RX, đèn nền RGB và các tính năng cao cấp cho game thủ.",
     rating: 4.8,
@@ -658,7 +658,7 @@ const defaultProducts = [
     price: 4800000,
     category: "Keyboard",
     brand: "Logitech",
-    image: require("../assets/anh do-an/logitech-g815-lightsync.jpg"),
+    image: require("../assets/Keyboard/logitech-g815-lightsync.jpg"),
     description:
       "Bàn phím cơ học với switch GL, đèn nền RGB và thiết kế siêu mỏng, hoàn hảo cho game thủ.",
     rating: 4.9,
@@ -671,7 +671,7 @@ const defaultProducts = [
     price: 4500000,
     category: "Keyboard",
     brand: "Razer",
-    image: require("../assets/anh do-an/razer-blackwidow-v3-mini-hyperspeed.jpg"),
+    image: require("../assets/Keyboard/razer-blackwidow-v3-mini-hyperspeed.jpg"),
     description:
       "Bàn phím cơ học 65% với switch Green, kết nối không dây HyperSpeed cho hiệu suất cao, đèn nền RGB Chroma.",
     rating: 5,
@@ -684,7 +684,7 @@ const defaultProducts = [
     price: 2800000,
     category: "Keyboard",
     brand: "Razer",
-    image: require("../assets/anh do-an/razer-ornata-v2.jpg"),
+    image: require("../assets/Keyboard/razer-ornata-v2.jpg"),
     description:
       "Bàn phím hybrid với switch mecha-membrane, đèn nền RGB Chroma, và âm thanh cực kỳ êm ái khi gõ.",
     rating: 3.0,
@@ -697,7 +697,7 @@ const defaultProducts = [
     price: 5000000,
     category: "Keyboard",
     brand: "Razer",
-    image: require("../assets/anh do-an/razer-blackwidow-v3-wireless.jpg"),
+    image: require("../assets/Keyboard/razer-blackwidow-v3-wireless.jpg"),
     description:
       "Bàn phím cơ học không dây với switch Yellow, đèn nền RGB Chroma, kết nối qua Bluetooth hoặc 2.4GHz cho game thủ chuyên nghiệp.",
     rating: 5,
@@ -710,7 +710,7 @@ const defaultProducts = [
     price: 3500000,
     category: "Keyboard",
     brand: "Corsair",
-    image: require("../assets/anh do-an/corsair-k70-rgb-mk-2.jpg"),
+    image: require("../assets/Keyboard/corsair-k70-rgb-mk-2.jpg"),
     description:
       "Bàn phím cơ học với ánh sáng RGB, phím macro, và switch Cherry MX, thiết kế bền bỉ với khung nhôm.",
     rating: 4.7,
@@ -723,7 +723,7 @@ const defaultProducts = [
     price: 2200000,
     category: "Keyboard",
     brand: "Corsair",
-    image: require("../assets/anh do-an/corsair-k55-rgb.jpg"),
+    image: require("../assets/Keyboard/corsair-k55-rgb.jpg"),
     description:
       "Bàn phím có đèn nền RGB, tích hợp phím media và chống nước, phù hợp với nhu cầu gaming và làm việc.",
     rating: 4.5,
@@ -736,7 +736,7 @@ const defaultProducts = [
     price: 3000000,
     category: "Keyboard",
     brand: "Corsair",
-    image: require("../assets/anh do-an/corsair-hs60-haptic.jpg"),
+    image: require("../assets/Keyboard/corsair-hs60-haptic.jpg"),
     description:
       "Bàn phím với công nghệ haptic feedback, hệ thống âm thanh vòm 7.1, và thiết kế tiện lợi.",
     rating: 4.6,
@@ -749,7 +749,7 @@ const defaultProducts = [
     price: 4000000,
     category: "Keyboard",
     brand: "SteelSeries",
-    image: require("../assets/anh do-an/steelseries-apex-5.jpg"),
+    image: require("../assets/Keyboard/steelseries-apex-5.jpg"),
     description:
       "Bàn phím cơ học với các phím được trang bị switch hybrid, đèn nền RGB, và khung kim loại chắc chắn.",
     rating: 4.6,
@@ -762,7 +762,7 @@ const defaultProducts = [
     price: 2000000,
     category: "Keyboard",
     brand: "SteelSeries",
-    image: require("../assets/anh do-an/steelseries-apex-3.jpg"),
+    image: require("../assets/Keyboard/steelseries-apex-3.jpg"),
     description:
       "Bàn phím chống nước, đèn nền RGB, với thiết kế cho game thủ và những người làm việc lâu dài.",
     rating: 4.4,
@@ -775,7 +775,7 @@ const defaultProducts = [
     price: 3000000,
     category: "Keyboard",
     brand: "SteelSeries",
-    image: require("../assets/anh do-an/steelseries-stratus-duo.jpg"),
+    image: require("../assets/Keyboard/steelseries-stratus-duo.jpg"),
     description:
       "Bàn phím không dây với kết nối dễ dàng và đèn nền RGB đẹp mắt, tối ưu cho chơi game di động và PC.",
     rating: 4.5,
@@ -788,7 +788,7 @@ const defaultProducts = [
     price: 2700000,
     category: "Keyboard",
     brand: "Microsoft",
-    image: require("../assets/anh do-an/microsoft-modern-keyboard.jpg"),
+    image: require("../assets/Keyboard/microsoft-modern-keyboard.jpg"),
     description:
       "Bàn phím Microsoft Modern với thiết kế gọn nhẹ và kiểu dáng hiện đại, kết nối không dây qua Bluetooth, hỗ trợ cả Windows và macOS.",
     rating: 4.6,
@@ -801,7 +801,7 @@ const defaultProducts = [
     price: 2200000,
     category: "Keyboard",
     brand: "Microsoft",
-    image: require("../assets/anh do-an/microsoft-arc-keyboard.jpg"),
+    image: require("../assets/Keyboard/microsoft-arc-keyboard.jpg"),
     description:
       "Bàn phím không dây với thiết kế cong, siêu mỏng, dễ dàng di động và kết nối với nhiều thiết bị.",
     rating: 4.6,
@@ -814,7 +814,7 @@ const defaultProducts = [
     price: 1500000,
     category: "Keyboard",
     brand: "Microsoft",
-    image: require("../assets/anh do-an/microsoft-wireless-850.jpg"),
+    image: require("../assets/Keyboard/microsoft-wireless-850.jpg"),
     description:
       "Bàn phím không dây với thiết kế đơn giản, thoải mái và dễ dàng kết nối với máy tính.",
     rating: 4.2,
@@ -827,7 +827,7 @@ const defaultProducts = [
     price: 2800000,
     category: "Keyboard",
     brand: "Keychron",
-    image: require("../assets/anh do-an/keychron-k2-wireless.jpg"),
+    image: require("../assets/Keyboard/keychron-k2-wireless.jpg"),
     description:
       "Bàn phím cơ không dây với layout nhỏ gọn, switch Gateron và hỗ trợ kết nối đa thiết bị.",
     rating: 4.6,
@@ -840,7 +840,7 @@ const defaultProducts = [
     price: 3200000,
     category: "Keyboard",
     brand: "Keychron",
-    image: require("../assets/anh do-an/keychron-k8-pro.jpg"),
+    image: require("../assets/Keyboard/keychron-k8-pro.jpg"),
     description:
       "Bàn phím cơ layout TKL, switch hot-swappable, hỗ trợ cả kết nối có dây và không dây qua Bluetooth.",
     rating: 4.7,
@@ -853,7 +853,7 @@ const defaultProducts = [
     price: 4000000,
     category: "Keyboard",
     brand: "Keychron",
-    image: require("../assets/anh do-an/keychron-q1.jpg"),
+    image: require("../assets/Keyboard/keychron-q1.jpg"),
     description:
       "Bàn phím cơ cao cấp với khung nhôm CNC, switch hot-swappable và tùy chỉnh keymap qua phần mềm QMK/VIA.",
     rating: 4.8,
@@ -866,7 +866,7 @@ const defaultProducts = [
     price: 3800000,
     category: "Keyboard",
     brand: "Apple",
-    image: require("../assets/anh do-an/apple-magic-keyboard-numeric.jpg"),
+    image: require("../assets/Keyboard/apple-magic-keyboard-numeric.jpg"),
     description:
       "Bàn phím không dây với bàn phím số, mang lại sự tiện lợi cho công việc văn phòng và xử lý dữ liệu.",
     rating: 4.6,
@@ -879,7 +879,7 @@ const defaultProducts = [
     price: 5800000,
     category: "Keyboard",
     brand: "Apple",
-    image: require("../assets/anh do-an/apple-magic-keyboard-space-gray.jpg"),
+    image: require("../assets/Keyboard/apple-magic-keyboard-space-gray.jpg"),
     description:
       "Bàn phím không dây với màu xám không gian sang trọng, tích hợp pin sạc và kết nối Bluetooth.",
     rating: 4.7,
@@ -892,7 +892,7 @@ const defaultProducts = [
     price: 5800000,
     category: "Keyboard",
     brand: "Apple",
-    image: require("../assets/anh do-an/apple-magic-keyboard-macbook.jpg"),
+    image: require("../assets/Keyboard/apple-magic-keyboard-macbook.jpg"),
     description:
       "Bàn phím thiết kế đặc biệt dành cho MacBook, tối ưu hóa trải nghiệm gõ với hành trình phím mượt mà.",
     rating: 4.8,
@@ -905,7 +905,7 @@ const defaultProducts = [
     price: 4000000,
     category: "Keyboard",
     brand: "HyperX",
-    image: require("../assets/anh do-an/hyperx-alloy-fps-rgb.jpg"),
+    image: require("../assets/Keyboard/hyperx-alloy-fps-rgb.jpg"),
     description: "Bàn phím cơ học với đèn nền RGB, khung thép chắc chắn và switch Cherry MX cho trải nghiệm gõ tuyệt vời.",
     rating: 4.7,
     stock: 14,
@@ -917,7 +917,7 @@ const defaultProducts = [
     price: 3800000,
     category: "Keyboard",
     brand: "HyperX",
-    image: require("../assets/anh do-an/hyperx-alloy-origins-100.jpg"),
+    image: require("../assets/Keyboard/hyperx-alloy-origins-100.jpg"),
     description: "Bàn phím cơ học 10-keyless, thiết kế nhỏ gọn và bền bỉ với đèn RGB.",
     rating: 4.6,
     stock: 18,
@@ -929,7 +929,7 @@ const defaultProducts = [
     price: 4300000,
     category: "Keyboard",
     brand: "HyperX",
-    image: require("../assets/anh do-an/hyperx-alloy-elite-rgb.jpg"),
+    image: require("../assets/Keyboard/hyperx-alloy-elite-rgb.jpg"),
     description: "Bàn phím cơ học với đèn RGB, phím macro có thể lập trình và thiết kế đẹp mắt cho game thủ.",
     rating: 4.8,
     stock: 10,
@@ -941,7 +941,7 @@ const defaultProducts = [
     price: 5300000,
     category: "Keyboard",
     brand: "ASUS",
-    image: require("../assets/anh do-an/asus-rog-azoth.jpg"),
+    image: require("../assets/Keyboard/asus-rog-azoth.jpg"),
     description: "Bàn phím cơ học cao cấp với switch quang học và đèn RGB, thiết kế chắc chắn, mang lại trải nghiệm tuyệt vời cho game thủ.",
     rating: 4.8,
     stock: 10,
@@ -953,7 +953,7 @@ const defaultProducts = [
     price: 4200000,
     category: "Keyboard",
     brand: "ASUS",
-    image: require("../assets/anh do-an/asus-tuf-gaming-k7.jpg"),
+    image: require("../assets/Keyboard/asus-tuf-gaming-k7.jpg"),
     description: "Bàn phím cơ học với switch quang học và đèn RGB, thiết kế chống nước và bền bỉ.",
     rating: 4.7,
     stock: 15,
@@ -965,7 +965,7 @@ const defaultProducts = [
     price: 4800000,
     category: "Keyboard",
     brand: "ASUS",
-    image: require("../assets/anh do-an/asus-rog-strix-flare-ii.jpg"),
+    image: require("../assets/Keyboard/asus-rog-strix-flare-ii.jpg"),
     description: "Bàn phím cơ học với đèn RGB Aura Sync, các phím macro có thể lập trình, thích hợp cho game thủ.",
     rating: 4.8,
     stock: 7,
@@ -1110,10 +1110,577 @@ const defaultProducts = [
     brand: 'Lenovo',
 
   },
+  
+  {
+    id: 101,
+    name: "Samsung Galaxy A15",
+    price: 12000000,
+    category: "Phone",
+    image: require("../assets/Phone/1.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
 
+  },
+  {
+    id: 102,
+    name: "Samsung Galaxy A15",
+    price: 12000000,
+    category: "Phone",
+    image: require("../assets/Phone/2.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
 
+  },
+  {
+    id: 103,
+    name: "Samsung Galaxy A35",
+    price: 6000000,
+    category: "Phone",
+    image: require("../assets/Phone/3.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
 
+  },
+  {
+    id: 104,
+    name: "Samsung Galaxy A05s",
+    price: 5500000,
+    category: "Phone",
+    image: require("../assets/Phone/4.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
 
+  },
+  {
+    id: 105,
+    name: "Samsung Galaxy A25",
+    price: 4500000,
+    category: "Phone",
+    image: require("../assets/Phone/5.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 106,
+    name: "Samsung Galaxy A05",
+    price: 3500000,
+    category: "Phone",
+    image: require("../assets/Phone/6.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 107,
+    name: "Samsung Galaxy A16",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/7.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 108,
+    name: "Samsung Galaxy A55",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/8.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 109,
+    name: "Samsung Galaxy A06",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/9.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 110,
+    name: "Samsung Galaxy A03",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/10.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 111,
+    name: "Xiaomi Redmi Note 13",
+    price: 12000000,
+    category: "Phone",
+    image: require("../assets/Phone/11.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 112,
+    name: "Xiaomi Redmi 12 ",
+    price: 7000000,
+    category: "Phone",
+    image: require("../assets/Phone/12.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 113,
+    name: "Xiaomi 14C",
+    price: 14000000,
+    category: "Phone",
+    image: require("../assets/Phone/13.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 114,
+    name: "Xiaomi Redmi 13",
+    price: 18000000,
+    category: "Phone",
+    image: require("../assets/Phone/14.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 115,
+    name: "Xiaomi Redmi 12",
+    price: 9000000,
+    category: "Phone",
+    image: require("../assets/Phone/15.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 116,
+    name: "Xiaomi Redmi Note 13R",
+    price: 16000000,
+    category: "Phone",
+    image: require("../assets/Phone/16.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 117,
+    name: "Xiaomi Redmi 10",
+    price: 5500000,
+    category: "Phone",
+    image: require("../assets/Phone/17.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 118,
+    name: "Xiaomi Redmi Note 12 -",
+    price: 6900000,
+    category: "Phone",
+    image: require("../assets/Phone/18.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 119,
+    name: "Xiaomi Redmi 13 6GB",
+    price: 17000000,
+    category: "Phone",
+    image: require("../assets/Phone/19.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 120,
+    name: "Redmi Note 12 Pro 5",
+    price: 8000000,
+    category: "Phone",
+    image: require("../assets/Phone/20.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  {
+    id: 121,
+    name: "Vsmart Live 4",
+    price: 16000000,
+    category: "Phone",
+    image: require("../assets/Phone/21.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 122,
+    name: "Vsmart Lux",
+    price: 17000000,
+    category: "Phone",
+    image: require("../assets/Phone/22.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 123,
+    name: "Vsmart Bee 5",
+    price: 5900000,
+    category: "Phone",
+    image: require("../assets/Phone/23.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 124,
+    name: "Vsmart Active 1",
+    price: 7200000,
+    category: "Phone",
+    image: require("../assets/Phone/24.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 125,
+    name: "Vsmart Joy 4",
+    price: 7200000,
+    category: "Phone",
+    image: require("../assets/Phone/25.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 126,
+    name: "Vsmart Joy 4 Cũ",
+    price: 3500000,
+    category: "Phone",
+    image: require("../assets/Phone/26.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 127,
+    name: "Vsmart Aris 8GB 128GB",
+    price: 1400000,
+    category: "Phone",
+    image: require("../assets/Phone/27.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 128,
+    name: "Vsmart Active 3 6GB Ram",
+    price: 1200000,
+    category: "Phone",
+    image: require("../assets/Phone/28.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 129,
+    name: "Vsmart Aris 2",
+    price: 6000000,
+    category: "Phone",
+    image: require("../assets/Phone/29.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 130,
+    name: "Vsmart Aris Pro",
+    price: 7200000,
+    category: "Phone",
+    image: require("../assets/Phone/30.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 131,
+    name: "OPPO Find X8 5G 16GB 512GB",
+    price: 22990000,
+    category: "Phone",
+    image: require("../assets/Phone/31.png"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 132,
+    name: "OPPO A18 4GB 64GB",
+    price: 3290000,
+    category: "Phone",
+    image: require("../assets/Phone/32.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 133,
+    name: "OPPO A3 6GB 128GB",
+    price: 4990000,
+    category: "Phone",
+    image: require("../assets/Phone/33.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 134,
+    name: "OPPO A58 8GB 128GB",
+    price: 5190000,
+    category: "Phone",
+    image: require("../assets/Phone/34.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 135,
+    name: "OPPO Reno12 F 5G 8GB 256GB",
+    price: 9190000,
+    category: "Phone",
+    image: require("../assets/Phone/35.png"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 136,
+    name: "OPPO Reno8 T 4G 8GB-256GB",
+    price: 6290000,
+    category: "Phone",
+    image: require("../assets/Phone/36.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 137,
+    name: "OPPO A3 8GB 256GB",
+    price: 6490000,
+    category: "Phone",
+    image: require("../assets/Phone/37.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 138,
+    name: "OPPO Reno12 5G 12GB 256GB",
+    price: 12290000,
+    category: "Phone",
+    image: require("../assets/Phone/38.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 139,
+    name: "OPPO A58 6GB-128GB",
+    price: 4690000,
+    category: "Phone",
+    image: require("../assets/Phone/39.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 140,
+    name: "OPPO Reno11 F 5G 8GB-256GB",
+    price: 8490000,
+    category: "Phone",
+    image: require("../assets/Phone/40.png"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  
 
 ];
 // Lấy danh sách sản phẩm từ Local Storage

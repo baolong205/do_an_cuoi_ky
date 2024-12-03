@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import "./ProductList.css";
 import IM1 from "../assets/anh do-an/iphone-16-blue-600x600.png";
 import IM2 from "../assets/anh do-an/asus-vivobook-x1404za-i5-nk376w-thumb-600x600.jpg";
-import IM3 from "../assets/anh do-an/razer-blackwidow-v3.jpg";
+import IM3 from "../assets/Keyboard/razer-blackwidow-v3.jpg";
 import IM4 from "../assets/anh do-an/acer-aspire-3-a314-42p-r3b3-r7-nxksfsv001-thumb-600x600.jpg";
 
 // Giả sử đây là danh sách sản phẩm bán chạy của bạn (có thể thay đổi tùy vào dữ liệu thực tế)
@@ -25,7 +25,7 @@ const bestSellingProducts = [
   {
     id: 21,
     name: "Razer BlackWindow 3",
-    price: 200000,
+    price: 2000000,
     image: IM3,
     rating: 3.8,
   },

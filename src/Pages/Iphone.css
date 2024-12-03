@@ -1,9 +1,9 @@
 /* src/components/Laptop.css */
-.laptop-page {
+.laptop-g {
     padding: 20px;
   }
   
-  .product-list {
+  .product-g{
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Cố định 5 cột */
     gap: 20px;
@@ -49,16 +49,202 @@
     display: flex;
   }
   
-  .add-to-cart-btn {
-    background-color: #0091f8;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
   
-  .add-to-cart-btn:hover {
-    background-color: #e09500;
-  }
+/* Nút chuyển thương hiệu */
+.brand-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  top: -150px;
+}
+
+.brand-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.brand-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Section từng thương hiệu */
+.brand-section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.brand-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  
+}
+.iphone-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.filters-sidebar {
+  width: 250px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  position: sticky;
+  top: 20px;
+}
+
+.filter-group {
+  margin-bottom: 16px;
+}
+
+.filter-group h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.filter-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.filter-group input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.products-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-left: 270px; /* Đẩy lưới sản phẩm qua để nhường chỗ cho sidebar */
+}
+/* Bộ lọc cố định nhỏ hơn */
+/* Khung mức giá nhỏ gọn */
+.filter-section {
+  position: relative; /* Không cố định nữa */
+  width: 200px; /* Giảm chiều rộng */
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px; /* Giảm padding */
+  font-size: 14px; /* Giảm kích thước chữ */
+  margin: 10px 0; /* Khoảng cách trên dưới */
+}
+
+/* Thanh kéo nhỏ hơn */
+.price-slider input[type="range"] {
+  width: 70%; /* Giảm chiều rộng thanh kéo */
+  margin: 5px 0; /* Giảm khoảng cách */
+}
+
+/* Văn bản hiển thị giá */
+.price-value span {
+  display: inline-block;
+  font-size: 12px; /* Giảm kích thước chữ */
+  margin: 5px 0; /* Giảm khoảng cách giữa các giá trị */
+}
+
+/* Tùy chỉnh kích thước nút */
+.filter-section button {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px; /* Khoảng cách nhỏ hơn */
+  padding: 4px; /* Nút nhỏ hơn */
+  font-size: 12px; /* Chữ nhỏ hơn */
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px; /* Bo góc nhỏ hơn */
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-section button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Đảm bảo danh sách sản phẩm không bị chèn */
+.product-g {
+  margin-right: 200px; /* Tạo khoảng trống nhỏ hơn cho bộ lọc */
+}
+
+/* Thanh kéo giá */
+.price-slider {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.price-value {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+}
+
+
+/* Thanh kéo giá */
+.filter-section .price-slider {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-section .price-slider input[type="range"] {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.filter-section .price-slider input[type="range"]:hover {
+  background: #007bff;
+}
+
+.filter-section .price-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+
+.filter-section .price-slider input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+
+/* Hiển thị giá trị hiện tại */
+.filter-section .price-value {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #333;
+  margin-top: 5px;
+}
   

@@ -156,7 +156,7 @@ button:focus {
 .add-to-cart-btn:hover,
 .checkout-btn:hover,
 .proceed-payment-btn:hover {
-  background-color: #1634dd;
+  background-color: #9bdd16;
 }
 
 .checkout-btn {
@@ -227,3 +227,4 @@ button:focus {
 .show-more-btn:hover {
   background-color: #0077b3;
 }
+
