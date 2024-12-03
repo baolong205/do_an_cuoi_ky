@@ -1450,6 +1450,9 @@ const products = [
     discount: 0.1,
     brand:'SONY',
   },
+
+
+  
   {
     id: 178,
     name: "HP Spectre x360",
