@@ -4,7 +4,7 @@ const products = [
     name: "Iphone 11",
     price: 11000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-11-trang-600x600.jpg"),
+    image: require("../assets/Phone/iphone-11-trang-600x600.jpg"),
     description: "Điện thoại cao cấp với chip A16 Bionic.",
     rating: 2,
     stock: 25,
@@ -16,7 +16,7 @@ const products = [
     name: "Iphone 12",
     price: 11900000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-12-xanh-la-new-2-600x600.jpg"),
+    image: require("../assets/Phone/iphone-12-xanh-la-new-2-600x600.jpg"),
     description: "Điện thoại thông minh với các tính năng hiện đại.",
     rating: 3,
     stock: 50,
@@ -28,7 +28,7 @@ const products = [
     name: "Iphone 13",
     price: 13500000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-13-midnight-2-600x600.jpg"),
+    image: require("../assets/Phone/iphone-13-midnight-2-600x600.jpg"),
     description: "Điện thoại với màn hình Super Retina XDR OLED.",
     rating: 4.7,
     stock: 15,
@@ -40,7 +40,7 @@ const products = [
     name: "Iphone 14 Plus",
     price: 24000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iPhone-14-plus-thumb-xanh-1-600x600.jpg"),
+    image: require("../assets/Phone/iPhone-14-plus-thumb-xanh-1-600x600.jpg"),
     description: "Thiết kế sang trọng và hiệu suất cải tiến.",
     rating: 4.2,
     stock: 100,
@@ -52,73 +52,73 @@ const products = [
     name: "Iphone 15",
     price: 25000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-15-hong-thumb-1-600x600.jpg"),
+    image: require("../assets/Phone/iphone-15-hong-thumb-1-600x600.jpg"),
     description: "Điện thoại flagship với màn hình và hiệu suất tuyệt vời.",
     rating: 4.6,
     stock: 30,
     discount: 0.15,
-    brand:'Yanz' ,
+    brand:'Apple' ,
   },
   {
     id: 6,
     name: "Iphone 15 Plus",
     price: 29000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-15-plus-128gb-den-thumb-600x600.jpg"),
+    image: require("../assets/Phone/iphone-15-plus-128gb-den-thumb-600x600.jpg"),
     description: "Mạnh mẽ và tinh tế, với các tính năng tiên tiến.",
     rating: 4.9,
     stock: 20,
     discount: 0.1,
-    brand:'Yanz' ,
+    brand:'Apple' ,
   },
   {
     id: 7,
     name: "Iphone 15 Pro Max",
     price: 34900000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-15-pro-max-black-thumbnew-600x600.jpg"),
+    image: require("../assets/Phone/iphone-15-pro-max-black-thumbnew-600x600.jpg"),
     description: "Màn hình lớn với hiệu suất ấn tượng.",
     rating: 4.8,
     stock: 12,
     discount: 0,
-    brand:'Yanz' ,
+    brand:'Apple' ,
   },
   {
     id: 8,
     name: "Iphone 16",
     price: 40000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-16-blue-600x600.png"),
+    image: require("../assets/Phone/iphone-16-blue-600x600.png"),
     description: "Điện thoại thế hệ tiếp theo với những tính năng cách mạng.",
     rating: 5.0,
     stock: 200,
     discount: 0.1,
-    brand:'Gz' ,
+    brand:'Apple' ,
   },
   {
     id: 9,
     name: "Iphone 16 Plus",
     price: 42000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-16-plus-den-2-638639096269223702-750x500.jpg"),
+    image: require("../assets/Phone/iphone-16-plus-den-2-638639096269223702-750x500.jpg"),
     description:
       "Thời gian sử dụng pin lâu hơn và kích thước màn hình lớn hơn.",
     rating: 4.5,
     stock: 10,
     discount: 0.05,
-    brand:'Gz' ,
+    brand:'Apple' ,
   },
   {
     id: 10,
     name: "Iphone 16 Pro Max",
     price: 45000000,
     category: "Phone",
-    image: require("../assets/anh do-an/iphone-16-pro-max-titan-sa-mac-1-638638962337813406-750x500.jpg"),
+    image: require("../assets/Phone/iphone-16-pro-max-titan-sa-mac-1-638638962337813406-750x500.jpg"),
     description: "Hiệu suất và chất lượng màn hình hàng đầu.",
     rating: 5.0,
     stock: 45,
     discount: 0.1,
-    brand:'Gz' ,
+    brand:'Apple' ,
   },
   {
     id: 11,
@@ -1006,6 +1006,576 @@ const products = [
     stock: 20,
     discount: 0.1,
     brand: 'Hp',
+
+  },
+  
+  {
+    id: 101,
+    name: "Samsung Galaxy A15",
+    price: 12000000,
+    category: "Phone",
+    image: require("../assets/Phone/1.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 102,
+    name: "Samsung Galaxy A15",
+    price: 12000000,
+    category: "Phone",
+    image: require("../assets/Phone/2.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 103,
+    name: "Samsung Galaxy A35",
+    price: 6000000,
+    category: "Phone",
+    image: require("../assets/Phone/3.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 104,
+    name: "Samsung Galaxy A05s",
+    price: 5500000,
+    category: "Phone",
+    image: require("../assets/Phone/4.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 105,
+    name: "Samsung Galaxy A25",
+    price: 4500000,
+    category: "Phone",
+    image: require("../assets/Phone/5.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 106,
+    name: "Samsung Galaxy A05",
+    price: 3500000,
+    category: "Phone",
+    image: require("../assets/Phone/6.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 107,
+    name: "Samsung Galaxy A16",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/7.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 108,
+    name: "Samsung Galaxy A55",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/8.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 109,
+    name: "Samsung Galaxy A06",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/9.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 110,
+    name: "Samsung Galaxy A03",
+    price: 22000000,
+    category: "Phone",
+    image: require("../assets/Phone/10.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'SamSung',
+
+  },
+  {
+    id: 111,
+    name: "Xiaomi Redmi Note 13",
+    price: 12000000,
+    category: "Phone",
+    image: require("../assets/Phone/11.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 112,
+    name: "Xiaomi Redmi 12 ",
+    price: 7000000,
+    category: "Phone",
+    image: require("../assets/Phone/12.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 113,
+    name: "Xiaomi 14C",
+    price: 14000000,
+    category: "Phone",
+    image: require("../assets/Phone/13.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 114,
+    name: "Xiaomi Redmi 13",
+    price: 18000000,
+    category: "Phone",
+    image: require("../assets/Phone/14.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 115,
+    name: "Xiaomi Redmi 12",
+    price: 9000000,
+    category: "Phone",
+    image: require("../assets/Phone/15.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 116,
+    name: "Xiaomi Redmi Note 13R",
+    price: 16000000,
+    category: "Phone",
+    image: require("../assets/Phone/16.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 117,
+    name: "Xiaomi Redmi 10",
+    price: 5500000,
+    category: "Phone",
+    image: require("../assets/Phone/17.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 118,
+    name: "Xiaomi Redmi Note 12 -",
+    price: 6900000,
+    category: "Phone",
+    image: require("../assets/Phone/18.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 119,
+    name: "Xiaomi Redmi 13 6GB",
+    price: 17000000,
+    category: "Phone",
+    image: require("../assets/Phone/19.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  
+  {
+    id: 120,
+    name: "Redmi Note 12 Pro 5",
+    price: 8000000,
+    category: "Phone",
+    image: require("../assets/Phone/20.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Xiaomi',
+
+  },
+  {
+    id: 121,
+    name: "Vsmart Live 4",
+    price: 16000000,
+    category: "Phone",
+    image: require("../assets/Phone/21.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 122,
+    name: "Vsmart Lux",
+    price: 17000000,
+    category: "Phone",
+    image: require("../assets/Phone/22.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 123,
+    name: "Vsmart Bee 5",
+    price: 5900000,
+    category: "Phone",
+    image: require("../assets/Phone/23.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 124,
+    name: "Vsmart Active 1",
+    price: 7200000,
+    category: "Phone",
+    image: require("../assets/Phone/24.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 125,
+    name: "Vsmart Joy 4",
+    price: 7200000,
+    category: "Phone",
+    image: require("../assets/Phone/25.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 126,
+    name: "Vsmart Joy 4 Cũ",
+    price: 3500000,
+    category: "Phone",
+    image: require("../assets/Phone/26.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 127,
+    name: "Vsmart Aris 8GB 128GB",
+    price: 1400000,
+    category: "Phone",
+    image: require("../assets/Phone/27.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 128,
+    name: "Vsmart Active 3 6GB Ram",
+    price: 1200000,
+    category: "Phone",
+    image: require("../assets/Phone/28.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 129,
+    name: "Vsmart Aris 2",
+    price: 6000000,
+    category: "Phone",
+    image: require("../assets/Phone/29.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 130,
+    name: "Vsmart Aris Pro",
+    price: 7200000,
+    category: "Phone",
+    image: require("../assets/Phone/30.webp"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Vsmart',
+
+  },
+  {
+    id: 131,
+    name: "OPPO Find X8 5G 16GB 512GB",
+    price: 22990000,
+    category: "Phone",
+    image: require("../assets/Phone/31.png"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 132,
+    name: "OPPO A18 4GB 64GB",
+    price: 3290000,
+    category: "Phone",
+    image: require("../assets/Phone/32.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 133,
+    name: "OPPO A3 6GB 128GB",
+    price: 4990000,
+    category: "Phone",
+    image: require("../assets/Phone/33.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 134,
+    name: "OPPO A58 8GB 128GB",
+    price: 5190000,
+    category: "Phone",
+    image: require("../assets/Phone/34.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 135,
+    name: "OPPO Reno12 F 5G 8GB 256GB",
+    price: 9190000,
+    category: "Phone",
+    image: require("../assets/Phone/35.png"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 136,
+    name: "OPPO Reno8 T 4G 8GB-256GB",
+    price: 6290000,
+    category: "Phone",
+    image: require("../assets/Phone/36.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 137,
+    name: "OPPO A3 8GB 256GB",
+    price: 6490000,
+    category: "Phone",
+    image: require("../assets/Phone/37.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 138,
+    name: "OPPO Reno12 5G 12GB 256GB",
+    price: 12290000,
+    category: "Phone",
+    image: require("../assets/Phone/38.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 139,
+    name: "OPPO A58 6GB-128GB",
+    price: 4690000,
+    category: "Phone",
+    image: require("../assets/Phone/39.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
+
+  },
+  {
+    id: 140,
+    name: "OPPO Reno11 F 5G 8GB-256GB",
+    price: 8490000,
+    category: "Phone",
+    image: require("../assets/Phone/40.png"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Oppo',
 
   },
   
