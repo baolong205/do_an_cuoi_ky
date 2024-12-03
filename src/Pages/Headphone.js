@@ -24,13 +24,13 @@ const HeadphonePage = ({ addToCart }) => {
   }, []);
 
   return (
-    <div className="headphone-page">
+    <div className="Headphone-page">
       <h1>Headphones</h1>
       {Object.keys(groupedHeadphones).length > 0 ? (
         Object.keys(groupedHeadphones).map((brand) => (
-          <div key={brand} className="brand-section-headphone">
+          <div key={brand} className="brand-section">
             <h2>{brand}</h2>
-            <div className="product-list-headphone">
+            <div className="H_product-list">
               {groupedHeadphones[brand].map((product) => (
                 <ProductCard key={product.id} product={product} addToCart={addToCart} />
               ))}
