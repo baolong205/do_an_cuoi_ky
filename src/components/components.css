@@ -9,6 +9,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
   color: #333;
+  line-height: 1.6;
 }
 
 /* Định dạng cho tất cả các container */
@@ -62,7 +63,6 @@ button:focus {
   padding: 16px;
   text-align: center;
   width: 200px;
-  /* Cố định chiều cao */
   background-color: #fff;
   margin: 16px;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -79,6 +79,7 @@ button:focus {
 .product-card img {
   max-width: 100%;
   height: 150px;
+  object-fit: contain; /* Cắt ảnh theo tỉ lệ */
   border-radius: 8px;
   margin-bottom: 10px;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -93,6 +94,7 @@ button:focus {
   font-size: 16px;
   font-weight: bold;
   margin-top: 10px;
+  color: #333;
 }
 
 .product-card p {
@@ -101,16 +103,15 @@ button:focus {
   margin: 10px 0;
 }
 
-/* Container cho ngôi sao và nút */
+/* Footer của thẻ sản phẩm */
 .product-card-footer {
   display: flex;
-  justify-content: space-between; /* Căn đều giữa sao và nút */
+  justify-content: space-between;
   align-items: center;
   margin-top: auto;
-  padding-top: 10px; /* Tạo khoảng cách từ nội dung trên */
+  padding-top: 10px;
 }
 
-/* Ngôi sao */
 .star-rating {
   display: flex;
   font-size: 16px;
@@ -125,7 +126,6 @@ button:focus {
   color: #888;
 }
 
-/* Nút "Buy" */
 .buy-product-btn {
   background-color: #4392e7;
   color: #fff;
@@ -133,6 +133,8 @@ button:focus {
   border-radius: 20px;
   font-size: 14px;
   cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
 }
 
 .buy-product-btn:hover {
@@ -196,3 +198,33 @@ button:focus {
 }
 
 /* Định dạng danh sách sản phẩm */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.product-list .product-card {
+  flex-basis: 220px; /* Đảm bảo thẻ sản phẩm không bị co lại */
+  margin-bottom: 20px;
+}
+
+/* Định dạng cho phần xem thêm */
+.show-more-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #4392e7;
+  color: white;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.show-more-btn:hover {
+  background-color: #0077b3;
+}
+

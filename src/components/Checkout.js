@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useOrderContext } from "../Context/OderContext"; // Import the context
 import "./checkout.css";
 
 const Checkout = ({ cartItems, clearCart }) => {
+  const { addOrder } = useOrderContext(); // Access the addOrder function
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     phone: "",
@@ -12,10 +14,10 @@ const Checkout = ({ cartItems, clearCart }) => {
     cardExpiry: "",
     cardCVV: "",
     bankAccount: "",
-    selectedBank: "",  // Trường chọn ngân hàng
+    selectedBank: "",
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  // Load saved customer info if available in localStorage
+
   useEffect(() => {
     const savedCustomerInfo = JSON.parse(localStorage.getItem("customerInfo"));
     if (savedCustomerInfo) {
@@ -23,9 +25,6 @@ const Checkout = ({ cartItems, clearCart }) => {
     }
   }, []);
 
-  // Calculate the total amount based on discounted prices
-
-  // Danh sách các ngân hàng
   const banks = [
     { id: "vietcombank", name: "Vietcombank" },
     { id: "techcombank", name: "Techcombank" },
@@ -34,7 +33,6 @@ const Checkout = ({ cartItems, clearCart }) => {
     { id: "mbbank", name: "MB Bank" },
   ];
 
-  // Tính tổng tiền với giá sau khi giảm
   const totalAmount = cartItems.reduce((total, item) => {
     const discountedPrice = item.discount
       ? item.price - item.price * item.discount
@@ -42,60 +40,74 @@ const Checkout = ({ cartItems, clearCart }) => {
     return total + discountedPrice * item.quantity;
   }, 0);
 
-  // Định dạng tiền tệ
   const formatCurrency = (amount) => {
     return amount.toLocaleString("en-US") + " VND";
   };
 
-  // Xử lý thay đổi thông tin khách hàng
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCustomerInfo({ ...customerInfo, [name]: value });
   };
 
-  // Xử lý thay đổi phương thức thanh toán
   const handlePaymentMethodChange = (e) => {
     setCustomerInfo({ ...customerInfo, paymentMethod: e.target.value });
   };
 
-  // Xử lý đặt hàng
   const handlePlaceOrder = () => {
     if (customerInfo.name && customerInfo.phone && customerInfo.address) {
-      setShowSuccessMessage(true); // Hiển thị thông báo thành công
-      setTimeout(() => setShowSuccessMessage(false), 5000); // Ẩn thông báo sau 5 giây
-  
-      // Save customer info to localStorage
+      const order = {
+        id: Date.now().toString(),
+        customerInfo: customerInfo,
+        cartItems: cartItems,
+        totalAmount: totalAmount,
+        orderDate: new Date().toISOString(),
+        status: "Processing",
+      };
+
+      // Save order to localStorage for persistence
+      const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      storedOrders.push(order);
+      localStorage.setItem("orders", JSON.stringify(storedOrders));
+
+      // Add the order to global context
+      addOrder(order);
+
+      // Display success message
+      setShowSuccessMessage(true);
+      setTimeout(() => setShowSuccessMessage(false), 5000);
+
+      // Store customer info in localStorage for future checkout
       localStorage.setItem("customerInfo", JSON.stringify(customerInfo));
-  
-      clearCart(); // Call clearCart to remove items from the cart
+
+      // Clear cart
+      clearCart();
     } else {
-      alert("Vui lòng điền đầy đủ thông tin giao hàng!");
+      alert("Please fill in all shipping information!");
     }
   };
-  
 
   return (
     <div className="checkout">
-      <h2>Thanh Toán</h2>
+      <h2>Checkout</h2>
 
       {showSuccessMessage && (
         <div className="success-message">
-          <h2>Đặt Hàng Thành Công!</h2>
-          <p>Chúc mừng bạn! Đặt hàng của bạn đã được xác nhận.</p>
-          <p>Cảm ơn bạn đã mua hàng.</p>
+          <h2>Order Placed Successfully!</h2>
+          <p>Your order has been confirmed.</p>
+          <p>Thank you for shopping with us.</p>
         </div>
       )}
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <p>Giỏ hàng của bạn hiện tại trống!</p>
+          <p>Your cart is currently empty!</p>
           <Link to="/" className="continue-shopping-btn">
-            Tiếp tục mua sắm
+            Continue Shopping
           </Link>
         </div>
       ) : (
         <>
-          {/* Danh sách sản phẩm */}
+          {/* List of products */}
           <div className="checkout-items">
             {cartItems.map((item) => {
               const discountedPrice = item.discount
@@ -112,14 +124,14 @@ const Checkout = ({ cartItems, clearCart }) => {
                   <div className="checkout-item-details">
                     <p className="checkout-item-name">{item.name}</p>
                     <p className="checkout-item-prices">
-                      Giá Gốc:{" "}
+                      Original Price:{" "}
                       <span className="original-price">
                         {formatCurrency(item.price)}
                       </span>
                       {item.discount && (
                         <>
                           {" "}
-                          | Giá Sau Giảm:{" "}
+                          | Discounted Price:{" "}
                           <span className="discounted-price">
                             {formatCurrency(discountedPrice)}
                           </span>
@@ -127,10 +139,10 @@ const Checkout = ({ cartItems, clearCart }) => {
                       )}
                     </p>
                     <p className="checkout-item-quantity">
-                      Số Lượng: {item.quantity}
+                      Quantity: {item.quantity}
                     </p>
                     <p className="checkout-item-total">
-                      Tổng Cộng: {formatCurrency(discountedPrice * item.quantity)}
+                      Total: {formatCurrency(discountedPrice * item.quantity)}
                     </p>
                   </div>
                 </div>
@@ -138,78 +150,78 @@ const Checkout = ({ cartItems, clearCart }) => {
             })}
           </div>
 
-          {/* Thông tin giao hàng */}
+          {/* Customer Information Form */}
           <div className="checkout-form">
-            <h3>Thông Tin Giao Hàng</h3>
+            <h3>Shipping Information</h3>
             <div className="form-group">
-              <label htmlFor="name">Họ và Tên:</label>
+              <label htmlFor="name">Full Name:</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={customerInfo.name}
                 onChange={handleInputChange}
-                placeholder="Nhập họ và tên của bạn"
+                placeholder="Enter your full name"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Số Điện Thoại:</label>
+              <label htmlFor="phone">Phone Number:</label>
               <input
                 type="text"
                 id="phone"
                 name="phone"
                 value={customerInfo.phone}
                 onChange={handleInputChange}
-                placeholder="Nhập số điện thoại của bạn"
+                placeholder="Enter your phone number"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="address">Địa Chỉ:</label>
+              <label htmlFor="address">Address:</label>
               <input
                 type="text"
                 id="address"
                 name="address"
                 value={customerInfo.address}
                 onChange={handleInputChange}
-                placeholder="Nhập địa chỉ giao hàng"
+                placeholder="Enter your shipping address"
               />
             </div>
             <div className="form-group">
-              <label>Phương Thức Thanh Toán:</label>
+              <label>Payment Method:</label>
               <select
                 name="paymentMethod"
                 value={customerInfo.paymentMethod}
                 onChange={handlePaymentMethodChange}
               >
-                <option value="cash">Thanh Toán Khi Nhận Hàng</option>
-                <option value="card">Thẻ Tín Dụng/Ghi Nợ</option>
-                <option value="bank">Thanh toán qua ngân hàng</option>
+                <option value="cash">Cash on Delivery</option>
+                <option value="card">Credit/Debit Card</option>
+                <option value="bank">Bank Transfer</option>
               </select>
             </div>
 
-            {/* Thông tin thanh toán */}
+            {/* Payment details for card or bank */}
             {customerInfo.paymentMethod === "card" && (
               <>
                 <div className="form-group">
-                  <label htmlFor="cardNumber">Số Thẻ:</label>
+                  <label htmlFor="cardNumber">Card Number:</label>
                   <input
                     type="text"
                     id="cardNumber"
                     name="cardNumber"
                     value={customerInfo.cardNumber}
                     onChange={handleInputChange}
-                    placeholder="Nhập số thẻ của bạn"
+                    placeholder="Enter your card number"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="cardExpiry">Ngày Hết Hạn:</label>
+                  <label htmlFor="cardExpiry">Expiry Date:</label>
                   <input
                     type="text"
                     id="cardExpiry"
                     name="cardExpiry"
                     value={customerInfo.cardExpiry}
                     onChange={handleInputChange}
-                    placeholder="Nhập ngày hết hạn thẻ"
+                    placeholder="Enter card expiry date"
                   />
                 </div>
                 <div className="form-group">
@@ -220,7 +232,7 @@ const Checkout = ({ cartItems, clearCart }) => {
                     name="cardCVV"
                     value={customerInfo.cardCVV}
                     onChange={handleInputChange}
-                    placeholder="Nhập mã CVV"
+                    placeholder="Enter card CVV"
                   />
                 </div>
               </>
@@ -229,13 +241,13 @@ const Checkout = ({ cartItems, clearCart }) => {
             {customerInfo.paymentMethod === "bank" && (
               <>
                 <div className="form-group">
-                  <label htmlFor="selectedBank">Chọn Ngân Hàng:</label>
+                  <label htmlFor="selectedBank">Select Bank:</label>
                   <select
                     name="selectedBank"
                     value={customerInfo.selectedBank}
                     onChange={handleInputChange}
                   >
-                    <option value="">Chọn ngân hàng</option>
+                    <option value="">Choose a bank</option>
                     {banks.map((bank) => (
                       <option key={bank.id} value={bank.id}>
                         {bank.name}
@@ -244,26 +256,26 @@ const Checkout = ({ cartItems, clearCart }) => {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="bankAccount">Số Tài Khoản Ngân Hàng:</label>
+                  <label htmlFor="bankAccount">Bank Account Number:</label>
                   <input
                     type="text"
                     id="bankAccount"
                     name="bankAccount"
                     value={customerInfo.bankAccount}
                     onChange={handleInputChange}
-                    placeholder="Nhập số tài khoản ngân hàng của bạn"
+                    placeholder="Enter bank account number"
                   />
                 </div>
               </>
             )}
-          </div>
 
-          {/* Tổng tiền và nút đặt hàng */}
+            {/* Total Amount */}
+            <div className="checkout-summary">
+              <p>Total Amount: {formatCurrency(totalAmount)}</p>
+            </div>
 
-          <div className="checkout-summary">
-            <h3>Tổng Tiền: {formatCurrency(totalAmount)}</h3>
-            <button className="proceed-payment-btn" onClick={handlePlaceOrder}>
-              Đặt Hàng
+            <button className="place-order-btn" onClick={handlePlaceOrder}>
+              Place Order
             </button>
           </div>
         </>
