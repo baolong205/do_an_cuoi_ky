@@ -84,7 +84,7 @@ const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) 
                     onSearch(suggestion.name, "All");
                     setSearchSuggestions([]); // Ẩn gợi ý ngay lập tức khi nhấn
                   }}
-                >
+>
                   {suggestion.name}
                 </Link>
               ))}
