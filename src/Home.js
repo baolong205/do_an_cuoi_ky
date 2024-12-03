@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import Navbar from './Nav/Navbar';
+import Navbar from './Layout/Navbar';
 import LaptopPage from './Pages/LaptopPage';
 import HeadphonePage from './Pages/Headphone';
 import Iphone from './Pages/Iphone';
@@ -13,7 +13,7 @@ import Account from './Auth/Account';
 import Admin from './Auth/AdminPanel';
 import User from './Auth/UserInfo';
 import ProductDetail from './components/ProductDetail';
-import Footer from './Nav/Footer';
+import Footer from './Layout/Footer';
 import { getProducts, filterProducts, addToCart, removeFromCart } from './Data/ProductData'; // Sửa lại import
 import './components/ProductList.css';
 import { useUserContext } from './Context/UserContext';
