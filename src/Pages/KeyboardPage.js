@@ -1,44 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts } from '../Data/ProductData'; // Lấy sản phẩm từ ProductData.js
-import ProductCard from '../components/ProductCard'; // Import component ProductCard
-import './Keyboard.css'; // File CSS cho trang Keyboard
+import { getProducts } from '../Data/ProductData';
+import ProductCard from '../components/ProductCard';
+import './Keyboard.css';
+
 const KeyboardPage = ({ addToCart }) => {
-  const [groupedKeyboards, setGroupedKeyboards] = useState({}); // Nhóm sản phẩm theo thương hiệu (brand)
+  const [groupedKeyboards, setGroupedKeyboards] = useState({});
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
   useEffect(() => {
-    const products = getProducts(); // Lấy tất cả sản phẩm
+    const products = getProducts();
     const keyboardProducts = products.filter(product => product.category === 'Keyboard');
 
-    // Nhóm sản phẩm theo thương hiệu (brand)
+    // Nhóm sản phẩm theo thương hiệu
     const brandGroups = keyboardProducts.reduce((groups, product) => {
-      const brand = product.brand || 'Unknown Brand'; // Nếu không có brand, gán là 'Unknown Brand'
-      if (!groups[brand]) {
-        groups[brand] = [];
-      }
-      groups[brand].push(product);
+      const brand = product.brand || 'Unknown Brand';
+      groups[brand] = (groups[brand] || []).concat(product);
       return groups;
     }, {});
 
-    setGroupedKeyboards(brandGroups); // Cập nhật state với các nhóm sản phẩm
+    setGroupedKeyboards(brandGroups);
   }, []);
+
+  // Xử lý khi người dùng chọn thương hiệu
+  const handleBrandSelect = (brand) => {
+    setSelectedBrand(brand);
+  };
 
   return (
     <div className="keyboard-page">
-      <h1>Bàn Phím</h1>
-      {Object.keys(groupedKeyboards).length > 0 ? (
-        Object.keys(groupedKeyboards).map((brand) => (
-          <div key={brand} className="brand-section-key">
-            <h2>{brand}</h2>
-            <div className="product-list-key">
-              {groupedKeyboards[brand].map((product) => (
-                <ProductCard key={product.id} product={product} addToCart={addToCart} />
-              ))}
-            </div>
-          </div>
-        ))
-      ) : (
-        <p>No keyboards available.</p> // Hiển thị thông báo nếu không có sản phẩm bàn phím
-      )}
+      {/* Sidebar phân loại thương hiệu */}
+      <div className="keyboard-sidebar">
+        <h2>Bàn Phím Cơ</h2>
+        <ul className="brand-list">
+          {Object.keys(groupedKeyboards).map((brand) => (
+            <li 
+              key={brand} 
+              className="brand-item" 
+              onClick={() => handleBrandSelect(brand)}
+            >
+              {brand.toUpperCase()} ({groupedKeyboards[brand].length})
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Hiển thị sản phẩm */}
+      <div className="keyboard-products">
+        <h1>{selectedBrand ? `Thương hiệu: ${selectedBrand}` : 'Tất cả Bàn Phím'}</h1>
+        <div className="product-list-key">
+          {selectedBrand && groupedKeyboards[selectedBrand] ? (
+            groupedKeyboards[selectedBrand].map(product => (
+              <ProductCard key={product.id} product={product} addToCart={addToCart} />
+            ))
+          ) : (
+            Object.values(groupedKeyboards).flat().map(product => (
+              <ProductCard key={product.id} product={product} addToCart={addToCart} />
+            ))
+          )}
+        </div>
+      </div>
     </div>
   );
 };
