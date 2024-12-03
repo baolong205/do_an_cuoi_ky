@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getProducts } from '../Data/ProductData'; // Lấy sản phẩm từ ProductData.js
 import ProductCard from '../components/ProductCard'; // Import component ProductCard
 import './Keyboard.css'; // File CSS cho trang Keyboard
-
 const KeyboardPage = ({ addToCart }) => {
   const [groupedKeyboards, setGroupedKeyboards] = useState({}); // Nhóm sản phẩm theo thương hiệu (brand)
 
@@ -25,7 +24,7 @@ const KeyboardPage = ({ addToCart }) => {
 
   return (
     <div className="keyboard-page">
-      <h1>Keyboards</h1>
+      <h1>Bàn Phím</h1>
       {Object.keys(groupedKeyboards).length > 0 ? (
         Object.keys(groupedKeyboards).map((brand) => (
           <div key={brand} className="brand-section-key">
