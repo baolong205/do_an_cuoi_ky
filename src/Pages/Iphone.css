@@ -1,23 +1,10 @@
 /* src/components/Laptop.css */
-.laptop-g {
-    padding: 20px;
-  }
-  
   .product-g{
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* Cố định 5 cột */
     gap: 20px;
   }
-  
-  .product-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-  
+
   .product-card:hover {
     transform: scale(1.05); /* Khi hover sẽ làm card phóng to */
   }
@@ -63,40 +50,42 @@
 .brand-button {
   padding: 10px 20px;
   font-size: 16px;
-  color: #333;
-  background-color: #f1f1f1;
+  color: #ffffff;
+  background-color: #3c4853;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(230, 228, 228, 0.1);
+
 }
 
 .brand-button:hover {
-  background-color: #007bff;
+  background-color: #98989e;
   color: #fff;
 }
 
 /* Section từng thương hiệu */
 .brand-section {
   margin-top: 40px;
-  padding: 20px;
-  background-color: #f9f9f9;
+  padding: 40px;
+  background-color: #c1b7b7;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .brand-title {
   font-size: 24px;
-  color: #333;
+  color: #07dfef;
   margin-bottom: 20px;
   text-align: center;
+  animation: colorChange 5s infinite;
   
 }
 .iphone-title {
   font-size: 32px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 .filters-sidebar {
@@ -147,6 +136,7 @@
   padding: 10px; /* Giảm padding */
   font-size: 14px; /* Giảm kích thước chữ */
   margin: 10px 0; /* Khoảng cách trên dưới */
+  
 }
 
 /* Thanh kéo nhỏ hơn */
@@ -247,4 +237,26 @@
   color: #333;
   margin-top: 5px;
 }
-  
+.Glake{
+  width: 95%;
+  position: relative;
+  left: 47px;
+  top: -71px;
+}
+@keyframes colorChange {
+  0% {
+    color: #b38787; /* Màu bắt đầu */
+  }
+  25% {
+    color: rgb(9, 4, 4); /* Màu đỏ */
+  }
+  50% {
+    color: rgb(71, 91, 71); /* Màu xanh lá */
+  }
+  75% {
+    color: rgb(103, 210, 237); /* Màu xanh dương */
+  }
+  100% {
+    color: #ddd; /* Quay lại màu cuối */
+  }
+}
