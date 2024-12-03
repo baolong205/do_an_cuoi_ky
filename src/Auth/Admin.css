@@ -1,287 +1,219 @@
 /* Admin.css */
+
+/* General Styling */
 .admin-panel {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
   padding: 20px;
 }
 
 .admin-content {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  margin-top: 20px;
 }
 
 .left-column {
-  flex: 1;
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.right-column {
-  flex: 2;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 20%;
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
 }
 
 .left-column h3 {
-  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .left-column ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
-.left-column ul li {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.left-column ul li:hover {
-  background-color: #ddd;
-}
-
-.product-form input,
-.product-form textarea {
-  width: 100%;
-  padding: 10px;
+.left-column li {
   margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
+.left-column li:hover {
+  background-color: #f5f5f5;
+}
+
+.right-column {
+  flex-grow: 1;
+  padding-left: 20px;
+}
+
+.notification {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #4caf50;
+  background-color: #e8f5e9;
+  color: #4caf50;
+  border-radius: 4px;
+}
+
+.product-management,
+.order-management,
+.account-management {
+  margin-top: 20px;
+}
+
+/* Product Form Styling */
+.product-form input,
+.product-form textarea,
+.product-form button {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.product-form textarea {
+  resize: vertical;
+}
+
+.product-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.product-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Product List */
 .product-list-admin {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
 .product-item {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.product-item:hover {
+  background-color: #f9f9f9;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+}
+
+.product-info img {
+  margin-right: 10px;
+  border-radius: 4px;
 }
 
 .product-actions button {
   margin-left: 10px;
   padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
 .edit-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  background-color: #ffc107;
+  color: #fff;
 }
 
 .delete-btn {
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.notification {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-/* CSS for Account Management */
-.account-management {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-.account-management h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.account-management .notification {
-  background-color: #f0f8ff;
-  color: #333;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  font-size: 16px;
-}
-
-.account-management .new-user-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.account-management .new-user-form input,
-.account-management .new-user-form button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.account-management .new-user-form input[type="text"],
-.account-management .new-user-form input[type="password"] {
-  width: calc(100% - 22px);
-}
-
-.account-management .new-user-form label {
-  font-size: 16px;
-  margin-bottom: 15px;
-  display: inline-block;
-}
-
-.account-management .new-user-form button {
-  background-color: #4caf50;
+  background-color: #dc3545;
   color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
 }
 
-.account-management .new-user-form button:hover {
-  background-color: #45a049;
+.edit-btn:hover {
+  background-color: #e0a800;
 }
 
-.account-management .user-list {
-  list-style-type: none;
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Account Management */
+.account-management input,
+.account-management button,
+.account-management label {
+  margin: 10px 0;
+  display: block;
+}
+
+.account-management ul {
+  list-style: none;
   padding: 0;
-  margin-top: 20px;
 }
 
-.account-management .user-item {
+.account-management li {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.account-management .user-item span {
-  font-size: 16px;
-  color: #333;
-}
-
-.account-management .user-item button {
-  padding: 8px 12px;
-  background-color: #f44336;
+.account-management button {
+  background-color: #dc3545;
   color: #fff;
+  padding: 5px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
 }
 
-.account-management .user-item button:hover {
-  background-color: #e53935;
+.account-management button:hover {
+  background-color: #c82333;
 }
-/* CSS for Order Management */
 .order-management {
+  margin: 20px;
   padding: 20px;
-  background-color: #f9f9f9;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-.order-management h2 {
-  font-size: 24px;
-  margin-bottom: 15px;
-  color: #333;
+  background-color: #f9f9f9;
 }
 
 .order-management h3 {
-  font-size: 20px;
-  margin-top: 30px;
-  color: #333;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-.order-management .customer-info {
+.customer-info {
+  font-family: "Courier New", Courier, monospace;
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.order-management .customer-info p {
-  font-size: 16px;
-  color: #555;
-  margin: 10px 0;
-}
-
-.order-management .order-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.order-management .order-item {
-  display: flex;
-  justify-content: space-between;
+  border: 1px solid #ddd;
   padding: 15px;
-  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-  align-items: center;
+  overflow-x: auto;
 }
 
-.order-management .order-info {
-  font-size: 16px;
-  color: #333;
-}
-
-.order-management .order-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.order-management .order-actions button {
-  padding: 8px 12px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.customer-info pre {
+  margin: 0;
   font-size: 14px;
-  transition: background-color 0.3s ease;
+  color: #333;
+  line-height: 1.5;
+  word-wrap: break-word; /* Bọc dòng nếu quá dài */
+  white-space: pre-wrap; /* Hiển thị ngắt dòng cho khoảng trắng */
 }
 
-.order-management .order-actions button:hover {
-  background-color: #45a049;
-}
-
-.order-management .order-actions button.ship {
-  background-color: #2196f3;
-}
-
-.order-management .order-actions button.ship:hover {
-  background-color: #1976d2;
-}
-
-.order-management .order-actions button.view {
-  background-color: #ff9800;
-}
-
-.order-management .order-actions button.view:hover {
-  background-color: #fb8c00;
+.customer-info .no-data {
+  color: #888;
+  font-style: italic;
 }

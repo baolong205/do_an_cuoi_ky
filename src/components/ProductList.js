@@ -38,11 +38,33 @@ const bestSellingProducts = [
   },
 ];
 
-const ProductList = ({ products = [], addToCart }) => {
-  const [visibleProducts, setVisibleProducts] = useState([]);
+const ProductList = ({ addToCart }) => {
+  const [products, setProducts] = useState([]); // Store all products
+  const [visibleProducts, setVisibleProducts] = useState([]); // Products to display
   const [currentIndex, setCurrentIndex] = useState(15);
   const [loading, setLoading] = useState(false);
   const itemsPerPage = 15;
+
+  // Fetch products from localStorage when the component mounts
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(storedProducts);
+  }, []);
+
+  // Update products when localStorage changes (without page reload)
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+      setProducts(storedProducts);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
 
   const getVisibleProducts = useCallback(() => {
     return products.slice(0, currentIndex);
@@ -61,7 +83,6 @@ const ProductList = ({ products = [], addToCart }) => {
     }, 500);
   };
 
-  // Phân loại sản phẩm theo danh mục
   const categorizedProducts = products.reduce((categories, product) => {
     if (!categories[product.category]) {
       categories[product.category] = [];
@@ -70,7 +91,6 @@ const ProductList = ({ products = [], addToCart }) => {
     return categories;
   }, {});
 
-  // Dùng ref để tham chiếu đến phần tử chứa các sản phẩm
   const productContainersRef = useRef({});
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -103,7 +123,6 @@ const ProductList = ({ products = [], addToCart }) => {
 
   return (
     <div className="product-list-container">
-      {/* Hiển thị sản phẩm bán chạy */}
       {bestSellingProducts && bestSellingProducts.length > 0 && (
         <div className="best-sellers">
           <h2>🔥 Sản phẩm bán chạy</h2>
@@ -126,7 +145,6 @@ const ProductList = ({ products = [], addToCart }) => {
         </div>
       )}
 
-      {/* Hiển thị các sản phẩm theo danh mục */}
       {Object.keys(categorizedProducts).map((category) => (
         <div className="category-section" key={category}>
           <h2 className="category-title">{category}</h2>
@@ -149,23 +167,17 @@ const ProductList = ({ products = [], addToCart }) => {
         </div>
       ))}
 
-      {/* Hiển thị tất cả sản phẩm */}
       <div className="main-products-section">
         <h2 className="section-title">📦 Tất cả sản phẩm</h2>
 
-        {/* Nếu không có sản phẩm */}
-        {products.length === 0 && (
-          <p className="no-products">Không tìm thấy sản phẩm nào.</p>
-        )}
+        {products.length === 0 && <p className="no-products">Không tìm thấy sản phẩm nào.</p>}
 
-        {/* Hiển thị sản phẩm dạng grid */}
         <div className="product-grid">
           {visibleProducts.map((product) => (
             <ProductCard key={product.id} product={product} addToCart={addToCart} />
           ))}
         </div>
 
-        {/* Nút xem thêm sản phẩm */}
         {visibleProducts.length < products.length && !loading && (
           <div className="pagination-controls">
             <button className="load-more-button" onClick={loadMore}>
@@ -174,11 +186,10 @@ const ProductList = ({ products = [], addToCart }) => {
           </div>
         )}
 
-        {/* Trạng thái đang tải */}
         {loading && <div className="loading">Đang tải...</div>}
       </div>
     </div>
   );
-}
+};
 
 export default ProductList;

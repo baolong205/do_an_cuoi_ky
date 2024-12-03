@@ -1,4 +1,5 @@
-const products = [
+const LOCAL_STORAGE_KEY = "products";
+const defaultProducts = [
   {
     id: 1,
     name: "Iphone 11",
@@ -9,7 +10,7 @@ const products = [
     rating: 2,
     stock: 25,
     discount: 0.1,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const products = [
     rating: 3,
     stock: 50,
     discount: 0,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 3,
@@ -33,7 +34,7 @@ const products = [
     rating: 4.7,
     stock: 15,
     discount: 0.05,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 4,
@@ -45,7 +46,7 @@ const products = [
     rating: 4.2,
     stock: 100,
     discount: 0.2,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 5,
@@ -57,7 +58,7 @@ const products = [
     rating: 4.6,
     stock: 30,
     discount: 0.15,
-    brand:'Yanz' ,
+    brand: 'Yanz',
   },
   {
     id: 6,
@@ -69,7 +70,7 @@ const products = [
     rating: 4.9,
     stock: 20,
     discount: 0.1,
-    brand:'Yanz' ,
+    brand: 'Yanz',
   },
   {
     id: 7,
@@ -81,7 +82,7 @@ const products = [
     rating: 4.8,
     stock: 12,
     discount: 0,
-    brand:'Yanz' ,
+    brand: 'Yanz',
   },
   {
     id: 8,
@@ -93,7 +94,7 @@ const products = [
     rating: 5.0,
     stock: 200,
     discount: 0.1,
-    brand:'Gz' ,
+    brand: 'Gz',
   },
   {
     id: 9,
@@ -106,7 +107,7 @@ const products = [
     rating: 4.5,
     stock: 10,
     discount: 0.05,
-    brand:'Gz' ,
+    brand: 'Gz',
   },
   {
     id: 10,
@@ -118,7 +119,7 @@ const products = [
     rating: 5.0,
     stock: 45,
     discount: 0.1,
-    brand:'Gz' ,
+    brand: 'Gz',
   },
   {
     id: 11,
@@ -131,7 +132,7 @@ const products = [
     stock: 35,
     discount: 0,
     brand: "Dell",
-    
+
   },
   {
     id: 12,
@@ -497,39 +498,42 @@ const products = [
   },
   {
     id: 53,
-    name: "HP Spectre x360",
+    name: "Asus Zenbook 14 Oled",
     price: 22000000,
     category: "Laptop",
-    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    image: require("../assets/Laptop/asus-zenbook-14-oled-ux3405ma-ultra-5-pp151w-hinh-2-750x500.jpg"),
     description:
       "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
+    brand: "ASUS"
   },
   {
     id: 54,
-    name: "HP Spectre x360",
+    name: "Acer Swift 14 AI",
     price: 22000000,
     category: "Laptop",
-    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    image: require("../assets/Laptop/acer-swift-ai-sf14-51-53p9-ultra-5-nxj2ksv002-5-638679578414485708-750x500.jpg"),
     description:
       "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
+    brand: "Acer"
   },
   {
     id: 55,
-    name: "HP Spectre x360",
+    name: "Macbook air 15 2024",
     price: 22000000,
     category: "Laptop",
-    image: require("../assets/anh do-an/hp-spectre-x360.jpg"),
+    image: require("../assets/Laptop/macbook-air-15-inch-m3-2024-1-3-750x500.jpg"),
     description:
       "Laptop 2 trong 1 đa dụng với màn hình 4K tuyệt đẹp, phù hợp cho công việc và giải trí.",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
+    brand: "APPLE"
   },
   {
     id: 56,
@@ -970,50 +974,173 @@ const products = [
 
   {
     id: 98,
-    name: "HP Spectre x360",
+    name: "Dell Inspiron 14",
     price: 22000000,
-    category: "Headphone",
-    image: require("../assets/Headphone/bluetooth-airpods-max-apple-thumb3-600x600.jpeg"),
+    category: "Laptop",
+    image: require("../assets/Laptop/dell-inspiron-14-5440-core-7-7fn5j-glr-2-750x500.jpg"),
     description:
       "bluetooth-airpods-max-apple",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand:'Hp',
+    brand: 'Dell',
   },
   {
     id: 99,
-    name: "HP Spectre x360",
+    name: "Dell Inspiron 7440",
     price: 22000000,
-    category: "Headphone",
-    image: require("../assets/Headphone/tai-nghe-bluetooth-true-wireless-samsung-galaxy-buds-3-pro-r630n-xam-1-750x500.jpg"),
+    category: "Laptop",
+    image: require("../assets/Laptop/dell-inspiron-7440-core-7-n7440c7u161w11ibu-2-638621774876009314-750x500.jpg"),
     description:
       "bluetooth-airpods-max-apple",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: 'Hp',
+    brand: 'Dell',
   },
   {
     id: 100,
-    name: "HP Spectre x360",
+    name: "Dell Vostro 3530",
     price: 22000000,
-    category: "Headphone",
-    image: require("../assets/Headphone/bluetooth-airpods-max-apple-thumb3-600x600.jpeg"),
+    category: "Laptop",
+    image: require("../assets/Laptop/dell-inspiron-15-3530-i7-p16wd-2-750x500.jpg"),
     description:
       "bluetooth-airpods-max-apple",
     rating: 4.7,
     stock: 20,
     discount: 0.1,
-    brand: 'Hp',
+    brand: 'Dell',
 
   },
-  
+  {
+    id: 101,
+    name: "Dell Inspiron 16",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/dell-inspiron-16-5640-core-7-khpf5-6-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Dell',
+
+  },
+  {
+    id: 102,
+    name: "Dell Inspiron 14 5440",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/dell-inspiron-14-5440-core-7-7fn5j-glr-2-750x500 (1).jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Dell',
+
+  },
+  {
+    id: 103,
+    name: "Dell Inspiron 15 3530",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/dell-inspiron-15-3530-i7-p16wd-2-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Dell',
+
+  },
+  {
+    id: 104,
+    name: "Macbook Air 13 M2",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/macbook-air-13-m2-24gb-512gb-xam-1-638671742551569950-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'APPLE',
+
+  },
+  {
+    id: 105,
+    name: "Lenovo Loq Gaming",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/lenovo-loq-gaming-15iax9-i5-83gs000jvn-hinh-2-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Lenovo',
+
+  },
+  {
+    id: 106,
+    name: "Lenovo Slim 5",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/lenovo-ideapad-slim-5-15iru9-core-5-83d0000evn-glr-2-638622511352961950-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Lenovo',
+
+  },
+  {
+    id: 107,
+    name: "Lenovo Thinkbook 16",
+    price: 22000000,
+    category: "Laptop",
+    image: require("../assets/Laptop/lenovo-thinkbook-16-g7-ultra-5-21ms007gvn-5-750x500.jpg"),
+    description:
+      "bluetooth-airpods-max-apple",
+    rating: 4.7,
+    stock: 20,
+    discount: 0.1,
+    brand: 'Lenovo',
+
+  },
+
+
+
+
 
 ];
+// Lấy danh sách sản phẩm từ Local Storage
+export const getProducts = () => {
+  const storedProducts = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return storedProducts ? JSON.parse(storedProducts) : [];
+};
+
+// Cập nhật danh sách sản phẩm vào Local Storage
+const updateLocalStorage = (products) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
+};
+
+// Khởi tạo dữ liệu mặc định nếu Local Storage trống
+export const initializeProducts = () => {
+  const existingProducts = getProducts();
+  if (existingProducts.length === 0) {
+    updateLocalStorage(defaultProducts);
+    console.log("Dữ liệu mặc định đã được thêm vào Local Storage.");
+  } else {
+    console.log("Dữ liệu đã tồn tại trong Local Storage.");
+  }
+};
 
 // Lọc sản phẩm theo từ khóa và danh mục
-export const filterProducts = (products, searchTerm, category) => {
+export const filterProducts = (searchTerm, category) => {
+  const products = getProducts();
   return products.filter((product) => {
     const matchesCategory = category === "All" || product.category === category;
     const matchesSearch = product.name
@@ -1041,48 +1168,52 @@ export const removeFromCart = (cart, productId) => {
 };
 
 // Lấy các sản phẩm bán chạy nhất
-export const getBestSellingProducts = (products) => {
+export const getBestSellingProducts = () => {
+  const products = getProducts();
   return products
     .filter((product) => product.rating >= 4.5 && product.stock > 10)
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 4);
 };
 
-// Lấy danh sách tất cả sản phẩm
-export const getProducts = () => {
-  return products;
-};
-
 // Thêm một sản phẩm mới
 export const addProduct = (newProduct) => {
-  products.push({ ...newProduct, id: Date.now() }); // Tạo ID ngẫu nhiên dựa trên thời gian
+  const products = getProducts();
+  const newProductWithId = { ...newProduct, id: Date.now() }; // Tạo ID ngẫu nhiên dựa trên thời gian
+  products.push(newProductWithId);
+  updateLocalStorage(products);
 };
 
 // Chỉnh sửa thông tin sản phẩm
 export const editProduct = (id, updatedProduct) => {
+  const products = getProducts();
   const index = products.findIndex((product) => product.id === id);
   if (index !== -1) {
     products[index] = { ...products[index], ...updatedProduct };
+    updateLocalStorage(products);
   }
 };
 
 // Xóa sản phẩm theo ID
 export const deleteProduct = (id) => {
+  const products = getProducts();
   const index = products.findIndex((product) => product.id === id);
   if (index !== -1) {
     products.splice(index, 1); // Loại bỏ sản phẩm khỏi danh sách
+    updateLocalStorage(products);
     return true; // Xóa thành công
   }
   return false; // Không tìm thấy sản phẩm để xóa
 };
-// searchByBrand.js
 
-export const searchByBrand = (products, brand) => {
+// Tìm kiếm sản phẩm theo thương hiệu
+export const searchByBrand = (brand) => {
+  const products = getProducts();
   return products.filter(
     (product) =>
       product.brand && product.brand.toLowerCase() === brand.toLowerCase()
   );
 };
 
-// Xuất các hàm
-export default products;
+// Gọi hàm khởi tạo dữ liệu khi ứng dụng bắt đầu
+initializeProducts();
