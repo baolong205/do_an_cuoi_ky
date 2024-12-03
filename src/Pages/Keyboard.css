@@ -9,8 +9,25 @@
 .keyboard-page h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #222;
-  font-size: 2rem;color: #ddd;
+  font-size: 2rem;
+  animation: colorChange 5s infinite;
+}
+@keyframes colorChange {
+  0% {
+    color: #222; /* Màu bắt đầu */
+  }
+  25% {
+    color: #f00; /* Màu đỏ */
+  }
+  50% {
+    color: #0f0; /* Màu xanh lá */
+  }
+  75% {
+    color: #00f; /* Màu xanh dương */
+  }
+  100% {
+    color: #ddd; /* Quay lại màu cuối */
+  }
 }
 
 .brand-section-key {

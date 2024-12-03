@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
-import LOGO from "../assets/Laptop/18Sep24_Free_Upload-removebg-preview.png";
+import LOGO from "../assets/Laptop/logo.png";
 
 const Navbar = ({ onSearch, setCategory, searchTerm, setSearchTerm, products }) => {
   const [searchSuggestions, setSearchSuggestions] = useState([]);
