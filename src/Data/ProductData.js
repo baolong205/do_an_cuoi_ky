@@ -58,7 +58,7 @@ const defaultProducts = [
     rating: 4.6,
     stock: 30,
     discount: 0.15,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const defaultProducts = [
     rating: 4.9,
     stock: 20,
     discount: 0.1,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 7,
@@ -82,7 +82,7 @@ const defaultProducts = [
     rating: 4.8,
     stock: 12,
     discount: 0,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 8,
@@ -94,7 +94,7 @@ const defaultProducts = [
     rating: 5.0,
     stock: 200,
     discount: 0.1,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 9,
@@ -107,7 +107,7 @@ const defaultProducts = [
     rating: 4.5,
     stock: 10,
     discount: 0.05,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 10,
@@ -119,7 +119,7 @@ const defaultProducts = [
     rating: 5.0,
     stock: 45,
     discount: 0.1,
-    brand:'Apple' ,
+    brand: 'Apple',
   },
   {
     id: 11,
@@ -1013,7 +1013,7 @@ const defaultProducts = [
 
   },
   {
-    id: 101,
+    id: 192,
     name: "Dell Inspiron 16",
     price: 22000000,
     category: "Laptop",
@@ -1027,7 +1027,7 @@ const defaultProducts = [
 
   },
   {
-    id: 102,
+    id: 194,
     name: "Dell Inspiron 14 5440",
     price: 22000000,
     category: "Laptop",
@@ -1041,7 +1041,7 @@ const defaultProducts = [
 
   },
   {
-    id: 103,
+    id: 195,
     name: "Dell Inspiron 15 3530",
     price: 22000000,
     category: "Laptop",
@@ -1055,7 +1055,7 @@ const defaultProducts = [
 
   },
   {
-    id: 104,
+    id: 196,
     name: "Macbook Air 13 M2",
     price: 22000000,
     category: "Laptop",
@@ -1069,7 +1069,7 @@ const defaultProducts = [
 
   },
   {
-    id: 105,
+    id: 197,
     name: "Lenovo Loq Gaming",
     price: 22000000,
     category: "Laptop",
@@ -1083,7 +1083,7 @@ const defaultProducts = [
 
   },
   {
-    id: 106,
+    id: 198,
     name: "Lenovo Slim 5",
     price: 22000000,
     category: "Laptop",
@@ -1097,7 +1097,7 @@ const defaultProducts = [
 
   },
   {
-    id: 107,
+    id: 199,
     name: "Lenovo Thinkbook 16",
     price: 22000000,
     category: "Laptop",
@@ -1110,7 +1110,7 @@ const defaultProducts = [
     brand: 'Lenovo',
 
   },
-  
+
   {
     id: 101,
     name: "Samsung Galaxy A15",
@@ -1265,7 +1265,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 112,
     name: "Xiaomi Redmi 12 ",
@@ -1280,7 +1280,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 113,
     name: "Xiaomi 14C",
@@ -1295,7 +1295,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 114,
     name: "Xiaomi Redmi 13",
@@ -1310,7 +1310,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 115,
     name: "Xiaomi Redmi 12",
@@ -1325,7 +1325,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 116,
     name: "Xiaomi Redmi Note 13R",
@@ -1340,7 +1340,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 117,
     name: "Xiaomi Redmi 10",
@@ -1355,7 +1355,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 118,
     name: "Xiaomi Redmi Note 12 -",
@@ -1370,7 +1370,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 119,
     name: "Xiaomi Redmi 13 6GB",
@@ -1385,7 +1385,7 @@ const defaultProducts = [
     brand: 'Xiaomi',
 
   },
-  
+
   {
     id: 120,
     name: "Redmi Note 12 Pro 5",
@@ -1680,7 +1680,7 @@ const defaultProducts = [
     brand: 'Oppo',
 
   },
-  
+
 
 ];
 // Lấy danh sách sản phẩm từ Local Storage
