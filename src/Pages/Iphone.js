@@ -70,32 +70,6 @@ const Iphone = ({ addToCart }) => {
             <h1 className="iphone-title">Phone</h1>
 
             {/* Bộ lọc */}
-            <div className="filter-section">
-                {/* Lọc giá */}
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{position:'relative', left:'50px'}}>Mức giá</h3>
-                    <div className="price-slider">
-                        <input
-                            type="range"
-                            min="0"
-                            max="30000000"
-                            value={filters.priceRange === "all" ? 0 : filters.priceRange[0]}
-                            onChange={(e) => handlePriceSliderChange(e.target.value, filters.priceRange[1])}
-                        />
-                        <input
-                            type="range"
-                            min="0"
-                            max="50000000"
-                            value={filters.priceRange === "all" ? 50000000 : filters.priceRange[1]}
-                            onChange={(e) => handlePriceSliderChange(filters.priceRange[0], e.target.value)}
-                        />
-                    </div>
-                    <div className="price-value">
-                        <span>Giá từ: {filters.priceRange === "all" ? "Tất cả" : filters.priceRange[0]} đ</span>
-                        <span>Giá đến: {filters.priceRange === "all" ? "Tất cả" : filters.priceRange[1]} đ</span>
-                    </div>
-                </div>
-            </div>
 
             {/* Nút chuyển đến từng thương hiệu */}
             <div className="brand-buttons">

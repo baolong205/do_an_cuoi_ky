@@ -1,70 +1,60 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Công Nghệ Sử Dụng Trong Dự Án
 
-## Available Scripts
+Dưới đây là danh sách các công nghệ và thư viện được sử dụng trong dự án này:
 
-In the project directory, you can run:
+1. **React**: Thư viện JavaScript để xây dựng giao diện người dùng.
+2. **React Router**: Thư viện để quản lý điều hướng trong ứng dụng.
+3. **bcryptjs**: Mã hóa mật khẩu
+4. **body-parser**: Xử lý dữ liệu từ request HTTP.
+5. **express**: Framework server-side phổ biến.
+6. **font-awesome**: Tích hợp biểu tượng đẹp mắt vào giao diện người dùng.
+7. **mongoose**: Kết nối và thao tác với MongoDB.
+8. **Formik**: Thư viện để quản lý biểu mẫu và xác thực.
+9. **Yup**: Thư viện để xác thực dữ liệu cho Formik.
+10. **Bootstrap**: Thư viện CSS để tạo giao diện người dùng responsive và đẹp mắt.
+11. **web-vitals**: Kết nối và thao tác với MongoDB.
+12. **React Modal**: Thư viện để tạo các modal trong ứng dụng.
+13. **react-scripts**: Cấu hình mặc định cho ứng dụng React được tạo từ create-react-app.
+14. **react-toastify**: Hiển thị thông báo (toast) đẹp mắt.
+15. **react-redux**: Quản lý trạng thái (state) tập trung trong ứng dụng React.
+16. **react-router-dom**: Định tuyến (routing) trong React. 
 
-### `npm start`
+## Lệnh Cài Đặt
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Để cài đặt tất cả các thư viện cần thiết cho dự án, bạn có thể sử dụng lệnh sau:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install react react-dom react-router-dom vitals redux formik yup bootstrap @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome react-modal bootstrap-icons @testing-library/jest-dom @testing-library/react @testing-library/user-event
+```
 
-### `npm test`
+## Hướng Dẫn Tải Dự Án Về và Chạy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Mở thu mục dự án**:
+   ```bash
+   cd <tên_thư_mục_dự_án>
+   ```
 
-### `npm run build`
+2. **Cài Đặt Các thư viện package**: Chạy lệnh sau để cài đặt tất cả các thư viện cần thiết:
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Chạy Dự Án**: Sử dụng lệnh sau để khởi động ứng dụng:
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Mở Trình Duyệt**: Truy cập vào `http://localhost:3000` (hoặc cổng mà Vite thông báo) để xem ứng dụng.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Lưu Ý Khi Chạy Dự Án
 
-### `npm run eject`
+- Đảm bảo rằng bạn đã cài đặt Node.js và npm trên máy tính của mình.
+- Nếu gặp lỗi liên quan đến các thư viện, hãy kiểm tra phiên bản của Node.js và npm.
+- Đảm bảo rằng bạn đã cài đặt tất cả các phụ thuộc cần thiết bằng cách chạy `npm install`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- trang sản phẩm bị lỗi hiển thị thì:
+    + nhấn f12
+    + vào application
+    + nhấn vào products bấm chuột phải
+    + nhấm delete

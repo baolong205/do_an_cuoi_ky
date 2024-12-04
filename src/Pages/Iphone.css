@@ -44,7 +44,6 @@
   gap: 10px;
   margin-bottom: 20px;
   position: relative;
-  top: -150px;
 }
 
 .brand-button {
@@ -62,24 +61,24 @@
 
 .brand-button:hover {
   background-color: #98989e;
-  color: #fff;
+  color: #e7dcdc;
 }
 
 /* Section từng thương hiệu */
 .brand-section {
   margin-top: 40px;
   padding: 40px;
-  background-color: #c1b7b7;
+  background-color: #f4eded;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .brand-title {
   font-size: 24px;
-  color: #07dfef;
+  color: #000202;
   margin-bottom: 20px;
   text-align: center;
-  animation: colorChange 5s infinite;
+
   
 }
 .iphone-title {
@@ -241,22 +240,4 @@
   width: 95%;
   position: relative;
   left: 47px;
-  top: -71px;
-}
-@keyframes colorChange {
-  0% {
-    color: #b38787; /* Màu bắt đầu */
-  }
-  25% {
-    color: rgb(9, 4, 4); /* Màu đỏ */
-  }
-  50% {
-    color: rgb(71, 91, 71); /* Màu xanh lá */
-  }
-  75% {
-    color: rgb(103, 210, 237); /* Màu xanh dương */
-  }
-  100% {
-    color: #ddd; /* Quay lại màu cuối */
-  }
 }
