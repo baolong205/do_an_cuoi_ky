@@ -6,6 +6,7 @@ import './Keyboard.css';
 const KeyboardPage = ({ addToCart }) => {
   const [groupedKeyboards, setGroupedKeyboards] = useState({});
   const [selectedBrand, setSelectedBrand] = useState(null);
+  const [visibleProducts, setVisibleProducts] = useState(10); // Số lượng sản phẩm hiển thị ban đầu
 
   useEffect(() => {
     const products = getProducts();
@@ -28,6 +29,11 @@ const KeyboardPage = ({ addToCart }) => {
     } else {
       setSelectedBrand(brand);
     }
+  };
+
+  // Xử lý nút "Xem thêm"
+  const handleLoadMore = () => {
+    setVisibleProducts(prevVisible => prevVisible + 10); // Tăng số lượng sản phẩm hiển thị thêm 10
   };
 
   return (
@@ -60,16 +66,22 @@ const KeyboardPage = ({ addToCart }) => {
         <h1>{selectedBrand ? `Thương hiệu: ${selectedBrand}` : 'Tất cả Bàn Phím'}</h1>
         <div className="product-list-key">
           {selectedBrand ? (
-            groupedKeyboards[selectedBrand]?.map(product => (
+            groupedKeyboards[selectedBrand]?.slice(0, visibleProducts).map(product => (
               <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))
           ) : (
             // Hiển thị tất cả sản phẩm nếu không có thương hiệu được chọn
-            Object.values(groupedKeyboards).flat().map(product => (
+            Object.values(groupedKeyboards).flat().slice(0, visibleProducts).map(product => (
               <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))
           )}
         </div>
+        {/* Nút "Xem thêm" */}
+        {Object.values(groupedKeyboards).flat().length > visibleProducts && (
+          <button className="load-more-btn" onClick={handleLoadMore}>
+            Xem Thêm
+          </button>
+        )}
       </div>
     </div>
   );
