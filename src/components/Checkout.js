@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useOrderContext } from "../Context/OderContext"; // Import the context
+import { useOrderContext } from "../Context/OderContext"; // Sử dụng context
 import "./checkout.css";
 
 const Checkout = ({ cartItems, clearCart }) => {
-  const { addOrder } = useOrderContext(); // Access the addOrder function
+  const { addOrder } = useOrderContext(); // Truy cập hàm addOrder
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     phone: "",
@@ -61,53 +61,47 @@ const Checkout = ({ cartItems, clearCart }) => {
         cartItems: cartItems,
         totalAmount: totalAmount,
         orderDate: new Date().toISOString(),
-        status: "Processing",
+        status: "Đang xử lý",
       };
 
-      // Save order to localStorage for persistence
       const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
       storedOrders.push(order);
       localStorage.setItem("orders", JSON.stringify(storedOrders));
 
-      // Add the order to global context
       addOrder(order);
 
-      // Display success message
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 5000);
 
-      // Store customer info in localStorage for future checkout
       localStorage.setItem("customerInfo", JSON.stringify(customerInfo));
 
-      // Clear cart
       clearCart();
     } else {
-      alert("Please fill in all shipping information!");
+      alert("Vui lòng điền đầy đủ thông tin giao hàng!");
     }
   };
 
   return (
     <div className="checkout">
-      <h2>Checkout</h2>
+      <h2>Thanh Toán</h2>
 
       {showSuccessMessage && (
         <div className="success-message">
-          <h2>Order Placed Successfully!</h2>
-          <p>Your order has been confirmed.</p>
-          <p>Thank you for shopping with us.</p>
+          <h2>Đặt Hàng Thành Công!</h2>
+          <p>Đơn hàng của bạn đã được xác nhận.</p>
+          <p>Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi.</p>
         </div>
       )}
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <p>Your cart is currently empty!</p>
+          <p>Giỏ hàng của bạn hiện đang trống!</p>
           <Link to="/" className="continue-shopping-btn">
-            Continue Shopping
+            Tiếp Tục Mua Sắm
           </Link>
         </div>
       ) : (
         <>
-          {/* List of products */}
           <div className="checkout-items">
             {cartItems.map((item) => {
               const discountedPrice = item.discount
@@ -124,14 +118,13 @@ const Checkout = ({ cartItems, clearCart }) => {
                   <div className="checkout-item-details">
                     <p className="checkout-item-name">{item.name}</p>
                     <p className="checkout-item-prices">
-                      Original Price:{" "}
+                      Giá Gốc:{" "}
                       <span className="original-price">
                         {formatCurrency(item.price)}
                       </span>
                       {item.discount && (
                         <>
-                          {" "}
-                          | Discounted Price:{" "}
+                          {" "} | Giá Giảm:{" "}
                           <span className="discounted-price">
                             {formatCurrency(discountedPrice)}
                           </span>
@@ -139,10 +132,10 @@ const Checkout = ({ cartItems, clearCart }) => {
                       )}
                     </p>
                     <p className="checkout-item-quantity">
-                      Quantity: {item.quantity}
+                      Số Lượng: {item.quantity}
                     </p>
                     <p className="checkout-item-total">
-                      Total: {formatCurrency(discountedPrice * item.quantity)}
+                      Thành Tiền: {formatCurrency(discountedPrice * item.quantity)}
                     </p>
                   </div>
                 </div>
@@ -150,78 +143,76 @@ const Checkout = ({ cartItems, clearCart }) => {
             })}
           </div>
 
-          {/* Customer Information Form */}
           <div className="checkout-form">
-            <h3>Shipping Information</h3>
+            <h3>Thông Tin Giao Hàng</h3>
             <div className="form-group">
-              <label htmlFor="name">Full Name:</label>
+              <label htmlFor="name">Họ và Tên:</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={customerInfo.name}
                 onChange={handleInputChange}
-                placeholder="Enter your full name"
+                placeholder="Nhập họ và tên của bạn"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Phone Number:</label>
+              <label htmlFor="phone">Số Điện Thoại:</label>
               <input
                 type="text"
                 id="phone"
                 name="phone"
                 value={customerInfo.phone}
                 onChange={handleInputChange}
-                placeholder="Enter your phone number"
+                placeholder="Nhập số điện thoại của bạn"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="address">Address:</label>
+              <label htmlFor="address">Địa Chỉ:</label>
               <input
                 type="text"
                 id="address"
                 name="address"
                 value={customerInfo.address}
                 onChange={handleInputChange}
-                placeholder="Enter your shipping address"
+                placeholder="Nhập địa chỉ giao hàng"
               />
             </div>
             <div className="form-group">
-              <label>Payment Method:</label>
+              <label>Phương Thức Thanh Toán:</label>
               <select
                 name="paymentMethod"
                 value={customerInfo.paymentMethod}
                 onChange={handlePaymentMethodChange}
               >
-                <option value="cash">Cash on Delivery</option>
-                <option value="card">Credit/Debit Card</option>
-                <option value="bank">Bank Transfer</option>
+                <option value="cash">Thanh toán khi nhận hàng</option>
+                <option value="card">Thẻ tín dụng/Ghi nợ</option>
+                <option value="bank">Chuyển khoản ngân hàng</option>
               </select>
             </div>
 
-            {/* Payment details for card or bank */}
             {customerInfo.paymentMethod === "card" && (
               <>
                 <div className="form-group">
-                  <label htmlFor="cardNumber">Card Number:</label>
+                  <label htmlFor="cardNumber">Số Thẻ:</label>
                   <input
                     type="text"
                     id="cardNumber"
                     name="cardNumber"
                     value={customerInfo.cardNumber}
                     onChange={handleInputChange}
-                    placeholder="Enter your card number"
+                    placeholder="Nhập số thẻ của bạn"
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="cardExpiry">Expiry Date:</label>
+                  <label htmlFor="cardExpiry">Ngày Hết Hạn:</label>
                   <input
                     type="text"
                     id="cardExpiry"
                     name="cardExpiry"
                     value={customerInfo.cardExpiry}
                     onChange={handleInputChange}
-                    placeholder="Enter card expiry date"
+                    placeholder="Nhập ngày hết hạn"
                   />
                 </div>
                 <div className="form-group">
@@ -232,7 +223,7 @@ const Checkout = ({ cartItems, clearCart }) => {
                     name="cardCVV"
                     value={customerInfo.cardCVV}
                     onChange={handleInputChange}
-                    placeholder="Enter card CVV"
+                    placeholder="Nhập mã CVV"
                   />
                 </div>
               </>
@@ -241,13 +232,13 @@ const Checkout = ({ cartItems, clearCart }) => {
             {customerInfo.paymentMethod === "bank" && (
               <>
                 <div className="form-group">
-                  <label htmlFor="selectedBank">Select Bank:</label>
+                  <label htmlFor="selectedBank">Chọn Ngân Hàng:</label>
                   <select
                     name="selectedBank"
                     value={customerInfo.selectedBank}
                     onChange={handleInputChange}
                   >
-                    <option value="">Choose a bank</option>
+                    <option value="">Chọn ngân hàng</option>
                     {banks.map((bank) => (
                       <option key={bank.id} value={bank.id}>
                         {bank.name}
@@ -256,26 +247,25 @@ const Checkout = ({ cartItems, clearCart }) => {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="bankAccount">Bank Account Number:</label>
+                  <label htmlFor="bankAccount">Số Tài Khoản:</label>
                   <input
                     type="text"
                     id="bankAccount"
                     name="bankAccount"
                     value={customerInfo.bankAccount}
                     onChange={handleInputChange}
-                    placeholder="Enter bank account number"
+                    placeholder="Nhập số tài khoản ngân hàng"
                   />
                 </div>
               </>
             )}
 
-            {/* Total Amount */}
             <div className="checkout-summary">
-              <p>Total Amount: {formatCurrency(totalAmount)}</p>
+              <p>Tổng Tiền: {formatCurrency(totalAmount)}</p>
             </div>
 
             <button className="place-order-btn" onClick={handlePlaceOrder}>
-              Place Order
+              Đặt Hàng
             </button>
           </div>
         </>
