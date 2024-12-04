@@ -36,14 +36,6 @@ const Iphone = ({ addToCart }) => {
                 if (product.price < minPrice || product.price > maxPrice) return false;
             }
 
-            // Lọc theo tính năng camera
-            if (filters.cameraFeatures !== "all") {
-                if (!filters.cameraFeatures.every((feature) =>
-                    product.cameraFeatures?.includes(feature)
-                )) {
-                    return false;
-                }
-            }
 
             // Lọc theo tính năng đặc biệt
             if (filters.specialFeatures !== "all") {
@@ -81,7 +73,7 @@ const Iphone = ({ addToCart }) => {
             <div className="filter-section">
                 {/* Lọc giá */}
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h3>Mức giá</h3>
+                    <h3 style={{position:'relative', left:'50px'}}>Mức giá</h3>
                     <div className="price-slider">
                         <input
                             type="range"
@@ -114,25 +106,27 @@ const Iphone = ({ addToCart }) => {
                 ))}
             </div>
 
-            {/* Hiển thị sản phẩm theo thương hiệu */}
-            {Object.keys(groupedIphones).length > 0 ? (
-                Object.keys(groupedIphones).map((brand) => (
-                    <div
-                        key={brand}
-                        ref={(el) => (brandRefs.current[brand] = el)}
-                        className="brand-section"
-                    >
-                        <h2 className="brand-title">{brand}</h2>
-                        <div className="product-g">
-                            {applyFilters(groupedIphones[brand]).map((product) => (
-                                <ProductCard key={product.id} product={{ ...product }} />
-                            ))}
+            <div className="Glake">
+                    {/* Hiển thị sản phẩm theo thương hiệu */}
+                {Object.keys(groupedIphones).length > 0 ? (
+                    Object.keys(groupedIphones).map((brand) => (
+                        <div
+                            key={brand}
+                            ref={(el) => (brandRefs.current[brand] = el)}
+                            className="brand-section"
+                        >
+                            <h2 className="brand-title">{brand}</h2>
+                            <div className="product-g">
+                                {applyFilters(groupedIphones[brand]).map((product) => (
+                                    <ProductCard key={product.id} product={{ ...product }} />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))
-            ) : (
-                <p className="no-phones-message">No phones available.</p>
-            )}
+                    ))
+                ) : (
+                    <p className="no-phones-message">No phones available.</p>
+                )}
+            </div>
         </div>
     );
 };
