@@ -28,7 +28,7 @@ const HeadphonePage = ({ addToCart }) => {
       <h1>Headphones</h1>
       {Object.keys(groupedHeadphones).length > 0 ? (
         Object.keys(groupedHeadphones).map((brand) => (
-          <div key={brand} className="brand-section">
+          <div key={brand} className="brand-section-head">
             <h2>{brand}</h2>
             <div className="H_product-list">
               {groupedHeadphones[brand].map((product) => (

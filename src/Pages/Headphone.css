@@ -1,15 +1,22 @@
-
 .Headphone-page {
   padding: 20px;
   font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f5f5f5; /* Màu nền sáng để làm nổi bật các phần tử đỏ */
 }
 
 .Headphone-page h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #222;
+  color: #d32f2f; /* Màu đỏ đậm */
   font-size: 2rem;
+}
+
+.brand-section-head {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #d32f2f; /* Màu nền đỏ đậm cho từng nhóm sản phẩm */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .H_product-list {
@@ -19,7 +26,7 @@
 }
 
 .H_product-card {
-  background-color: white;
+  background-color: #fff; /* Nền trắng để nổi bật các sản phẩm */
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 15px;
@@ -40,6 +47,7 @@
 .H_product-card h3 {
   font-size: 18px;
   margin: 10px 0;
+  color: #d32f2f; /* Màu chữ đỏ cho tên sản phẩm */
 }
 
 .H_product-card p {
@@ -59,7 +67,7 @@
 }
 
 .H_add-to-cart-btn {
-  background-color: #0091f8;
+  background-color: #0091f8; /* Màu xanh lam cho nút thêm vào giỏ hàng */
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -68,5 +76,14 @@
 }
 
 .H_add-to-cart-btn:hover {
-  background-color: #e09500;
+  background-color: #e09500; /* Màu vàng khi hover */
+}
+
+h2 {
+  color: #d32f2f; /* Màu đỏ đậm */
+  text-align: center;
+  font-weight: bolder;
+  font-size: 35px;
+  text-transform: uppercase; /* Chữ hoa */
+  letter-spacing: 1px; /* Khoảng cách giữa các ký tự */
 }

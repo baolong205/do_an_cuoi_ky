@@ -3,13 +3,15 @@
   padding: 20px;
   max-width: 1200px;
   margin: auto;
+  background-color: #fafafa; /* Nền sáng hơn để dễ nhìn */
 }
 
 .cart-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
-  text-align: center; /* Căn giữa tiêu đề */
+  text-align: center;
+  color: #333; /* Màu đen đậm cho tiêu đề */
 }
 
 .empty-cart {
@@ -21,10 +23,11 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #555; /* Màu xám nhạt cho văn bản */
 }
 
 .continue-shopping {
-  color: #007bff;
+  color: #007bff; /* Màu xanh dương cho liên kết */
   text-decoration: none;
 }
 
@@ -39,7 +42,9 @@
   align-items: center;
   border-bottom: 1px solid #ddd;
   padding: 15px 0;
-  margin-bottom: 15px; /* Khoảng cách giữa các sản phẩm */
+  margin-bottom: 15px;
+  background-color: #fff; /* Nền trắng cho các sản phẩm */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
 }
 
 .cart-item-image {
@@ -58,10 +63,11 @@
 .cart-item-name {
   font-size: 18px;
   font-weight: bold;
+  color: #333; /* Màu đen cho tên sản phẩm */
 }
 
 .cart-item-price {
-  color: #f44336;
+  color: #2e7d32; /* Màu xanh lá cho giá sản phẩm */
   margin: 10px 0;
 }
 
@@ -76,6 +82,12 @@
   padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-quantity button:hover {
+  background-color: #8bc34a; /* Màu xanh lá nhạt khi hover */
 }
 
 .cart-item-quantity span {
@@ -84,16 +96,17 @@
 }
 
 .cart-item-remove {
-  background-color: #ff4d4f;
+  background-color: #ff7043; /* Màu cam cho nút xóa */
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .cart-item-remove:hover {
-  background-color: #e64547; /* Thay đổi màu khi hover */
+  background-color: #ff5722; /* Màu cam đậm khi hover */
 }
 
 .cart-summary {
@@ -108,7 +121,7 @@
   justify-content: space-between;
   font-size: 20px;
   font-weight: bold;
-  color: #4caf50; /* Làm nổi bật */
+  color: #388e3c; /* Màu xanh lá đậm cho tổng giỏ hàng */
 }
 
 .checkout-btn-container {
@@ -119,7 +132,7 @@
 }
 
 .checkout-btn {
-  background-color: #4caf50;
+  background-color: #388e3c; /* Màu xanh lá đậm cho nút thanh toán */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -127,11 +140,11 @@
   cursor: pointer;
   border-radius: 5px;
   width: 250px;
-  transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
+  transition: background-color 0.3s ease;
 }
 
 .checkout-btn:hover {
-  background-color: #45a049;
+  background-color: #2c6e2f; /* Màu xanh lá đậm hơn khi hover */
 }
 
 /* Responsive design */
