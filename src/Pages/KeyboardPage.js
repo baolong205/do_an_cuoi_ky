@@ -23,7 +23,11 @@ const KeyboardPage = ({ addToCart }) => {
 
   // Xử lý khi người dùng chọn thương hiệu
   const handleBrandSelect = (brand) => {
-    setSelectedBrand(brand);
+    if (brand === 'all') {
+      setSelectedBrand(null); // Khi chọn "Tất cả thương hiệu", không lọc theo thương hiệu
+    } else {
+      setSelectedBrand(brand);
+    }
   };
 
   return (
@@ -32,6 +36,13 @@ const KeyboardPage = ({ addToCart }) => {
       <div className="keyboard-sidebar">
         <h2>Bàn Phím Cơ</h2>
         <ul className="brand-list">
+          <li 
+            key="all" 
+            className="brand-item" 
+            onClick={() => handleBrandSelect('all')}
+          >
+            Tất Cả Thương Hiệu
+          </li>
           {Object.keys(groupedKeyboards).map((brand) => (
             <li 
               key={brand} 
@@ -48,11 +59,12 @@ const KeyboardPage = ({ addToCart }) => {
       <div className="keyboard-products">
         <h1>{selectedBrand ? `Thương hiệu: ${selectedBrand}` : 'Tất cả Bàn Phím'}</h1>
         <div className="product-list-key">
-          {selectedBrand && groupedKeyboards[selectedBrand] ? (
-            groupedKeyboards[selectedBrand].map(product => (
+          {selectedBrand ? (
+            groupedKeyboards[selectedBrand]?.map(product => (
               <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))
           ) : (
+            // Hiển thị tất cả sản phẩm nếu không có thương hiệu được chọn
             Object.values(groupedKeyboards).flat().map(product => (
               <ProductCard key={product.id} product={product} addToCart={addToCart} />
             ))
