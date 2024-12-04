@@ -67,12 +67,6 @@
   padding: 20px;
 }
 
-.product-list-key {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-evenly;
-}
 
 .brand-section-key {
   margin-bottom: 50px;
@@ -85,11 +79,19 @@
   border-left: 4px solid #3498db;
   padding-left: 10px;
   color: #ff9800;
+  grid-template-columns: repeat(5, 1fr); 
 }
 
-/* Card sản phẩm */
+.product-list-key {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Tạo 5 cột */
+  gap: 20px;
+  justify-items: center; /* Căn giữa các thẻ sản phẩm */
+}
+
 .product-list-key .product-card {
-  width: 220px;
+  width: 100%; /* Giữ thẻ sản phẩm chiếm đầy 1 cột */
+  max-width: 220px; /* Giới hạn chiều rộng tối đa cho thẻ sản phẩm */
   min-height: 320px;
   background-color: white;
   border: 1px solid #ddd;
@@ -140,6 +142,7 @@
 .product-list-key .product-card .add-to-cart-btn:hover {
   background-color: #dd5e23;
 }
+
 .load-more-btn {
   display: block;
   width: 100px;

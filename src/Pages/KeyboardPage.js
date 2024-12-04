@@ -76,8 +76,8 @@ const KeyboardPage = ({ addToCart }) => {
             ))
           )}
         </div>
-        {/* Nút "Xem thêm" */}
-        {Object.values(groupedKeyboards).flat().length > visibleProducts && (
+        {/* Nút "Xem thêm" chỉ hiển thị khi không chọn thương hiệu */}
+        {!selectedBrand && Object.values(groupedKeyboards).flat().length > visibleProducts && (
           <button className="load-more-btn" onClick={handleLoadMore}>
             Xem Thêm
           </button>
